@@ -3,19 +3,20 @@ import puppeteer from 'puppeteer'
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
   console.time('volvox-sorted')
-  page.on('console', async msg => {
-    const msgArgs = msg.args()
-    for (let i = 0; i < msgArgs.length; ++i) {
-      console.log(await msgArgs[i].jsonValue())
-    }
-  })
 
   // this is the volvox sorted dataset
-  await page.goto('http://localhost:3001')
+  await page.goto('http://localhost:8000')
 
-  await page.waitForFunction(
-    () => document.querySelectorAll('.igv-canvas').length === 3,
-  )
+  await new Promise(resolve => {
+    page.on('console', async msg => {
+      const msgArgs = msg.args()
+      const val = await msgArgs[0].jsonValue()
+      if (val === 'DONE') {
+        resolve()
+      }
+    })
+  })
+
   console.timeEnd('volvox-sorted')
 
   await browser.close()

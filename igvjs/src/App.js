@@ -13,7 +13,7 @@ function useQueryParams() {
 
 function App() {
   const ref = useRef()
-  const { smallBam, smallCram, largeBam, largeCram, loc } = useQueryParams()
+  const { trackId, loc } = useQueryParams()
 
   useEffect(() => {
     if (!ref.current) {
@@ -23,32 +23,15 @@ function App() {
       genome: 'volvox',
       locus: loc,
       tracks: [
-        smallCram && {
-          name: 'volvox-sorted.cram',
-          url: 'volvox-sorted.cram',
-          indexURL: 'volvox-sorted.cram.crai',
-          format: 'cram',
+        {
+          name: trackId,
+          url: trackId,
+          indexURL: trackId.endsWith('.bam')
+            ? trackId + '.bai'
+            : trackId + '.crai',
+          format: trackId.endsWith('.cram') ? 'cram' : 'bam',
         },
-
-        smallBam && {
-          name: 'volvox-sorted.bam',
-          url: 'volvox-sorted.bam',
-          indexURL: 'volvox-sorted.bam.bai',
-          format: 'bam',
-        },
-        largeCram && {
-          name: 'volvox-wgsim.cram',
-          url: 'volvox-wgsim.cram',
-          indexURL: 'volvox-wgsim.cram.crai',
-          format: 'cram',
-        },
-        largeBam && {
-          name: 'volvox-wgsim.bam',
-          url: 'volvox-wgsim.bam',
-          indexURL: 'volvox-wgsim.bam.bai',
-          format: 'bam',
-        },
-      ].filter(f => !!f),
+      ],
       reference: {
         id: 'volvox',
         fastaURL: 'volvox.fa',
@@ -59,7 +42,7 @@ function App() {
     igv.createBrowser(ref.current, options).then(browser => {
       console.log('Created IGV browser')
     })
-  }, [largeBam, largeCram, smallBam, smallCram])
+  }, [trackId, loc])
   return <div ref={ref} />
 }
 

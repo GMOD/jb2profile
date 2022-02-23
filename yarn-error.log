@@ -1,0 +1,36 @@
+Arguments: 
+  /home/cdiesh/.nvm/versions/node/v17.6.0/bin/node /home/cdiesh/jb2profile/.yarn/releases/yarn-1.18.0.cjs add igv -D -W
+
+PATH: 
+  /home/cdiesh/perl5/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/cdiesh/.nvm/versions/node/v17.6.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/linuxbrew/.linuxbrew/opt/python@3.9/libexec/bin:/home/cdiesh/.local/bin/:/home/cdiesh/.cargo/bin
+
+Yarn version: 
+  1.18.0
+
+Node version: 
+  17.6.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, stat '/home/cdiesh/jb2profile/jb2lgv/node_modules/igv'
+
+npm manifest: 
+  {
+    "dependencies": {
+      "puppeteer": "^13.4.0"
+    },
+    "private": true,
+    "type": "module",
+    "workspaces": [
+      "jb2lgv",
+      "igvjs"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

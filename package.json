@@ -2,5 +2,13 @@
   "dependencies": {
     "puppeteer": "^13.4.0"
   },
-  "type": "module"
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "jb2lgv",
+    "igvjs"
+  ],
+  "devDependencies": {
+    "http-server": "^14.1.0"
+  }
 }

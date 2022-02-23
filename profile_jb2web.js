@@ -4,18 +4,14 @@ import puppeteer from 'puppeteer'
   const page = await browser.newPage()
   console.time('timer')
 
+  // this is the volvox sorted dataset
   await page.goto(process.argv[2])
 
-  await new Promise(resolve => {
-    page.on('console', async msg => {
-      const msgArgs = msg.args()
-      const val = await msgArgs[0].jsonValue()
-      if (val === 'DONE') {
-        resolve()
-      }
-    })
-  })
-
+  await page.waitForFunction(
+    () =>
+      document.querySelectorAll('[data-testid="pileup-normal"]').length === 2,
+    { timeout: 120000 },
+  )
   console.timeEnd('timer')
 
   await browser.close()

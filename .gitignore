@@ -1,1 +1,8 @@
 node_modules
+yarn-error.log
+volvox-wgsim.bam
+volvox-wgsim.bam.bai
+volvox-wgsim.cram
+volvox-wgsim.cram.crai
+jb2web
+jb2web_optim

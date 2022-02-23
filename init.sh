@@ -7,27 +7,27 @@ wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/volvox-wgsim.bam
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/volvox-wgsim.bam.bai
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/volvox-wgsim.cram
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/volvox-wgsim.cram.crai
-
-## setup jb2web
-jbrowse add-assembly --load copy jb2web/test_data/volvox/volvox.fa --out jb2web --force
-jbrowse add-track volvox-wgsim.bam --load copy --out jb2web --trackId volvox-wgsim.bam --force
-jbrowse add-track volvox-wgsim.cram --load copy --out jb2web --trackId volvox-wgsim.cram --force
-jbrowse add-track jb2web/test_data/volvox/volvox-sorted.bam --load copy --out jb2web --trackId volvox-sorted.bam --force
-jbrowse add-track jb2web/test_data/volvox/volvox-sorted.cram --load copy --out jb2web --trackId volvox-sorted.cram --force
+wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.1000x.cram
+wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.1000x.cram.crai
+wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.50x.cram
+wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.50x.cram.crai
 
 ## setup jb2web_optim
-jbrowse add-assembly --load copy jb2web_optim/test_data/volvox/volvox.fa --out jb2web_optim --force
-jbrowse add-track volvox-wgsim.bam --load copy --out jb2web_optim --trackId volvox-wgsim.bam --force
-jbrowse add-track volvox-wgsim.cram --load copy --out jb2web_optim --trackId volvox-wgsim.cram --force
-jbrowse add-track jb2web_optim/test_data/volvox/volvox-sorted.bam --load copy --out jb2web_optim --trackId volvox-sorted.bam --force
-jbrowse add-track jb2web_optim/test_data/volvox/volvox-sorted.cram --load copy --out jb2web_optim --trackId volvox-sorted.cram --force
+jbrowse add-assembly --load copy volvox.fa --out jb2web --force
+jbrowse add-assembly --load copy volvox.fa --out jb2web_optim --force
+for i in volvox-wgsim.{bam,cram} badread.1000x.{bam,cram} badread.50x.{bam,cram} volvox-sorted.{bam,cram}; do
+  echo $i
+  jbrowse add-track $i --load copy jb2web --trackId $i --force
+  jbrowse add-track $i --load copy jb2web_optim --trackId $i --force
+done;
 
 ## copy files to igv and @jbrowse/react-linear-genome-view demos
-cp volvox-wgsim.bam jb2lgv/build
-cp volvox-wgsim.bam.bai jb2lgv/build
-cp volvox-wgsim.cram jb2lgv/build
-cp volvox-wgsim.cram.crai jb2lgv/build
-cp volvox-wgsim.bam igvjs/build
-cp volvox-wgsim.bam.bai igvjs/build
-cp volvox-wgsim.cram igvjs/build
-cp volvox-wgsim.cram.crai igvjs/build
+for i in volvox-wgsim.{bam,cram} badread.1000x.{bam,cram} badread.50x.{bam,cram} volvox-sorted.{bam,cram}; do
+  echo $i
+  for j in jb2lgv igvjs; do
+    cp $i $j/build
+    cp $i.bai $j/build 2>>/dev/null
+    cp $i.crai $j/build 2>>/dev/null
+  done;
+done;
+

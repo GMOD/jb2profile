@@ -14,6 +14,51 @@ function useQueryParams() {
     },
   })
 }
+
+function getBamAdapter(trackId: string) {
+  return {
+    type: 'BamAdapter',
+    bamLocation: {
+      uri: trackId,
+    },
+    index: {
+      location: {
+        uri: trackId + '.bai',
+      },
+      indexType: 'BAI',
+    },
+    sequenceAdapter: {
+      type: 'IndexedFastaAdapter',
+      fastaLocation: {
+        uri: 'volvox.fa',
+      },
+      faiLocation: {
+        uri: 'volvox.fa.fai',
+      },
+    },
+  }
+}
+
+function getCramAdapter(trackId: string) {
+  return {
+    type: 'CramAdapter',
+    cramLocation: {
+      uri: trackId,
+    },
+    craiLocation: {
+      uri: trackId + '.crai',
+    },
+    sequenceAdapter: {
+      type: 'IndexedFastaAdapter',
+      fastaLocation: {
+        uri: 'volvox.fa',
+      },
+      faiLocation: {
+        uri: 'volvox.fa.fai',
+      },
+    },
+  }
+}
 type ViewModel = ReturnType<typeof createViewState>
 function View() {
   //@ts-ignore
@@ -35,7 +80,7 @@ function View() {
               {
                 id: '_-kwYVczT8',
                 type: 'LinearAlignmentsDisplay',
-                configuration: trackId + '_linearalignments',
+                configuration: trackId + '-LinearAlignmentsDisplay',
                 height: 250,
               },
             ],
@@ -63,104 +108,11 @@ function View() {
       tracks: [
         {
           type: 'AlignmentsTrack',
-          trackId: 'volvox-wgsim.bam',
-          name: 'volvox-wgsim.bam',
-          adapter: {
-            type: 'BamAdapter',
-            bamLocation: {
-              uri: 'volvox-wgsim.bam',
-            },
-            index: {
-              location: {
-                uri: 'volvox-wgsim.bam.bai',
-              },
-              indexType: 'BAI',
-            },
-            sequenceAdapter: {
-              type: 'IndexedFastaAdapter',
-              fastaLocation: {
-                uri: 'volvox.fa',
-              },
-              faiLocation: {
-                uri: 'volvox.fa.fai',
-              },
-            },
-          },
-          assemblyNames: ['volvox'],
-        },
-        {
-          type: 'AlignmentsTrack',
-          trackId: 'volvox-wgsim.cram',
-          name: 'volvox-wgsim.cram',
-          adapter: {
-            type: 'CramAdapter',
-            cramLocation: {
-              uri: 'volvox-wgsim.cram',
-            },
-            craiLocation: {
-              uri: 'volvox-wgsim.cram.crai',
-            },
-            sequenceAdapter: {
-              type: 'IndexedFastaAdapter',
-              fastaLocation: {
-                uri: 'volvox.fa',
-              },
-              faiLocation: {
-                uri: 'volvox.fa.fai',
-              },
-            },
-          },
-          assemblyNames: ['volvox'],
-        },
-        {
-          type: 'AlignmentsTrack',
-          trackId: 'volvox-sorted.bam',
-          name: 'volvox-sorted.bam',
-          adapter: {
-            type: 'BamAdapter',
-            bamLocation: {
-              uri: 'volvox-sorted.bam',
-            },
-            index: {
-              location: {
-                uri: 'volvox-sorted.bam.bai',
-              },
-              indexType: 'BAI',
-            },
-            sequenceAdapter: {
-              type: 'IndexedFastaAdapter',
-              fastaLocation: {
-                uri: 'volvox.fa',
-              },
-              faiLocation: {
-                uri: 'volvox.fa.fai',
-              },
-            },
-          },
-          assemblyNames: ['volvox'],
-        },
-        {
-          type: 'AlignmentsTrack',
-          trackId: 'volvox-sorted.cram',
-          name: 'volvox-sorted.cram',
-          adapter: {
-            type: 'CramAdapter',
-            cramLocation: {
-              uri: 'volvox-sorted.cram',
-            },
-            craiLocation: {
-              uri: 'volvox-sorted.cram.crai',
-            },
-            sequenceAdapter: {
-              type: 'IndexedFastaAdapter',
-              fastaLocation: {
-                uri: 'volvox.fa',
-              },
-              faiLocation: {
-                uri: 'volvox.fa.fai',
-              },
-            },
-          },
+          trackId,
+          name: trackId,
+          adapter: trackId.endsWith('.bam')
+            ? getBamAdapter(trackId)
+            : getCramAdapter(trackId),
           assemblyNames: ['volvox'],
         },
       ],

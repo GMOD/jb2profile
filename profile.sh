@@ -21,12 +21,12 @@ profile () {
   echo -e "\n\n\n\n\n\n\n"
 }
 
-profile "ctgA:19,000-21,000" "badread.1000x.cram"  "results/large_longread_cram.md"
-profile "ctgA:19,000-21,000" "badread.50x.cram"  "results/small_longread_cram.md"
-profile "ctgA:19,000-21,000" "volvox-wgsim.cram"  "results/large_shortread_cram.md"
-profile "ctgA:19,000-21,000" "volvox-wgsim.bam"  "results/large_shortread_bam.md"
 profile "ctgA:19,000-21,000" "volvox-sorted.bam"  "results/small_shortread_bam.md"
 profile "ctgA:19,000-21,000" "volvox-sorted.cram"  "results/small_shortread_cram.md"
+profile "ctgA:19,000-21,000" "volvox-wgsim.cram"  "results/large_shortread_cram.md"
+profile "ctgA:19,000-21,000" "volvox-wgsim.bam"  "results/large_shortread_bam.md"
+profile "ctgA:19,000-21,000" "badread.1000x.cram"  "results/large_longread_cram.md"
+profile "ctgA:19,000-21,000" "badread.50x.cram"  "results/small_longread_cram.md"
 
 
 

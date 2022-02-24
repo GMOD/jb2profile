@@ -1,8 +1,7 @@
 node_modules
 yarn-error.log
-volvox-wgsim.bam*
-volvox-wgsim.cram*
-badread.1000x.cram*
-badread.50x.cram*
+volvox-wgsim.*
+badread.1000x.*
+badread.50x.*
 jb2web
 jb2web_optim

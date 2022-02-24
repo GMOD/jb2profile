@@ -20,7 +20,7 @@ samtools index badread.50x.bam
 ## setup jb2web_optim
 jbrowse add-assembly --load copy volvox.fa --out jb2web --force
 jbrowse add-assembly --load copy volvox.fa --out jb2web_optim --force
-for i in volvox-wgsim.{bam,cram} badread.1000x.{bam,cram} badread.50x.cram volvox-sorted.{bam,cram}; do
+for i in volvox-wgsim.{bam,cram} badread.1000x.{bam,cram} badread.50x.{cram,bam} volvox-sorted.{bam,cram}; do
   echo $i
   jbrowse add-track $i --load copy --out jb2web --trackId $i --force
   jbrowse add-track $i --load copy --out jb2web_optim --trackId $i --force

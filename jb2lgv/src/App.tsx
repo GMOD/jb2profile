@@ -62,32 +62,36 @@ function getCramAdapter(trackId: string) {
 type ViewModel = ReturnType<typeof createViewState>
 function View() {
   //@ts-ignore
-  const { trackId, loc } = useQueryParams()
+  const { tracks, loc } = useQueryParams()
   const [viewState, setViewState] = useState<ViewModel>()
 
   useEffect(() => {
-    const defaultSession = trackId && {
-      name: 'this session',
-      view: {
-        id: 'linearGenomeView',
-        type: 'LinearGenomeView',
-        tracks: [
-          {
-            id: 'KHwe41KXk',
-            type: 'AlignmentsTrack',
-            configuration: trackId,
-            displays: [
-              {
-                id: '_-kwYVczT8',
-                type: 'LinearAlignmentsDisplay',
-                configuration: trackId + '-LinearAlignmentsDisplay',
-                height: 250,
-              },
-            ],
-          },
-        ],
-      },
-    }
+    const trackIds = (tracks || '')
+      .split(',')
+      .filter((f: string) => !!f) as string[]
+    const defaultSession =
+      trackIds.length === 0
+        ? undefined
+        : {
+            name: 'this session',
+            view: {
+              id: 'linearGenomeView',
+              type: 'LinearGenomeView',
+              tracks: trackIds.map((trackId) => ({
+                id: '' + Math.random(),
+                type: 'AlignmentsTrack',
+                configuration: trackId,
+                displays: [
+                  {
+                    id: '' + Math.random(),
+                    type: 'LinearAlignmentsDisplay',
+                    configuration: trackId + '-LinearAlignmentsDisplay',
+                    height: 250,
+                  },
+                ],
+              })),
+            },
+          }
     const state = createViewState({
       assembly: {
         name: 'volvox',
@@ -105,22 +109,20 @@ function View() {
           },
         },
       },
-      tracks: [
-        {
-          type: 'AlignmentsTrack',
-          trackId,
-          name: trackId,
-          adapter: trackId.endsWith('.bam')
-            ? getBamAdapter(trackId)
-            : getCramAdapter(trackId),
-          assemblyNames: ['volvox'],
-        },
-      ],
+      tracks: trackIds.map((trackId) => ({
+        type: 'AlignmentsTrack',
+        trackId,
+        name: trackId,
+        adapter: trackId.endsWith('.bam')
+          ? getBamAdapter(trackId)
+          : getCramAdapter(trackId),
+        assemblyNames: ['volvox'],
+      })),
       location: loc,
       defaultSession,
     })
     setViewState(state)
-  }, [trackId, loc])
+  }, [tracks, loc])
 
   if (!viewState) {
     return null

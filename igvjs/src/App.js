@@ -13,25 +13,25 @@ function useQueryParams() {
 
 function App() {
   const ref = useRef()
-  const { trackId, loc } = useQueryParams()
+  const { tracks, loc } = useQueryParams()
+  const trackIds = tracks.split(',')
 
   useEffect(() => {
     if (!ref.current) {
       return
     }
+    const trackIds = tracks.split(',').filter(f => !!f)
     var options = {
       genome: 'volvox',
       locus: loc,
-      tracks: [
-        {
-          name: trackId,
-          url: trackId,
-          indexURL: trackId.endsWith('.bam')
-            ? trackId + '.bai'
-            : trackId + '.crai',
-          format: trackId.endsWith('.cram') ? 'cram' : 'bam',
-        },
-      ],
+      tracks: trackIds.map(trackId => ({
+        name: trackId,
+        url: trackId,
+        indexURL: trackId.endsWith('.bam')
+          ? trackId + '.bai'
+          : trackId + '.crai',
+        format: trackId.endsWith('.cram') ? 'cram' : 'bam',
+      })),
       reference: {
         id: 'volvox',
         fastaURL: 'volvox.fa',
@@ -42,7 +42,7 @@ function App() {
     igv.createBrowser(ref.current, options).then(browser => {
       console.log('Created IGV browser')
     })
-  }, [trackId, loc])
+  }, [tracks, loc])
   return <div ref={ref} />
 }
 

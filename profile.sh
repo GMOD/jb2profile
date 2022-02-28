@@ -15,7 +15,7 @@ npx http-server jb2lgv/build -s -p 8005 &
 
 profile () {
   echo $0 $1 $2 $3
-  hyperfine  --export-markdown $3 --runs 4 --show-output  \
+  hyperfine  --export-json $3 --runs 4  \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=volvox&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=volvox&tracks=$2\"" \
@@ -38,6 +38,16 @@ profile "ctgA:19,000-29,000" "badread.50x.bam,volvox-sorted.bam"  "results/small
 profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram"  "results/large_multi_cram.md"
 profile "ctgA:19,000-21,000" "badread.1000x.bam,volvox-wgsim.bam"  "results/large_multi_bam.md"
 
+
+profile "22:21,999,999..22,000,100" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_100b.md" "hg19"
+profile "22:21,999,999..22,001,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_2kb.md" "hg19"
+profile "22:21,999,999..22,020,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_20kb.md" "hg19"
+profile "22:21,999,999..22,050,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_50kb.md" "hg19"
+
+profile "22:21,999,999..22,000,100" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_100b.md" "hg19"
+profile "22:21,999,999..22,001,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_2kb.md" "hg19"
+profile "22:21,999,999..22,020,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_20kb.md" "hg19"
+profile "22:21,999,999..22,050,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_50kb.md" "hg19"
 
 
 

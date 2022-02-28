@@ -30,18 +30,37 @@ wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.1000x.cram
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.1000x.cram.crai
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.50x.cram
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.50x.cram.crai
+wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz
+wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.fai
+wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.gzi
+
+## download only chr22 of human data
+if [ ! -f "ultra-long-ont_hs37d5_phased.cram" ]; then
+  samtools view 'https://s3.amazonaws.com/jbrowse.org/genomes/hg19/ultra-long-ont_hs37d5_phased.cram' 22 -o ultra-long-ont_hs37d5_phased.cram
+fi;
+
 
 samtools view -T volvox.fa badread.1000x.cram -o badread.1000x.bam 
 samtools index badread.1000x.bam
 samtools view -T volvox.fa badread.50x.cram -o badread.50x.bam 
 samtools index badread.50x.bam
+samtools view ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
+samtools index ultra-long-ont_hs37d5_phased.bam
 
 for j in jb2_165 jb2_167 jb2optim1 jb2optim2; do
   jbrowse add-assembly --load copy volvox.fa --out $j --force
+  jbrowse add-assembly --load copy hg19.fa.gz --out $i/hg19 --force
   for i in volvox-wgsim.{bam,cram} badread.1000x.{bam,cram} badread.50x.{cram,bam} volvox-sorted.{bam,cram}; do
     echo $i $j
     jbrowse add-track $i --load copy --out $j --trackId $i --force
   done;
+
+  for i in ultra-long-ont_hs37d5_phased.{bam,cram}; do
+    echo $i $j
+    jbrowse add-track $i --load symlink --out $j --trackId $j --force
+  done;
+
+
 done;
 
 ## copy files to igv and @jbrowse/react-linear-genome-view demos

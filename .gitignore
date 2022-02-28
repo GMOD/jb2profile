@@ -5,3 +5,6 @@ badread.1000x.*
 badread.50x.*
 jb2web
 jb2web_optim
+jb2web_next
+ultra-long-ont_hs37d5_phased.*
+hg19.*

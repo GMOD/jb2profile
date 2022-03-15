@@ -26,96 +26,103 @@ Some profiling on jbrowse 2
 - these benchmarks are not comprehensive, and just a taste of some small
   examples on simulated data on volvox
 
+### Platform
+
+Ran tests on a xlarge 4vcpu 16gb memory amazon ec2 on ubuntu 20.04
+
 ### Detailed results
 
-results/large_longread_cram.md (1000x long reads)
 
-| Command                   |   Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | ---------: | ------: | ------: | --------: |
-| `igvjs`                   | 16.2 ± 0.3 |    15.9 |    16.5 |    1.0 🍏 |
-| `jbrowse-web-1.6.5`       | 19.9 ± 0.3 |    19.5 |    20.2 | 1.2 ± 0.0 |
-| `jbrowse-web-1.6.5+optim` | 16.2 ± 0.5 |    15.7 |    16.8 | 1.0 ± 0.0 |
-| `jbrowse-react-lgv`       | 17.5 ± 0.3 |    17.1 |    17.7 | 1.0 ± 0.0 |
+results/large_longread_cram.md
 
-results/large_multi.md (load 1000x long reads and 2000x short reads at once)
 
-| Command                   |   Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | ---------: | ------: | ------: | --------: |
-| `igvjs`                   | 25.8 ± 1.1 |    24.7 |    26.9 | 1.4 ± 0.0 |
-| `jbrowse-web-1.6.5`       | 35.0 ± 0.1 |    34.9 |    35.2 | 1.9 ± 0.0 |
-| `jbrowse-web-1.6.5+optim` | 18.1 ± 0.1 |    18.0 |    18.3 |    1.0 🍏 |
-| `jbrowse-react-lgv`       | 37.3 ± 0.2 |    37.1 |    37.6 | 2.0 ± 0.0 |
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 29.927 ± 1.279 | 28.450 | 30.681 | 1.10 ± 0.05 |
+| `jbrowse-web-1.6.5` | 34.127 ± 2.210 | 31.592 | 35.653 | 1.25 ± 0.08 |
+| `jbrowse-web-1.6.5+cigar_optim` | 31.964 ± 1.008 | 31.309 | 33.125 | 1.17 ± 0.04 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 28.353 ± 2.346 | 26.318 | 30.920 | 1.04 ± 0.09 |
+| `jbrowse-react-lgv` | 27.292 ± 0.483 | 26.909 | 27.835 | 1.00 🍏|
 
-results/large_shortread_bam.md (2000x short reads)
 
-| Command                   |   Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | ---------: | ------: | ------: | --------: |
-| `igvjs`                   |  8.6 ± 0.3 |     8.3 |     8.9 |    1.0 🍏 |
-| `jbrowse-web-1.6.5`       | 46.5 ± 1.0 |    45.3 |    47.4 | 5.4 ± 0.2 |
-| `jbrowse-web-1.6.5+optim` | 24.5 ± 0.3 |    24.1 |    24.7 | 2.8 ± 0.1 |
-| `jbrowse-react-lgv`       | 30.0 ± 0.5 |    29.5 |    30.5 | 3.4 ± 0.1 |
+results/large_multi.md
 
-results/large_shortread_cram.md (2000x short reads)
 
-| Command                   |   Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | ---------: | ------: | ------: | --------: |
-| `igvjs`                   | 11.0 ± 0.2 |    10.8 |    11.3 |    1.0 🍏 |
-| `jbrowse-web-1.6.5`       | 34.3 ± 0.3 |    34.0 |    34.7 | 3.1 ± 0.0 |
-| `jbrowse-web-1.6.5+optim` | 17.5 ± 0.2 |    17.2 |    17.7 | 1.5 ± 0.0 |
-| `jbrowse-react-lgv`       | 24.0 ± 0.4 |    23.5 |    24.4 | 2.1 ± 0.0 |
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 45.982 ± 5.432 | 41.754 | 52.109 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 94.424 ± 8.647 | 85.758 | 103.053 | 2.05 ± 0.31 |
+| `jbrowse-web-1.6.5+cigar_optim` | 92.862 ± 4.664 | 87.573 | 96.385 | 2.02 ± 0.26 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 53.691 ± 2.872 | 51.533 | 56.952 | 1.17 ± 0.15 |
+| `jbrowse-react-lgv` | 71.098 ± 4.074 | 66.653 | 74.653 | 1.55 ± 0.20 |
 
-results/small_longread_cram.md (50x long reads)
 
-| Command                   |  Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | --------: | ------: | ------: | --------: |
-| `igvjs`                   | 4.0 ± 0.0 |     4.0 |     4.1 |    1.0 🍏 |
-| `jbrowse-web-1.6.5`       | 6.3 ± 0.0 |     6.3 |     6.4 | 1.5 ± 0.0 |
-| `jbrowse-web-1.6.5+optim` | 5.5 ± 0.0 |     5.4 |     5.5 | 1.3 ± 0.0 |
-| `jbrowse-react-lgv`       | 5.5 ± 0.0 |     5.4 |     5.5 | 1.3 ± 0.0 |
+results/large_shortread_bam.md
 
-results/small_multi.md (4 tracks from the 30x short and 50x read datasets)
 
-| Command                   |  Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | --------: | ------: | ------: | --------: |
-| `igvjs`                   | 7.1 ± 0.2 |     6.8 |     7.4 | 1.2 ± 0.0 |
-| `jbrowse-web-1.6.5`       | 7.2 ± 0.0 |     7.1 |     7.2 | 1.2 ± 0.0 |
-| `jbrowse-web-1.6.5+optim` | 5.6 ± 0.0 |     5.6 |     5.7 |    1.0 🍏 |
-| `jbrowse-react-lgv`       | 9.9 ± 0.1 |     9.7 |    10.0 | 1.7 ± 0.0 |
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 18.395 ± 3.212 | 15.381 | 21.774 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 100.342 ± 15.209 | 85.267 | 115.682 | 5.46 ± 1.26 |
 
-results/small_shortread_bam.md (30x short reads)
 
-| Command                   |  Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | --------: | ------: | ------: | --------: |
-| `igvjs`                   | 2.7 ± 0.1 |     2.6 |     2.8 |    1.0 🍏 |
-| `jbrowse-web-1.6.5`       | 5.4 ± 0.0 |     5.3 |     5.4 | 1.9 ± 0.1 |
-| `jbrowse-web-1.6.5+optim` | 4.2 ± 0.1 |     4.1 |     4.4 | 1.5 ± 0.1 |
-| `jbrowse-react-lgv`       | 4.1 ± 0.0 |     4.1 |     4.2 | 1.5 ± 0.0 |
+results/large_shortread_cram.md
 
-results/small_shortread_cram.md (30x short reads)
 
-| Command                   |  Mean [s] | Min [s] | Max [s] |  Relative |
-| :------------------------ | --------: | ------: | ------: | --------: |
-| `igvjs`                   | 3.0 ± 0.0 |     2.9 |     3.1 |    1.0 🍏 |
-| `jbrowse-web-1.6.5`       | 5.0 ± 0.2 |     4.8 |     5.2 | 1.6 ± 0.0 |
-| `jbrowse-web-1.6.5+optim` | 4.2 ± 0.0 |     4.1 |     4.2 | 1.4 ± 0.0 |
-| `jbrowse-react-lgv`       | 4.2 ± 0.0 |     4.1 |     4.3 | 1.4 ± 0.0 |
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 18.370 ± 0.905 | 17.344 | 19.055 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 63.447 ± 0.377 | 63.022 | 63.743 | 3.45 ± 0.17 |
+| `jbrowse-web-1.6.5+cigar_optim` | 66.475 ± 6.884 | 60.319 | 73.907 | 3.62 ± 0.41 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 34.195 ± 5.266 | 28.292 | 38.411 | 1.86 ± 0.30 |
+| `jbrowse-react-lgv` | 53.294 ± 7.593 | 47.689 | 61.935 | 2.90 ± 0.44 |
 
-## Developers
 
-Run ./init.sh
+results/small_longread_cram.md
 
-Will compile igv.js CRA app, @jbrowse/react-linear-genome-view based CRA app, and download jbrowse web instance
 
-Will also download BAM/CRAM files for testing
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 5.209 ± 0.326 | 4.895 | 5.546 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 8.702 ± 0.846 | 7.962 | 9.623 | 1.67 ± 0.19 |
+| `jbrowse-web-1.6.5+cigar_optim` | 7.907 ± 0.074 | 7.821 | 7.951 | 1.52 ± 0.10 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 7.668 ± 0.440 | 7.334 | 8.167 | 1.47 ± 0.13 |
+| `jbrowse-react-lgv` | 6.703 ± 0.703 | 6.288 | 7.515 | 1.29 ± 0.16 |
 
-Also this repo uses a custom igv.js build which has a special "DONE"
-console.log that it emits on completion of drawing BAM, which profile_igvjs.js
-listens for
 
-```
-git clone https://github.com/cmdcolin/igv.js
-cd igv.js
-yarn
-yarn build
-yarn link
-```
+results/small_multi.md
+
+
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 13.670 ± 6.049 | 9.507 | 20.609 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 23.964 ± 6.760 | 19.947 | 31.768 | 1.75 ± 0.92 |
+| `jbrowse-web-1.6.5+cigar_optim` | 20.106 ± 0.823 | 19.196 | 20.797 | 1.47 ± 0.65 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 14.071 ± 1.147 | 12.993 | 15.277 | 1.03 ± 0.46 |
+| `jbrowse-react-lgv` | 13.989 ± 0.166 | 13.799 | 14.111 | 1.02 ± 0.45 |
+
+
+results/small_shortread_bam.md
+
+
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 2.045 ± 0.095 | 1.988 | 2.155 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 6.598 ± 0.110 | 6.507 | 6.720 | 3.23 ± 0.16 |
+| `jbrowse-web-1.6.5+cigar_optim` | 6.339 ± 0.050 | 6.305 | 6.396 | 3.10 ± 0.15 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 5.664 ± 1.244 | 4.501 | 6.976 | 2.77 ± 0.62 |
+| `jbrowse-react-lgv` | 5.459 ± 1.131 | 4.361 | 6.620 | 2.67 ± 0.57 |
+
+
+results/small_shortread_cram.md
+
+
+| Command | Mean [s] | Min [s] | Max [s] | Relative |
+|:---|---:|---:|---:|---:|
+| `igvjs` | 2.259 ± 0.056 | 2.220 | 2.323 | 1.00 🍏|
+| `jbrowse-web-1.6.5` | 8.075 ± 1.996 | 5.859 | 9.733 | 3.57 ± 0.89 |
+| `jbrowse-web-1.6.5+cigar_optim` | 6.923 ± 0.890 | 5.931 | 7.650 | 3.06 ± 0.40 |
+| `jbrowse-web-1.6.5+no_serialize_optim` | 4.861 ± 0.498 | 4.567 | 5.436 | 2.15 ± 0.23 |
+| `jbrowse-react-lgv` | 6.084 ± 1.554 | 4.361 | 7.377 | 2.69 ± 0.69 |
+
+

@@ -1,6 +1,7 @@
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `node profile_igvjs.js "http://localhost:8000/?loc=ctgA:19,000-21,000&tracks=badread.1000x.cram"` | 16.221 ± 0.313 | 15.983 | 16.575 | 1.00 |
-| `node profile_jb2web.js "http://localhost:8001/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=badread.1000x.cram"` | 19.928 ± 0.341 | 19.586 | 20.267 | 1.23 ± 0.03 |
-| `node profile_jb2web.js "http://localhost:8002/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=badread.1000x.cram"` | 16.291 ± 0.530 | 15.756 | 16.816 | 1.00 ± 0.04 |
-| `node profile_jb2web.js "http://localhost:8003/?loc=ctgA:19,000-21,000&tracks=badread.1000x.cram"` | 17.566 ± 0.333 | 17.184 | 17.795 | 1.08 ± 0.03 |
+| `node profile_igvjs.js "http://localhost:8000/?loc=ctgA:19,000-21,000&tracks=badread.1000x.cram"` | 29.927 ± 1.279 | 28.450 | 30.681 | 1.10 ± 0.05 |
+| `node profile_jb2web.js "http://localhost:8001/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=badread.1000x.cram"` | 34.127 ± 2.210 | 31.592 | 35.653 | 1.25 ± 0.08 |
+| `node profile_jb2web.js "http://localhost:8002/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=badread.1000x.cram"` | 31.964 ± 1.008 | 31.309 | 33.125 | 1.17 ± 0.04 |
+| `node profile_jb2web.js "http://localhost:8003/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=badread.1000x.cram"` | 28.353 ± 2.346 | 26.318 | 30.920 | 1.04 ± 0.09 |
+| `node profile_jb2web.js "http://localhost:8004/?loc=ctgA:19,000-21,000&tracks=badread.1000x.cram"` | 27.292 ± 0.483 | 26.909 | 27.835 | 1.00 |

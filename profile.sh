@@ -8,16 +8,18 @@ trap "kill 0" EXIT
 ## start servers on different ports
 npx http-server igvjs/build -s -p 8000 &
 npx http-server jb2web -s -p 8001 &
-npx http-server jb2web_optim -s -p 8002 &
-npx http-server jb2lgv/build -s -p 8003 &
+npx http-server jb2web_optim1 -s -p 8002 &
+npx http-server jb2web_optim2 -s -p 8003 &
+npx http-server jb2lgv/build -s -p 8004 &
 
 profile () {
   echo $0 $1 $2 $3
-  hyperfine  --export-markdown $3 --runs 3 \
+  hyperfine  --export-markdown $3 --runs 3  \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=volvox&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=volvox&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&tracks=$2\""
+    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=volvox&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8004/?loc=$1&tracks=$2\""
   echo -e "\n\n\n\n\n\n\n"
 }
 

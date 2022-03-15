@@ -8,8 +8,8 @@ trap "kill 0" EXIT
 ## start servers on different ports
 npx http-server igvjs/build -s -p 8000 &
 npx http-server jb2web -s -p 8001 &
-npx http-server jb2web_optim1 -s -p 8002 &
-npx http-server jb2web_optim2 -s -p 8003 &
+npx http-server jb2optim1 -s -p 8002 &
+npx http-server jb2optim2 -s -p 8003 &
 npx http-server jb2lgv/build -s -p 8004 &
 
 profile () {

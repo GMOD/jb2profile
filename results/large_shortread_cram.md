@@ -1,7 +1,8 @@
 | Command | Mean [s] | Min [s] | Max [s] | Relative |
 |:---|---:|---:|---:|---:|
-| `node profile_igvjs.js "http://localhost:8000/?loc=ctgA:19,000-21,000&tracks=volvox-wgsim.cram"` | 18.370 ± 0.905 | 17.344 | 19.055 | 1.00 |
-| `node profile_jb2web.js "http://localhost:8001/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 63.447 ± 0.377 | 63.022 | 63.743 | 3.45 ± 0.17 |
-| `node profile_jb2web.js "http://localhost:8002/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 66.475 ± 6.884 | 60.319 | 73.907 | 3.62 ± 0.41 |
-| `node profile_jb2web.js "http://localhost:8003/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 34.195 ± 5.266 | 28.292 | 38.411 | 1.86 ± 0.30 |
-| `node profile_jb2web.js "http://localhost:8004/?loc=ctgA:19,000-21,000&tracks=volvox-wgsim.cram"` | 53.294 ± 7.593 | 47.689 | 61.935 | 2.90 ± 0.44 |
+| `node profile_igvjs.js "http://localhost:8000/?loc=ctgA:19,000-21,000&tracks=volvox-wgsim.cram"` | 16.222 ± 0.183 | 16.020 | 16.375 | 1.00 |
+| `node profile_jb2web.js "http://localhost:8001/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 56.535 ± 0.774 | 55.729 | 57.273 | 3.49 ± 0.06 |
+| `node profile_jb2web.js "http://localhost:8002/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 56.307 ± 0.628 | 55.676 | 56.931 | 3.47 ± 0.06 |
+| `node profile_jb2web.js "http://localhost:8003/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 56.801 ± 0.472 | 56.317 | 57.261 | 3.50 ± 0.05 |
+| `node profile_jb2web.js "http://localhost:8004/?loc=ctgA:19,000-21,000&assembly=volvox&tracks=volvox-wgsim.cram"` | 27.802 ± 0.103 | 27.721 | 27.918 | 1.71 ± 0.02 |
+| `node profile_jb2web.js "http://localhost:8005/?loc=ctgA:19,000-21,000&tracks=volvox-wgsim.cram"` | 38.812 ± 0.193 | 38.669 | 39.031 | 2.39 ± 0.03 |

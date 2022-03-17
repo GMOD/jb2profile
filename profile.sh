@@ -29,13 +29,14 @@ profile "ctgA:19,000-29,000" "volvox-sorted.bam"  "results/small_shortread_bam.m
 profile "ctgA:19,000-29,000" "volvox-sorted.cram"  "results/small_shortread_cram.md"
 profile "ctgA:19,000-21,000" "volvox-wgsim.cram"  "results/large_shortread_cram.md"
 profile "ctgA:19,000-21,000" "volvox-wgsim.bam"  "results/large_shortread_bam.md"
-profile "ctgA:500-1000" "volvox-wgsim.bam"  "results/large_shortread_bam_small_region.md"
+profile "ctgA:100-150" "volvox-wgsim.bam"  "results/large_shortread_bam_small_region.md"
 profile "ctgA:19,000-21,000" "badread.1000x.cram"  "results/large_longread_cram.md"
+profile "ctgA:19,000-21,000" "badread.1000x.bam"  "results/large_longread_bam.md"
 profile "ctgA:19,000-29,000" "badread.50x.cram"  "results/small_longread_cram.md"
 profile "ctgA:19,000-29,000" "badread.50x.cram,volvox-sorted.cram"  "results/small_multi_cram.md"
 profile "ctgA:19,000-29,000" "badread.50x.bam,volvox-sorted.bam"  "results/small_multi_bam.md"
 profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram"  "results/large_multi_cram.md"
-profile "ctgA:19,000-21,000" "badread.1000x.bam,volvox-wgsim.bam"  "results/large_multi_cram.md"
+profile "ctgA:19,000-21,000" "badread.1000x.bam,volvox-wgsim.bam"  "results/large_multi_bam.md"
 
 
 

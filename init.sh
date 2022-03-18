@@ -67,6 +67,7 @@ for i in volvox.fa volvox-wgsim badread.1000x badread.50x volvox-sorted ultra-lo
   for j in {jb2lgv,igvjs}; do
     for k in $i*; do
       echo $i $j
+      rm -f $j/build/$k
       ln -s $k $j/build
     done;
   done;

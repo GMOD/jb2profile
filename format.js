@@ -14,7 +14,8 @@ const r = JSON.parse(fs.readFileSync(process.argv[2]))
 const means = r.results.map(r => r.mean)
 const min = Math.min(...means)
 const final = r.results.map(r => ({
-  command: Object.entries(map).find(f => f[0].includes(r.command))[1],
+  command:
+    Object.entries(map).find(f => r.command.includes(f[0]))[1] || r.command,
   mean: r.mean.toPrecision(3) + ' +/- ' + r.stddev.toPrecision(1),
   relative: (r.mean / min).toPrecision(3) + (r.mean === min ? ' 🍏' : ''),
 }))

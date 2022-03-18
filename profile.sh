@@ -15,7 +15,7 @@ npx http-server jb2lgv/build -s -p 8005 &
 
 profile () {
   echo $0 $1 $2 $3 $4
-  hyperfine  --export-json $3 --runs 4  \
+  hyperfine  --export-json $3 --runs 4 --show-output \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\"" \

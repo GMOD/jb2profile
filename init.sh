@@ -63,10 +63,12 @@ for j in jb2_165 jb2_167 jb2optim1 jb2optim2; do
 done;
 
 ## copy files to igv and @jbrowse/react-linear-genome-view demos
-for i in volvox.fa volvox-sorted volvox-wgsim badread.1000x badread.50x volvox-sorted; do
+for i in volvox.fa volvox-wgsim badread.1000x badread.50x volvox-sorted ultra-long-ont_hs37d5_phased; do
   for j in {jb2lgv,igvjs}; do
-    echo $i $j
-    cp $i* $j/build
+    for k in $i*; do
+      echo $i $j
+      ln -s $k $j/build
+    done;
   done;
 done;
 

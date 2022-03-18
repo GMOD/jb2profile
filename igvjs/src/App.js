@@ -19,18 +19,21 @@ function App() {
     if (!ref.current) {
       return
     }
-    const trackIds = tracks.split(',').filter(f => !!f)
+    console.log({ assembly })
     var options = {
       genome: assembly,
       locus: loc,
-      tracks: trackIds.map(trackId => ({
-        name: trackId,
-        url: trackId,
-        indexURL: trackId.endsWith('.bam')
-          ? trackId + '.bai'
-          : trackId + '.crai',
-        format: trackId.endsWith('.cram') ? 'cram' : 'bam',
-      })),
+      tracks: tracks
+        ?.split(',')
+        .filter(f => !!f)
+        .map(trackId => ({
+          name: trackId,
+          url: trackId,
+          indexURL: trackId.endsWith('.bam')
+            ? trackId + '.bai'
+            : trackId + '.crai',
+          format: trackId.endsWith('.cram') ? 'cram' : 'bam',
+        })),
       reference:
         assembly === 'volvox'
           ? {

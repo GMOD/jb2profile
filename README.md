@@ -7,28 +7,22 @@ Some profiling on jbrowse 2
 ### How to read results
 
 - igvjs is a create-react-app with igv package from npm installed
-- jbrowse-web-1.6.5 is the full jbrowse-web package (uses webworkers)
-- jbrowse-web-1.6.5+optim is the full jbrowse-web package with some unmerged
-  optimizations which disables serializing features across the RPC boundary,
-  which will require work to accomplish a merge (uses webworkers)
-- jbrowse-lgv is a create-react-app with the @jbrowse/react-linear-genome-view
-  package installed (no webworkers)
+- jbrowse-web-1.6.5 - stock
+- jbrowse-web-1.6.7 - stock
+- jbrowse-web-1.6.7_small_opt - modest optimizations from https://github.com/GMOD/jbrowse-components/pull/2809
+- jbrowse-web-1.6.7_aggro_opt - removes serialization across webworker
+- main_with_bam_update - adds this PR https://github.com/GMOD/bam-js/pull/89
+- main_with_more_workers - the code on main uses a weird formula to determine number of workers, (num_cores-2)/3...this branch hardcodes us to 3 threads
 
-### Summary
+## Notes
 
-- igv.js is often somewhat faster than both JBrowse Web and
-  @jbrowse/react-linaer-genome-view
-- high coverage short read BAM and CRAM files stand out as being poor
-  performers (~5.4 and ~3x slower respectively)
-- potential optimizations to help the high coverage short reads on the optim
-  branch lower this gap to ~2.8x slower and ~1.6x slower respectively
-- this is all chrome based, firefox will likely be slower on jbrowse-web
-- these benchmarks are not comprehensive, and just a taste of some small
-  examples on simulated data on volvox
+- thse tests are all chrome based (using puppeteer library for automation), running same on firefox or safari may be slower (especially on jbrowse-web)
+- these benchmarks are not comprehensive, and just a taste of some small examples on simulated data on volvox
 
 ### Platform
 
 Ran tests on a xlarge 4vcpu 16gb memory amazon ec2 on ubuntu 20.04
+
 
 ### Detailed results
 

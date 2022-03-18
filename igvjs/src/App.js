@@ -19,7 +19,6 @@ function App() {
     if (!ref.current) {
       return
     }
-    console.log({ assembly })
     var options = {
       genome: assembly,
       locus: loc,

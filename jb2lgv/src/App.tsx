@@ -39,10 +39,12 @@ function getAssembly(assembly: string) {
         type: 'ReferenceSequenceTrack',
         trackId: 'volvox_refseq',
         adapter: {
-          type: 'TwoBitAdapter',
-          twoBitLocation: {
-            uri: 'volvox.2bit',
-            locationType: 'UriLocation',
+          type: 'IndexedFastaAdapter',
+          fastaLocation: {
+            uri: 'volvox.fa',
+          },
+          faiLocation: {
+            uri: 'volvox.fa.fai',
           },
         },
       },

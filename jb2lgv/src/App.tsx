@@ -15,7 +15,7 @@ function useQueryParams() {
   })
 }
 
-function getBamAdapter(trackId: string) {
+function getBamAdapter(trackId: string, sequenceAdapter: any) {
   return {
     type: 'BamAdapter',
     bamLocation: {
@@ -27,19 +27,53 @@ function getBamAdapter(trackId: string) {
       },
       indexType: 'BAI',
     },
-    sequenceAdapter: {
-      type: 'IndexedFastaAdapter',
-      fastaLocation: {
-        uri: 'volvox.fa',
-      },
-      faiLocation: {
-        uri: 'volvox.fa.fai',
-      },
-    },
+    sequenceAdapter,
   }
 }
 
-function getCramAdapter(trackId: string) {
+function getAssembly(assembly: string) {
+  if (assembly === 'volvox') {
+    return {
+      name: 'volvox',
+      sequence: {
+        type: 'ReferenceSequenceTrack',
+        trackId: 'volvox_refseq',
+        adapter: {
+          type: 'IndexedFastaAdapter',
+          fastaLocation: {
+            uri: 'volvox.fa',
+          },
+          faiLocation: {
+            uri: 'volvox.fa.fai',
+          },
+        },
+      },
+    }
+  } else if (assembly === 'hg19') {
+    return {
+      name: 'hg19',
+      aliases: ['GRCh37'],
+      sequence: {
+        type: 'ReferenceSequenceTrack',
+        trackId: 'Pd8Wh30ei9R',
+        adapter: {
+          type: 'IndexedFastaAdapter',
+          fastaLocation: {
+            uri: 'https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz',
+            locationType: 'UriLocation',
+          },
+          faiLocation: {
+            uri: 'https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.fai',
+            locationType: 'UriLocation',
+          },
+        },
+      },
+    }
+  }
+  throw new Error('unknown asm')
+}
+
+function getCramAdapter(trackId: string, sequenceAdapter: any) {
   return {
     type: 'CramAdapter',
     cramLocation: {
@@ -48,27 +82,21 @@ function getCramAdapter(trackId: string) {
     craiLocation: {
       uri: trackId + '.crai',
     },
-    sequenceAdapter: {
-      type: 'IndexedFastaAdapter',
-      fastaLocation: {
-        uri: 'volvox.fa',
-      },
-      faiLocation: {
-        uri: 'volvox.fa.fai',
-      },
-    },
+    sequenceAdapter,
   }
 }
 type ViewModel = ReturnType<typeof createViewState>
 function View() {
   //@ts-ignore
-  const { tracks, loc } = useQueryParams()
+  const { tracks, loc, assembly } = useQueryParams()
   const [viewState, setViewState] = useState<ViewModel>()
 
   useEffect(() => {
     const trackIds = (tracks || '')
       .split(',')
       .filter((f: string) => !!f) as string[]
+
+    const assemblyConf = getAssembly(assembly)
     const defaultSession =
       trackIds.length === 0
         ? undefined
@@ -114,8 +142,8 @@ function View() {
         trackId,
         name: trackId,
         adapter: trackId.endsWith('.bam')
-          ? getBamAdapter(trackId)
-          : getCramAdapter(trackId),
+          ? getBamAdapter(trackId, assemblyConf.sequence.adapter)
+          : getCramAdapter(trackId, assemblyConf.sequence.adapter),
         assemblyNames: ['volvox'],
       })),
       location: loc,

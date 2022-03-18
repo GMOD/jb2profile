@@ -18,10 +18,8 @@ if [ ! -d "igv.js" ]; then
         yarn
         yarn build
         yarn link
-        cd ..
-        cd igvjs
+        cd -
         yarn link igv
-        cd ..
 fi
 yarn workspaces run build
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/volvox-wgsim.bam
@@ -42,12 +40,19 @@ if [ ! -f "ultra-long-ont_hs37d5_phased.cram" ]; then
 fi;
 
 
-samtools view -T volvox.fa badread.1000x.cram -o badread.1000x.bam 
-samtools index badread.1000x.bam
-samtools view -T volvox.fa badread.50x.cram -o badread.50x.bam 
-samtools index badread.50x.bam
-samtools view -T hg19.fa.gz ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
-samtools index ultra-long-ont_hs37d5_phased.bam
+if [ ! -f "badread.1000x.bam" ]; then
+  samtools view -T volvox.fa badread.1000x.cram -o badread.1000x.bam 
+  samtools index badread.1000x.bam
+fi;
+if [ ! -f "badread.50x.bam" ]; then
+  samtools view -T volvox.fa badread.50x.cram -o badread.50x.bam 
+  samtools index badread.50x.bam
+fi;
+if [ ! -f "ultra-long-ont_hs37d5_phased.bam" ]; then
+  echo "Converting ultralong to BAM"
+  samtools view -T hg19.fa.gz ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
+  samtools index ultra-long-ont_hs37d5_phased.bam
+fi;
 
 for j in jb2_165 jb2_167 jb2optim1 jb2optim2; do
   jbrowse add-assembly --load copy volvox.fa --out $j --force
@@ -68,7 +73,7 @@ for i in volvox.fa volvox-wgsim badread.1000x badread.50x volvox-sorted ultra-lo
     for k in $i*; do
       echo $i $j
       rm -f $j/build/$k
-      ln -s $k $j/build
+      ln -s ../../$k $j/build/$k
     done;
   done;
 done;

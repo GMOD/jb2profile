@@ -11,15 +11,15 @@ npm install -g yarn
 
 yarn
 if [ ! -d "igv.js" ]; then
-      	git clone https://github.com/cmdcolin/igv.js
-	cd igv.js
-	yarn
-	yarn build
-	yarn link
-	cd ..
-	cd igvjs
-	yarn link igv
-	cd ..
+        git clone https://github.com/cmdcolin/igv.js
+        cd igv.js
+        yarn
+        yarn build
+        yarn link
+        cd ..
+        cd igvjs
+        yarn link igv
+        cd ..
 fi
 yarn workspaces run build
 wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/volvox-wgsim.bam
@@ -44,7 +44,7 @@ samtools view -T volvox.fa badread.1000x.cram -o badread.1000x.bam
 samtools index badread.1000x.bam
 samtools view -T volvox.fa badread.50x.cram -o badread.50x.bam 
 samtools index badread.50x.bam
-samtools view ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
+samtools view -T hg19.fa.gz ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
 samtools index ultra-long-ont_hs37d5_phased.bam
 
 for j in jb2_165 jb2_167 jb2optim1 jb2optim2; do

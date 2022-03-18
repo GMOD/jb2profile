@@ -6,13 +6,12 @@ Some profiling on jbrowse 2
 
 ### How to read results
 
-- igvjs is a create-react-app with igv package from npm installed
+- igvjs - a create-react-app with igv package from npm installed
 - jbrowse-web-1.6.5 - stock
 - jbrowse-web-1.6.7 - stock
-- jbrowse-web-1.6.7_small_opt - modest optimizations from https://github.com/GMOD/jbrowse-components/pull/2809
-- jbrowse-web-1.6.7_aggro_opt - removes serialization across webworker
-- main_with_bam_update - adds this PR https://github.com/GMOD/bam-js/pull/89
-- main_with_more_workers - the code on main uses a weird formula to determine number of workers, (num_cores-2)/3...this branch hardcodes us to 3 threads
+- jb2 v1.6.7+optim  - modest optimizations from https://github.com/GMOD/jbrowse-components/pull/2809
+- jb2 v1.6.7+noserial - removes serialization across webworker which removes ability to click on features, and is just here to demonstrate the overhead of serialization
+- jb2 embedded lgv - a create-react-app with @jbrowse/react-linear-genome-view
 
 ## Notes
 
@@ -21,11 +20,13 @@ Some profiling on jbrowse 2
 
 ### Platform
 
-Ran tests on a xlarge 4vcpu 16gb memory amazon ec2 on ubuntu 20.04
+
+Ran tests on a Dell Precision i9 laptop, ~2019, Ubuntu 22.04
+
+Tests will also be run on a Amazon EC2 instance xlarge 4vcpu 16gb memory ubuntu 20.04
 
 ### Detailed results
 
-Dell Precision i9 laptop, ~2019
 
 
 results/volvox-1000x-longread-bam.json

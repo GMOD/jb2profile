@@ -14,29 +14,28 @@ npx http-server jb2optim2 -s -p 8004 &
 npx http-server jb2lgv/build -s -p 8005 &
 
 profile () {
-  echo $0 $1 $2 $3
+  echo $0 $1 $2 $3 $4
   hyperfine  --export-json $3 --runs 4  \
-    "node profile_igvjs.js \"http://localhost:8000/?loc=$1&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=volvox&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=volvox&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=volvox&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=volvox&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8005/?loc=$1&tracks=$2\""
+    "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\"" \
+    "jb2export --assembly $4 --loc $1 --configtracks $2 --config jb2_165/config.json"
   echo -e "\n\n\n\n\n\n\n"
 }
 
-profile "ctgA:19,000-29,000" "volvox-sorted.bam"  "results/small_shortread_bam.md"
-profile "ctgA:19,000-29,000" "volvox-sorted.cram"  "results/small_shortread_cram.md"
-profile "ctgA:19,000-21,000" "volvox-wgsim.cram"  "results/large_shortread_cram.md"
-profile "ctgA:19,000-21,000" "volvox-wgsim.bam"  "results/large_shortread_bam.md"
-profile "ctgA:100-150" "volvox-wgsim.bam"  "results/large_shortread_bam_small_region.md"
-profile "ctgA:19,000-21,000" "badread.1000x.cram"  "results/large_longread_cram.md"
-profile "ctgA:19,000-21,000" "badread.1000x.bam"  "results/large_longread_bam.md"
-profile "ctgA:19,000-29,000" "badread.50x.cram"  "results/small_longread_cram.md"
-profile "ctgA:19,000-29,000" "badread.50x.cram,volvox-sorted.cram"  "results/small_multi_cram.md"
-profile "ctgA:19,000-29,000" "badread.50x.bam,volvox-sorted.bam"  "results/small_multi_bam.md"
-profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram"  "results/large_multi_cram.md"
-profile "ctgA:19,000-21,000" "badread.1000x.bam,volvox-wgsim.bam"  "results/large_multi_bam.md"
+profile "ctgA:19,000-29,000" "volvox-sorted.bam"  "results/volvox-20x-shortread-bam-10kb.md"
+profile "ctgA:19,000-29,000" "volvox-sorted.cram"  "results/volvox-20x-shortread-cram-10kb.md"
+profile "ctgA:19,000-21,000" "volvox-wgsim.cram"  "results/volvox-2400x-shortread-cram-2kb.md"
+profile "ctgA:19,000-21,000" "volvox-wgsim.bam"  "results/volvox-2400x-shortread-bam-2kb.md"
+profile "ctgA:100-150" "volvox-wgsim.bam"  "results/volvox-2400x-shortread-bam-100bp.md"
+profile "ctgA:19,000-21,000" "badread.1000x.cram"  "results/volvox-1000x-longread-cram.md"
+profile "ctgA:19,000-21,000" "badread.1000x.bam"  "results/volvox-1000x-longread-bam.md"
+profile "ctgA:19,000-29,000" "badread.50x.cram"  "results/volvox-50x-longread-cram.md"
+profile "ctgA:19,000-29,000" "badread.50x.cram,volvox-sorted.cram,badread.50x.bam,volvox-sorted.bam"  "results/volvox-multi-lowcov.md"
+profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram,badread.1000x.bam,volvox-wgsim.bam"  "results/volvox-multi-highcov.md"
 
 
 profile "22:21,999,999..22,000,100" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_100b.md" "hg19"

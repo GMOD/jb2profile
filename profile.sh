@@ -23,8 +23,7 @@ profile () {
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\"" \
-    "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\"" \
-    "jb2export --assembly $4 --loc $1 --configtracks $2 --config jb2_165/config.json"
+    "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\""
   echo -e "\n\n\n\n\n\n\n"
 }
 

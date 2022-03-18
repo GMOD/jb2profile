@@ -37,7 +37,6 @@ profile "ctgA:19,000-21,000" "badread.1000x.bam"  "results/volvox-1000x-longread
 profile "ctgA:19,000-29,000" "badread.50x.cram"  "results/volvox-50x-longread-cram.json" "volvox"
 profile "ctgA:19,000-29,000" "badread.50x.cram,volvox-sorted.cram,badread.50x.bam,volvox-sorted.bam"  "results/volvox-multi-lowcov.json" "volvox"
 profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram,badread.1000x.bam,volvox-wgsim.bam"  "results/volvox-multi-highcov.json" "volvox"
- "volvox"
 
 profile "22:21,999,999..22,000,100" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_100b.json" "hg19"
 profile "22:21,999,999..22,001,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_2kb.json" "hg19"

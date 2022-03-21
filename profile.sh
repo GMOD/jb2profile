@@ -38,15 +38,15 @@ profile "ctgA:19,000-29,000" "badread.50x.cram"  "results/volvox-50x-longread-cr
 profile "ctgA:19,000-29,000" "badread.50x.cram,volvox-sorted.cram,badread.50x.bam,volvox-sorted.bam"  "results/volvox-multi-lowcov.json" "volvox"
 profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram,badread.1000x.bam,volvox-wgsim.bam"  "results/volvox-multi-highcov.json" "volvox"
 
-profile "22:21,999,999..22,000,100" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_100b.json" "hg19"
-profile "22:21,999,999..22,001,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_2kb.json" "hg19"
-profile "22:21,999,999..22,020,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_20kb.json" "hg19"
-profile "22:21,999,999..22,050,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_50kb.json" "hg19"
+profile "22:21,999,999-22,000,100" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_100b.json" "hg19"
+profile "22:21,999,999-22,001,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_2kb.json" "hg19"
+profile "22:21,999,999-22,020,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_20kb.json" "hg19"
+profile "22:21,999,999-22,050,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_50kb.json" "hg19"
 
-profile "22:21,999,999..22,000,100" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_100b.json" "hg19"
-profile "22:21,999,999..22,001,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_2kb.json" "hg19"
-profile "22:21,999,999..22,020,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_20kb.json" "hg19"
-profile "22:21,999,999..22,050,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_50kb.json" "hg19"
+profile "22:21,999,999-22,000,100" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_100b.json" "hg19"
+profile "22:21,999,999-22,001,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_2kb.json" "hg19"
+profile "22:21,999,999-22,020,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_20kb.json" "hg19"
+profile "22:21,999,999-22,050,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_50kb.json" "hg19"
 
 
 

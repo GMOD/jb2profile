@@ -1232,17 +1232,19 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@gmod/bam@^1.1.14":
-  version "1.1.14"
-  resolved "https://registry.yarnpkg.com/@gmod/bam/-/bam-1.1.14.tgz#1f807894feea0c5c4ac5ffc93564a50de1889c67"
-  integrity sha512-vxZ4nXGi/ygbHfGhj3IqKA9AF2KrD3zo30MerhImyXm2Yk5SnKYCVAZjcNxoikAz4xcrsREs0bX2xaupe7sfrA==
+"@gmod/bam@^1.1.15":
+  version "1.1.15"
+  resolved "https://registry.yarnpkg.com/@gmod/bam/-/bam-1.1.15.tgz#fb873b45a4b0983e84aa73af66171bd3e64221ca"
+  integrity sha512-/eQdfUQL16ibD72JFFAl+BObzgLMG8qTV/F4qcdiy0WLO3kynG7mucW+9L21gCHVncnskO3LKJZ1dmG+pD88Tg==
   dependencies:
     "@gmod/bgzf-filehandle" "^1.3.3"
+    abortable-promise-cache "^1.5.0"
     buffer-crc32 "^0.2.13"
     cross-fetch "^3.0.2"
     generic-filehandle "^2.0.0"
     long "^4.0.0"
     object.entries-ponyfill "^1.0.1"
+    quick-lru "^2.0.0"
 
 "@gmod/bbi@^1.0.32":
   version "1.0.34"
@@ -1423,10 +1425,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jbrowse/core@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/core/-/core-1.6.7.tgz#de534851dc6292bc7095b19eb0fc3c92a40c8993"
-  integrity sha512-OR4XxWAHtA7iYK2LriHSga6fWIgqyp4lVRLFoalqnEccimHsZXK7z5eUA+a0d0MiYUW6kxJ8mt5f0T8w3CItHQ==
+"@jbrowse/core@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/core/-/core-1.6.9.tgz#a9a39040bb4fc8c97fc9fffbdddae4c33f26c0c7"
+  integrity sha512-TZyDFbY8/pfovscViJyAl3J12By0nrbaQJnt6ZE87rGqcKjj1zQlMmxD+ACwhE9oIL6b4xQvPT4kvmxzm48DKQ==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@material-ui/icons" "^4.0.1"
@@ -1460,12 +1462,12 @@
     tenacious-fetch "^2.1.0"
     util.promisify "^1.1.1"
 
-"@jbrowse/plugin-alignments@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-alignments/-/plugin-alignments-1.6.7.tgz#d5394c8587e6abc20672c9463c5d48ad1fd0c209"
-  integrity sha512-B3wdYDc+Dt9l5edvEirXTvsgrjpRneE+MGBvXYZQuYHfnXpDtVy0+XC8hDZsLpcPeKN4cGpgHV37wj5sGF+MNQ==
+"@jbrowse/plugin-alignments@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-alignments/-/plugin-alignments-1.6.9.tgz#0938fc94289656b4779d6e02d2edc5b40f8c3bbc"
+  integrity sha512-YIiH2IBprZ5STIRvDpJZf7N/5z/GwbR6t6nMKqsy6BXfwTPmLqSozvvUo1+fId6dQuHICDtKBdRYvngwFF8A5Q==
   dependencies:
-    "@gmod/bam" "^1.1.14"
+    "@gmod/bam" "^1.1.15"
     "@gmod/cram" "^1.6.1"
     "@material-ui/icons" "^4.9.1"
     abortable-promise-cache "^1.5.0"
@@ -1476,26 +1478,26 @@
     json-stable-stringify "^1.0.1"
     react-d3-axis-mod "^0.1.3"
 
-"@jbrowse/plugin-bed@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-bed/-/plugin-bed-1.6.7.tgz#cac569dbf7fc39ef917e0b9a3d7c897ad7ca910c"
-  integrity sha512-BIxf8ADf6QHGen5bZvR4yH5R7tdTHlZUlWJdoAJ+5+Oinmn23hTZwi0dbhuNIkQ8oDCGiX11Iv9H4CjYk6IpKw==
+"@jbrowse/plugin-bed@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-bed/-/plugin-bed-1.6.9.tgz#fa96ebbba905da25e51685453bd20dd59eaa51e5"
+  integrity sha512-ZzUFiBNHLdVDZcnH9Nj6cXiW7V+Af0CTl761VbjTlyryS/rKJqf2BnE7ekuKoVmTqPpLqDVAR0A6kvh6i+8Ufw==
   dependencies:
     "@gmod/bbi" "^1.0.32"
     "@gmod/bed" "^2.0.6"
     "@gmod/tabix" "^1.5.2"
 
-"@jbrowse/plugin-circular-view@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-circular-view/-/plugin-circular-view-1.6.7.tgz#e9a869cb73f172a778183832d27d0f03f050c678"
-  integrity sha512-/EqUWPSRexNJz1TEdIlrtnyrVhTkMhBvYACyZIv8o+9dpY4k1FHitx+hs/ww3FJTOHQ+VKVQITmzW/gw5+33yg==
+"@jbrowse/plugin-circular-view@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-circular-view/-/plugin-circular-view-1.6.9.tgz#851843f25e030aef70dfcf6e634002547e12fa40"
+  integrity sha512-zEMQn6QPOGhb40fzBrZ1bxnouvHsiZ6Oz+Z5tZYdZ79TqMNeYGzs3GyKiotZwYy54gFkFY4P+ZUFqJIABp3ZaA==
   dependencies:
     "@material-ui/icons" "^4.9.1"
 
-"@jbrowse/plugin-config@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-config/-/plugin-config-1.6.7.tgz#30afc845c09ed41a9a69c646c68a8a9ffa734990"
-  integrity sha512-aObomomRtkaLvbKPQ1neD5CVVpguTLbYOXHp57J5n0YW3JgzttTkqgIjT2EYiTym7Aorhh2RD2Gicm3bujr7sg==
+"@jbrowse/plugin-config@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-config/-/plugin-config-1.6.9.tgz#b05fca842156ca0aac84a3449996c41fdb440f43"
+  integrity sha512-N3+6PSID5HLz7yC4VQgZWFxa5sEqh6/aGN85T9pOdpfmQS6B6OWPuQr6Vemx3iOvJF1YK9nhL3eqlp1Getbz2w==
   dependencies:
     "@material-ui/icons" "^4.9.1"
     generic-filehandle "^2.2.2"
@@ -1504,10 +1506,10 @@
     react-simple-code-editor "0.9.3"
     react-syntax-highlighter "^14.0.0"
 
-"@jbrowse/plugin-data-management@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-data-management/-/plugin-data-management-1.6.7.tgz#43a388c92c6ea640c720740583364529324975cf"
-  integrity sha512-Lrwwz/RhlEfFRzNxLShslRFa18b524Kq0QaWV7inecZs+W6Tud8x4PvteRAa1LTcRZF184ripsiYtZC+NV0GyA==
+"@jbrowse/plugin-data-management@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-data-management/-/plugin-data-management-1.6.9.tgz#134f23b30f932ade1564ae1ef8d19dbfe79680d7"
+  integrity sha512-wXdj/gTmfR4HlQ4laPCFofyr9OT9NYJeVoikVgDB4iedyGc8Pn3iH4fJmGqFmUvDtzylxTkFibY5bPJ1Y2YjQw==
   dependencies:
     "@gmod/ucsc-hub" "^0.1.3"
     "@material-ui/icons" "^4.9.1"
@@ -1517,10 +1519,10 @@
     react-vtree "^3.0.0-beta.1"
     react-window "^1.8.6"
 
-"@jbrowse/plugin-gff3@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-gff3/-/plugin-gff3-1.6.7.tgz#4de9c555271efd344a2354140f77295e18ba71d6"
-  integrity sha512-Ip/J0St160mSgnFG30F+Ftv1FA1HZGvrs22yTVtFmUJHJT+AkWTdc3hkEHYXdBIEBJ5QI0C3rt3j/5qzk1WIFA==
+"@jbrowse/plugin-gff3@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-gff3/-/plugin-gff3-1.6.9.tgz#3f91a5f65414775763d9a7d90bb824bfc3730aed"
+  integrity sha512-GzeLuolKVPn+k8cMlKmq5FS5M5zaVf3iVv8y/9bEyzyOtanI3oO/CbQGpGchW+k968ii79760X9nvv+IBsZk6A==
   dependencies:
     "@flatten-js/interval-tree" "^1.0.15"
     "@gmod/bgzf-filehandle" "^1.4.3"
@@ -1528,10 +1530,10 @@
     "@gmod/tabix" "^1.5.2"
     generic-filehandle "^2.2.2"
 
-"@jbrowse/plugin-linear-genome-view@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-linear-genome-view/-/plugin-linear-genome-view-1.6.7.tgz#61596bccdcef5fca589f58ab1de56a7ded90f8dd"
-  integrity sha512-dshzbt0OAsWOvum2oobcwaoEInG7MAM7ZoXBsZD+Qibi9J9OCSTnkBMCYc1u+IkXX1ciDH0XNuAPDzc92r0GCA==
+"@jbrowse/plugin-linear-genome-view@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-linear-genome-view/-/plugin-linear-genome-view-1.6.9.tgz#f904d1362f5f4fba86bb5774abcfd31eb2f0056a"
+  integrity sha512-PxzlLS8ZV5Bdk57xPNeeYgCoVHP58jFXkV1O1pc5Y3FEFfvriRTX+u5Q8nur3l6F0jsU+qmCDRpOSeSZRlqQDQ==
   dependencies:
     "@material-ui/icons" "^4.9.1"
     "@popperjs/core" "^2.11.0"
@@ -1545,10 +1547,10 @@
     react-popper "^2.0.0"
     react-sizeme "^3.0.2"
 
-"@jbrowse/plugin-sequence@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-sequence/-/plugin-sequence-1.6.7.tgz#ff85852e2ba31d641ca923f32c087d7aa302742f"
-  integrity sha512-q5C3oVGUyCV6/pb3neh5P1i+/hA4rjZfQ+aqrE4Tnucwvldgi5lpFavhdGgDwvLWxyREthxAEq+C6B4+4uxkLA==
+"@jbrowse/plugin-sequence@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-sequence/-/plugin-sequence-1.6.9.tgz#ab69c46b27f81624ec1f047963bc830b82740c8f"
+  integrity sha512-I99Q6gMiJI9kyZdmiMhMj215r93uw6a+AX3MBTB8DES0T06xQ72wdrlwuFaERend0NiTZdODtMbIcf0Ivn244g==
   dependencies:
     "@gmod/indexedfasta" "^2.0.2"
     "@gmod/twobit" "^1.1.12"
@@ -1556,22 +1558,22 @@
     clsx "^1.1.0"
     generic-filehandle "^2.2.2"
 
-"@jbrowse/plugin-svg@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-svg/-/plugin-svg-1.6.7.tgz#4bab926db6ca18c141c350a3dd8021dc777013c6"
-  integrity sha512-m2jbj+QX2Xfcv9qyTPPcSkPtTCtpqn3TBpYaB+72aFSQkSRt4uxlWOCs7oALR2z23enA803on5P4DI8LWvNEuQ==
+"@jbrowse/plugin-svg@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-svg/-/plugin-svg-1.6.9.tgz#aa316ba70d9253a8d516d5f230fa5cebccc37dd7"
+  integrity sha512-eaifYOG6QBsi1gI6MtmcrPFueQYOPoVWhR1aW1mKIK79prq7nc5qSvLqG2z+wO47tFfDVKs7/BND9uMYIUpp3A==
 
-"@jbrowse/plugin-trix@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-trix/-/plugin-trix-1.6.7.tgz#39145585bcb7a6a4d4cf06403c33b0e167f5a49a"
-  integrity sha512-ik/kYZf/Avzy4jtUQJG1AstmZXKJSV7DC4TmvrhtCsaLHpV485vlEd1Skd9Tn/MD8wrmsRdIrM0uNkhW6M731g==
+"@jbrowse/plugin-trix@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-trix/-/plugin-trix-1.6.9.tgz#3ef1e944ab16152abcfe62f8d47e9263201e735c"
+  integrity sha512-W8as833zOvGr/uguOk6tOVQi06I21lUMFIP5KbzPV+EJ0+53CyZ6DxTZLP2bZ/ylxAzsmKsE6qbAlp4LwVvlNg==
   dependencies:
     "@gmod/trix" "^2.0.1"
 
-"@jbrowse/plugin-variants@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-variants/-/plugin-variants-1.6.7.tgz#1f16f7d2ec8e929293186406d248ccf2459f4c65"
-  integrity sha512-m4Oy3W4JWT4QWVINGaQHz4vvc/EWLVA/1dHo/8ZzbCRMYlqlcSTIqv0oL2ixL67YTuFV/s7TElbaqPpHkSkX6g==
+"@jbrowse/plugin-variants@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-variants/-/plugin-variants-1.6.9.tgz#155793c37663b4668c9c165c09d1418c0a4f57fe"
+  integrity sha512-7JrKhNaIpN+4r+gCLjvt7ACGvee23cFYkDpzuwfXG4U7WvxWQlSH2bknmR99dnPbumKINWLwvPDOx9VxWBUtcA==
   dependencies:
     "@flatten-js/interval-tree" "^1.0.15"
     "@gmod/bgzf-filehandle" "^1.4.3"
@@ -1581,10 +1583,10 @@
     "@mui/x-data-grid" "^4.0.1"
     generic-filehandle "^2.2.2"
 
-"@jbrowse/plugin-wiggle@^1.6.7":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-wiggle/-/plugin-wiggle-1.6.7.tgz#e25bf8a39b2689b24f24e55b92bdb2320aee714d"
-  integrity sha512-dGj3uFwZZaJiDC4uYWVa9dgE2r3JbXXOpx9h0pVNxVnyB/l7ZCWi97AU71Zg3MHqjPoYbtQVU4kYAM3kxP30/A==
+"@jbrowse/plugin-wiggle@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/plugin-wiggle/-/plugin-wiggle-1.6.9.tgz#77d5d6eb180aa5091620226b74145124f817f9a2"
+  integrity sha512-tAzhcTiS59S8LksvlYPsohf4cpbI+PetRYe2zPQMXlXu4WjMrMixYvWSWbkMfsgHXdj7r5bx7aKrbC0RmWhJvg==
   dependencies:
     "@gmod/bbi" "^1.0.32"
     "@material-ui/icons" "^4.11.2"
@@ -1597,24 +1599,24 @@
     react-d3-axis-mod "^0.1.3"
     react-popper "^2.0.0"
 
-"@jbrowse/react-linear-genome-view@^1.6.4":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@jbrowse/react-linear-genome-view/-/react-linear-genome-view-1.6.7.tgz#55619c51b1932564970a855f945dcbd28c0c6eaa"
-  integrity sha512-KHzkyON87I+CQmHe+ypU0mlCsR4VgfKEpiDJT8j80UX23m9rx67ghr/sei+EGmnSfp/WFVcN/GXuRoeFXPLeWA==
+"@jbrowse/react-linear-genome-view@^1.6.9":
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@jbrowse/react-linear-genome-view/-/react-linear-genome-view-1.6.9.tgz#07044204d4b5c3d13d42da9b45991ceb7a445e6d"
+  integrity sha512-n9uA7KdIbk6LgGmqSbIJhR16/2nJzmKBeMBwRCQ4xF37jTplJ9MokMzBtHzVad4VzoS2fLgHb0Bz+2GDVW5cnQ==
   dependencies:
-    "@jbrowse/core" "^1.6.7"
-    "@jbrowse/plugin-alignments" "^1.6.7"
-    "@jbrowse/plugin-bed" "^1.6.7"
-    "@jbrowse/plugin-circular-view" "^1.6.7"
-    "@jbrowse/plugin-config" "^1.6.7"
-    "@jbrowse/plugin-data-management" "^1.6.7"
-    "@jbrowse/plugin-gff3" "^1.6.7"
-    "@jbrowse/plugin-linear-genome-view" "^1.6.7"
-    "@jbrowse/plugin-sequence" "^1.6.7"
-    "@jbrowse/plugin-svg" "^1.6.7"
-    "@jbrowse/plugin-trix" "^1.6.7"
-    "@jbrowse/plugin-variants" "^1.6.7"
-    "@jbrowse/plugin-wiggle" "^1.6.7"
+    "@jbrowse/core" "^1.6.9"
+    "@jbrowse/plugin-alignments" "^1.6.9"
+    "@jbrowse/plugin-bed" "^1.6.9"
+    "@jbrowse/plugin-circular-view" "^1.6.9"
+    "@jbrowse/plugin-config" "^1.6.9"
+    "@jbrowse/plugin-data-management" "^1.6.9"
+    "@jbrowse/plugin-gff3" "^1.6.9"
+    "@jbrowse/plugin-linear-genome-view" "^1.6.9"
+    "@jbrowse/plugin-sequence" "^1.6.9"
+    "@jbrowse/plugin-svg" "^1.6.9"
+    "@jbrowse/plugin-trix" "^1.6.9"
+    "@jbrowse/plugin-variants" "^1.6.9"
+    "@jbrowse/plugin-wiggle" "^1.6.9"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.0.0"
     "@material-ui/lab" "^4.0.0-alpha.45"

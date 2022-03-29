@@ -33,103 +33,195 @@ The test e.g. volvox-20x-shortread-cram-10kb.json shows the coverage of the file
 ### Detailed results
 
 
+results/hg19_ultralong_cram_100b.json
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 11.3  | 1.00 🍏  |
+| jb2 v1.6.5                | 16.9  | 1.49     |
+| jb2 v1.6.7                | 17.4  | 1.54     |
+| jb2 v1.6.9                | 13.5  | 1.19     |
+| jb2 v1.6.9+rpc_optim      | 13.8  | 1.22     |
+| jb2 v1.6.7+noserial_optim | 12.8  | 1.13     |
+
+
+
+
+
+results/hg19_ultralong_cram_20kb.json
+| Command | Mean  | Relative |
+| :------ | :---- | :------- |
+| igvjs   | 17.3  | 1.00 🍏  |
+
+
+
+
+
+results/hg19_ultralong_cram_2kb.json
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 11.7  | 1.00 🍏  |
+| jb2 v1.6.5                | 13.1  | 1.12     |
+| jb2 v1.6.7                | 13.2  | 1.13     |
+| jb2 v1.6.9                | 13.2  | 1.14     |
+| jb2 v1.6.9+rpc_optim      | 13.4  | 1.15     |
+| jb2 v1.6.7+noserial_optim | 12.8  | 1.09     |
+
+
+
+
+
+results/hg19_ultralong_cram_50kb.json
+
+
+
+
 results/volvox-1000x-longread-bam.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 12.0  | 1.00 🍏  |
-| jb2 v1.6.5          | 26.1  | 2.17     |
-| jb2 v1.6.7          | 25.0  | 2.08     |
-| jb2 v1.6.7+optim    | 19.1  | 1.59     |
-| jb2 v1.6.7+noserial | 14.0  | 1.17     |
-| jb2 embedded lgv    | 20.7  | 1.72     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 12.0  | 1.00 🍏  |
+| jb2 v1.6.5                | 25.2  | 2.11     |
+| jb2 v1.6.7                | 23.3  | 1.95     |
+| jb2 v1.6.9                | 17.8  | 1.49     |
+| jb2 v1.6.9+rpc_optim      | 18.5  | 1.55     |
+| jb2 v1.6.7+noserial_optim | 13.8  | 1.16     |
+| jb2 embedded lgv          | 13.5  | 1.13     |
+
+
+
+
 
 results/volvox-1000x-longread-cram.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 14.9  | 1.00 🍏  |
-| jb2 v1.6.5          | 19.8  | 1.34     |
-| jb2 v1.6.7          | 19.1  | 1.29     |
-| jb2 v1.6.7+optim    | 19.9  | 1.34     |
-| jb2 v1.6.7+noserial | 16.4  | 1.11     |
-| jb2 embedded lgv    | 16.7  | 1.13     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 15.0  | 1.00 🍏  |
+| jb2 v1.6.5                | 18.8  | 1.25     |
+| jb2 v1.6.7                | 19.0  | 1.27     |
+| jb2 v1.6.9                | 18.3  | 1.22     |
+| jb2 v1.6.9+rpc_optim      | 19.3  | 1.29     |
+| jb2 v1.6.7+noserial_optim | 16.5  | 1.10     |
+| jb2 embedded lgv          | 16.3  | 1.09     |
+
+
+
+
 
 results/volvox-20x-shortread-bam-10kb.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 1.87  | 1.00 🍏  |
-| jb2 v1.6.5          | 4.27  | 2.28     |
-| jb2 v1.6.7          | 4.28  | 2.29     |
-| jb2 v1.6.7+optim    | 4.11  | 2.19     |
-| jb2 v1.6.7+noserial | 3.43  | 1.83     |
-| jb2 embedded lgv    | 3.24  | 1.73     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 1.71  | 1.00 🍏  |
+| jb2 v1.6.5                | 4.04  | 2.36     |
+| jb2 v1.6.7                | 3.96  | 2.32     |
+| jb2 v1.6.9                | 3.74  | 2.19     |
+| jb2 v1.6.9+rpc_optim      | 3.89  | 2.27     |
+| jb2 v1.6.7+noserial_optim | 3.15  | 1.84     |
+| jb2 embedded lgv          | 2.79  | 1.63     |
+
+
+
+
 
 results/volvox-20x-shortread-cram-10kb.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 1.94  | 1.00 🍏  |
-| jb2 v1.6.5          | 4.21  | 2.17     |
-| jb2 v1.6.7          | 4.13  | 2.13     |
-| jb2 v1.6.7+optim    | 4.20  | 2.17     |
-| jb2 v1.6.7+noserial | 3.69  | 1.91     |
-| jb2 embedded lgv    | 3.43  | 1.77     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 1.79  | 1.00 🍏  |
+| jb2 v1.6.5                | 4.08  | 2.27     |
+| jb2 v1.6.7                | 4.06  | 2.26     |
+| jb2 v1.6.9                | 4.09  | 2.28     |
+| jb2 v1.6.9+rpc_optim      | 4.16  | 2.32     |
+| jb2 v1.6.7+noserial_optim | 3.62  | 2.02     |
+| jb2 embedded lgv          | 3.43  | 1.91     |
+
+
+
+
 
 results/volvox-2400x-shortread-bam-100bp.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 1.91  | 1.00 🍏  |
-| jb2 v1.6.5          | 12.2  | 6.38     |
-| jb2 v1.6.7          | 12.1  | 6.34     |
-| jb2 v1.6.7+optim    | 4.88  | 2.56     |
-| jb2 v1.6.7+noserial | 4.55  | 2.38     |
-| jb2 embedded lgv    | 11.6  | 6.07     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 2.05  | 1.00 🍏  |
+| jb2 v1.6.5                | 11.8  | 5.75     |
+| jb2 v1.6.7                | 11.8  | 5.77     |
+| jb2 v1.6.9                | 4.50  | 2.20     |
+| jb2 v1.6.9+rpc_optim      | 4.71  | 2.30     |
+| jb2 v1.6.7+noserial_optim | 4.44  | 2.17     |
+| jb2 embedded lgv          | 4.13  | 2.01     |
+
+
+
+
 
 results/volvox-2400x-shortread-bam-2kb.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 7.36  | 1.00 🍏  |
-| jb2 v1.6.5          | 45.6  | 6.20     |
-| jb2 v1.6.7          | 47.4  | 6.45     |
-| jb2 v1.6.7+optim    | 35.0  | 4.76     |
-| jb2 v1.6.7+noserial | 19.0  | 2.59     |
-| jb2 embedded lgv    | 29.6  | 4.02     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 7.56  | 1.00 🍏  |
+| jb2 v1.6.5                | 44.3  | 5.86     |
+| jb2 v1.6.7                | 42.4  | 5.61     |
+| jb2 v1.6.9                | 33.1  | 4.38     |
+| jb2 v1.6.9+rpc_optim      | 34.2  | 4.52     |
+| jb2 v1.6.7+noserial_optim | 18.9  | 2.50     |
+| jb2 embedded lgv          | 17.6  | 2.33     |
+
+
+
+
 
 results/volvox-2400x-shortread-cram-2kb.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 10.8  | 1.00 🍏  |
-| jb2 v1.6.5          | 35.8  | 3.31     |
-| jb2 v1.6.7          | 34.2  | 3.16     |
-| jb2 v1.6.7+optim    | 34.5  | 3.19     |
-| jb2 v1.6.7+noserial | 23.6  | 2.18     |
-| jb2 embedded lgv    | 23.8  | 2.20     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 10.0  | 1.00 🍏  |
+| jb2 v1.6.5                | 33.5  | 3.35     |
+| jb2 v1.6.7                | 34.0  | 3.39     |
+| jb2 v1.6.9                | 33.1  | 3.30     |
+| jb2 v1.6.9+rpc_optim      | 32.7  | 3.26     |
+| jb2 v1.6.7+noserial_optim | 23.7  | 2.36     |
+| jb2 embedded lgv          | 23.0  | 2.30     |
+
+
+
+
 
 results/volvox-50x-longread-cram.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 3.26  | 1.00 🍏  |
-| jb2 v1.6.5          | 5.61  | 1.72     |
-| jb2 v1.6.7          | 5.42  | 1.66     |
-| jb2 v1.6.7+optim    | 5.48  | 1.68     |
-| jb2 v1.6.7+noserial | 5.12  | 1.57     |
-| jb2 embedded lgv    | 4.65  | 1.42     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 3.21  | 1.00 🍏  |
+| jb2 v1.6.5                | 5.45  | 1.70     |
+| jb2 v1.6.7                | 5.49  | 1.71     |
+| jb2 v1.6.9                | 5.45  | 1.70     |
+| jb2 v1.6.9+rpc_optim      | 5.45  | 1.70     |
+| jb2 v1.6.7+noserial_optim | 4.99  | 1.56     |
+| jb2 embedded lgv          | 4.67  | 1.46     |
+
+
+
+
 
 results/volvox-multi-highcov.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 45.2  | 1.64     |
-| jb2 v1.6.5          | 50.1  | 1.82     |
-| jb2 v1.6.7          | 49.9  | 1.81     |
-| jb2 v1.6.7+optim    | 39.8  | 1.45     |
-| jb2 v1.6.7+noserial | 27.5  | 1.00 🍏  |
-| jb2 embedded lgv    | 89.5  | 3.25     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 44.3  | 1.66     |
+| jb2 v1.6.5                | 49.1  | 1.84     |
+| jb2 v1.6.7                | 50.3  | 1.88     |
+| jb2 v1.6.9                | 38.6  | 1.44     |
+| jb2 v1.6.9+rpc_optim      | 38.4  | 1.44     |
+| jb2 v1.6.7+noserial_optim | 26.7  | 1.00 🍏  |
+| jb2 embedded lgv          | 69.4  | 2.60     |
+
+
+
+
 
 results/volvox-multi-lowcov.json
-| Command             | Mean  | Relative |
-| :------------------ | :---- | :------- |
-| igvjs               | 6.61  | 1.33     |
-| jb2 v1.6.5          | 6.22  | 1.25     |
-| jb2 v1.6.7          | 6.61  | 1.33     |
-| jb2 v1.6.7+optim    | 5.88  | 1.19     |
-| jb2 v1.6.7+noserial | 4.96  | 1.00 🍏  |
-| jb2 embedded lgv    | 8.96  | 1.81     |
+| Command                   | Mean  | Relative |
+| :------------------------ | :---- | :------- |
+| igvjs                     | 5.94  | 1.21     |
+| jb2 v1.6.5                | 5.93  | 1.20     |
+| jb2 v1.6.7                | 5.89  | 1.20     |
+| jb2 v1.6.9                | 5.67  | 1.15     |
+| jb2 v1.6.9+rpc_optim      | 5.72  | 1.16     |
+| jb2 v1.6.7+noserial_optim | 4.93  | 1.00 🍏  |
+| jb2 embedded lgv          | 7.68  | 1.56     |
+
+
+
+
 

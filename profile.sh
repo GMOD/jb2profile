@@ -10,8 +10,8 @@ npx http-server igvjs/build -s -p 8000 &
 npx http-server jb2_165 -s -p 8001 &
 npx http-server jb2_167 -s -p 8002 &
 npx http-server jb2_169 -s -p 8003 &
-npx http-server jb2optim1 -s -p 8004 &
-npx http-server jb2optim2 -s -p 8005 &
+npx http-server jb2_main -s -p 8004 &
+npx http-server jb2_noserialize -s -p 8005 &
 npx http-server jb2lgv/build -s -p 8006 &
 
 sleep 1

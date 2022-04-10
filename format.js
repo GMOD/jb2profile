@@ -6,8 +6,8 @@ const map = {
   'http://localhost:8001/': 'jb2 v1.6.5',
   'http://localhost:8002/': 'jb2 v1.6.7',
   'http://localhost:8003/': 'jb2 v1.6.9',
-  'http://localhost:8004/': 'jb2 v1.6.9+rpc_optim',
-  'http://localhost:8005/': 'jb2 v1.6.7+noserial_optim',
+  'http://localhost:8004/': 'jb2 main',
+  'http://localhost:8005/': 'jb2 no serialize',
   'http://localhost:8006/': 'jb2 embedded lgv',
 }
 

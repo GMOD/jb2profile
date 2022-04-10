@@ -3,8 +3,8 @@ set -e
 [ ! -d "jb2_165" ] && jbrowse create --tag v1.6.5 jb2_165
 [ ! -d "jb2_167" ] && jbrowse create --tag v1.6.7 jb2_167
 [ ! -d "jb2_169" ] && jbrowse create --tag v1.6.9 jb2_169
-[ ! -d "jb2optim1" ] && jbrowse create --branch limit_peektransferrables jb2optim1
-[ ! -d "jb2optim2" ] && rm -rf jb2optim2 && jbrowse create --branch optimizations jb2optim2 && rm -rf jb2optim2/config.json
+[ ! -d "jb2_main" ] && jbrowse create --branch main jb2_main
+[ ! -d "jb2_noserialize" ] && rm -rf jb2_noserialize && jbrowse create --branch async_feature_details jb2_noserialize && rm -rf jb2_noserialize/config.json
 
 sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm1
 
@@ -43,19 +43,19 @@ fi;
 
 if [ ! -f "badread.1000x.bam" ]; then
   samtools view -T volvox.fa badread.1000x.cram -o badread.1000x.bam 
-  samtools index badread.1000x.bam
+  samtools index -@8 badread.1000x.bam
 fi;
 if [ ! -f "badread.50x.bam" ]; then
   samtools view -T volvox.fa badread.50x.cram -o badread.50x.bam 
-  samtools index badread.50x.bam
+  samtools index -@8 badread.50x.bam
 fi;
 if [ ! -f "ultra-long-ont_hs37d5_phased.bam" ]; then
   echo "Converting ultralong to BAM"
-  samtools view -T hg19.fa.gz ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
-  samtools index ultra-long-ont_hs37d5_phased.bam
+  samtools view -@8 -T hg19.fa.gz ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
+  samtools index -@8 ultra-long-ont_hs37d5_phased.bam
 fi;
 
-for j in jb2_165 jb2_167 jb2_169 jb2optim1 jb2optim2; do
+for j in jb2_165 jb2_167 jb2_169 jb2_main jb2_noserialize; do
   jbrowse add-assembly --load copy volvox.fa --out $j --force
   jbrowse add-assembly --load copy hg19.fa.gz --out $j --force
   for i in volvox-wgsim.{bam,cram} badread.1000x.{bam,cram} badread.50x.{cram,bam} volvox-sorted.{bam,cram}; do

@@ -17,3 +17,9 @@ jb2optim2
 results
 jb2_main
 jb2_noserialize
+*.fq
+*.cram
+*.bam
+*.fastq
+*.bai
+*.crai

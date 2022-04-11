@@ -10,6 +10,7 @@ trap "kill 0" EXIT
 
 ## start servers on different ports
 npx http-server igvjs/build -s -p 8000 &
+npx http-server jb2_165 -s -p 8001 &
 npx http-server jb2_167 -s -p 8002 &
 npx http-server jb2_169 -s -p 8003 &
 npx http-server jb2_main -s -p 8004 &
@@ -22,6 +23,9 @@ profile () {
   echo $0 $1 $2 $3 $4
   hyperfine  -i --export-json $3 --runs 1  \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\"" \
+    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\"" \
     "node profile_jb2web.js \"http://localhost:8006/?loc=$1&assembly=$4&tracks=$2\""

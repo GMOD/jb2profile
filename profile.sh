@@ -23,27 +23,33 @@ profile () {
   echo -e "\n\n\n\n\n\n\n"
 }
 
-profile "ctgA:19,000-29,000" "volvox-sorted.bam"  "results/volvox-20x-shortread-bam-10kb.json" "volvox"
-profile "ctgA:19,000-29,000" "volvox-sorted.cram"  "results/volvox-20x-shortread-cram-10kb.json" "volvox"
-profile "ctgA:19,000-21,000" "volvox-wgsim.cram"  "results/volvox-2400x-shortread-cram-2kb.json" "volvox"
-profile "ctgA:19,000-21,000" "volvox-wgsim.bam"  "results/volvox-2400x-shortread-bam-2kb.json" "volvox"
-profile "ctgA:100-150" "volvox-wgsim.bam"  "results/volvox-2400x-shortread-bam-100bp.json" "volvox"
-profile "ctgA:19,000-21,000" "badread.1000x.cram"  "results/volvox-1000x-longread-cram.json" "volvox"
-profile "ctgA:19,000-21,000" "badread.1000x.bam"  "results/volvox-1000x-longread-bam.json" "volvox"
-profile "ctgA:19,000-29,000" "badread.50x.cram"  "results/volvox-50x-longread-cram.json" "volvox"
-profile "ctgA:19,000-29,000" "badread.50x.cram,volvox-sorted.cram,badread.50x.bam,volvox-sorted.bam"  "results/volvox-multi-lowcov.json" "volvox"
-profile "ctgA:19,000-21,000" "badread.1000x.cram,volvox-wgsim.cram,badread.1000x.bam,volvox-wgsim.bam"  "results/volvox-multi-highcov.json" "volvox"
+for i in 10000 20000 40000 80000 160000 320000 640000; do
+  for j in bam cram; do
+    echo $i $j
+    profile "ctgA:19,000-20,000" "$i.shortread.$j"  "results/$i-1kb-shortread-$j.json" "volvox"
+    profile "ctgA:19,000-29,000" "$i.shortread.$j"  "results/$i-10kb-shortread-$j.json" "volvox"
+    profile "ctgA:15,000-35,000" "$i.shortread.$j"  "results/$i-20kb-shortread-$j.json" "volvox"
+  done;
+done;
 
-profile "22:21,999,999-22,000,100" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_100b.json" "hg19"
-profile "22:21,999,999-22,001,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_2kb.json" "hg19"
-profile "22:21,999,999-22,020,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_20kb.json" "hg19"
-profile "22:21,999,999-22,050,999" "ultra-long-ont_hs37d5_phased.cram"  "results/hg19_ultralong_cram_50kb.json" "hg19"
+for i in 40x 80x 160x 320x 640x; do
+  for j in bam cram; do
+    echo $i $j
+    profile "ctgA:19,000-20,000" "$i.longread.$j"  "results/$i-1kb-longread-$j.json" "volvox"
+    profile "ctgA:19,000-29,000" "$i.longread.$j"  "results/$i-10kb-longread-$j.json" "volvox"
+    profile "ctgA:15,000-35,000" "$i.longread.$j"  "results/$i-20kb-longread-$j.json" "volvox"
+  done;
+done;
 
-profile "22:21,999,999-22,000,100" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_100b.json" "hg19"
-profile "22:21,999,999-22,001,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_2kb.json" "hg19"
-profile "22:21,999,999-22,020,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_20kb.json" "hg19"
-profile "22:21,999,999-22,050,999" "ultra-long-ont_hs37d5_phased.bam"  "results/hg19_ultralong_bam_50kb.json" "hg19"
+profile "ctgA:19,000-20,000" "10000.shortread.bam,10000.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-1kb.json" "volvox"
+profile "ctgA:19,000-29,000" "10000.shortread.bam,10000.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-10kb.json" "volvox"
+profile "ctgA:15,000-35,000" "10000.shortread.bam,10000.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-20kb.json" "volvox"
 
+
+
+profile "ctgA:19,000-20,000" "160000.shortread.bam,160000.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb.json" "volvox"
+profile "ctgA:19,000-29,000" "160000.shortread.bam,160000.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb.json" "volvox"
+profile "ctgA:15,000-35,000" "160000.shortread.bam,160000.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb.json" "volvox"
 
 
 ./write_readme.sh

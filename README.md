@@ -225,3 +225,8 @@ results/volvox-multi-lowcov.json
 | jb2 main | 10.6 | 1.16 |
 | jb2 no serialize | 9.11 | 1.00 🍏 |
 | jb2 embedded lgv | 11.9 | 1.30 |
+results/*.json
+
+
+
+

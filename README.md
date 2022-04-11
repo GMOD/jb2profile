@@ -28,6 +28,11 @@ Tests will also be run on a Amazon EC2 instance xlarge 4vcpu 16gb memory ubuntu 
 
 The test e.g. volvox-20x-shortread-cram-10kb.json shows the coverage of the file being tested and region size being viewed
 
+### Figures
+
+![](img/bam.png)
+![](img/cram.png)
+
 ### Detailed results
 
 Ran on a laptop with ubuntu 220.4 beta, intel i9

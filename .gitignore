@@ -23,3 +23,5 @@ jb2_noserialize
 *.fastq
 *.bai
 *.crai
+*.txt
+*.pdf

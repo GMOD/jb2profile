@@ -7,7 +7,7 @@ print(head(df))
 
 
 ggplot(df, aes(x = coverage, y = time)) + 
-  geom_point(aes(color = program)) +
+  geom_line(aes(color = program)) +
   scale_x_continuous(trans='log2') +
   facet_grid(~ window) + 
   ggtitle('BAM shortread runtimes')
@@ -21,7 +21,7 @@ print(head(df))
 
 
 ggplot(df, aes(x = coverage, y = time)) + 
-  geom_point(aes(color = program)) +
+  geom_line(aes(color = program)) +
   scale_x_continuous(trans='log2') +
   facet_grid(~ window) +
   ggtitle('CRAM shortread runtimes')

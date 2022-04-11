@@ -31,6 +31,7 @@ The test e.g. volvox-20x-shortread-cram-10kb.json shows the coverage of the file
 ### Figures
 
 ![](img/bam.png)
+
 ![](img/cram.png)
 
 ### Detailed results

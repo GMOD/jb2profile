@@ -32,7 +32,7 @@ profile () {
   echo -e "\n\n\n\n\n\n\n"
 }
 
-for i in 10000 20000 40000 80000 160000 320000 640000; do
+for i in 28x 56x 112x 224x 448x 896x 1792x; do
   for j in bam cram; do
     echo $i $j
     profile "ctgA:19,000-20,000" "$i.shortread.$j"  "results/$i-1kb-shortread-$j.json" "volvox"
@@ -50,15 +50,15 @@ for i in 40x 80x 160x 320x 640x; do
   done;
 done;
 
-profile "ctgA:19,000-20,000" "10000.shortread.bam,10000.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-1kb.json" "volvox"
-profile "ctgA:19,000-29,000" "10000.shortread.bam,10000.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-10kb.json" "volvox"
-profile "ctgA:15,000-35,000" "10000.shortread.bam,10000.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-20kb.json" "volvox"
+profile "ctgA:19,000-20,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-1kb.json" "volvox"
+profile "ctgA:19,000-29,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-10kb.json" "volvox"
+profile "ctgA:15,000-35,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-20kb.json" "volvox"
 
 
 
-profile "ctgA:19,000-20,000" "160000.shortread.bam,160000.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb.json" "volvox"
-profile "ctgA:19,000-29,000" "160000.shortread.bam,160000.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-10kb.json" "volvox"
-profile "ctgA:15,000-34,000" "160000.shortread.bam,160000.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-19kb.json" "volvox"
+profile "ctgA:19,000-20,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb.json" "volvox"
+profile "ctgA:19,000-29,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-10kb.json" "volvox"
+profile "ctgA:15,000-34,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-19kb.json" "volvox"
 
 
 ./write_readme.sh

@@ -17,30 +17,13 @@ npm install -g @jbrowse/cli
 
 yarn
 if [ ! -d "igv.js" ]; then
-        git clone https://github.com/cmdcolin/igv.js
-        cd igv.js
-        yarn
-        yarn build
-        yarn link
-        cd -
-        yarn link igv
+  git clone https://github.com/cmdcolin/igv.js
+  cd igv.js
+  yarn
+  yarn build
+  yarn link
+  cd -
+  yarn link igv
 fi
 yarn workspaces run build
-
-## download only chr22 of human data
-# if [ ! -f "ultra-long-ont_hs37d5_phased.cram" ]; then
-#   samtools view 'https://s3.amazonaws.com/jbrowse.org/genomes/hg19/ultra-long-ont_hs37d5_phased.cram' 22 -o ultra-long-ont_hs37d5_phased.cram
-# fi;
-
-
-# wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz
-# wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.fai
-# wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.gzi
-
-
-# if [ ! -f "ultra-long-ont_hs37d5_phased.bam" ]; then
-#   echo "Converting ultralong to BAM"
-#   samtools view -@8 -T hg19.fa.gz ultra-long-ont_hs37d5_phased.cram -o ultra-long-ont_hs37d5_phased.bam
-#   samtools index -@8 ultra-long-ont_hs37d5_phased.bam
-# fi;
 

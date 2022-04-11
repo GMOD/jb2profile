@@ -6,7 +6,10 @@ set -e
 [ ! -d "jb2_main" ] && jbrowse create --branch main jb2_main
 [ ! -d "jb2_noserialize" ] && rm -rf jb2_noserialize && jbrowse create --branch async_feature_details jb2_noserialize && rm -rf jb2_noserialize/config.json
 
-sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm1
+sudo apt-get install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm1 python3 python3-pip
+
+pip3 install git+https://github.com/rrwick/Badread.git
+
 
 npm install -g yarn
 npm install -g @jbrowse/img
@@ -34,6 +37,7 @@ wget -N https://s3.amazonaws.com/jbrowse.org/genomes/volvox/badread.50x.cram.cra
 wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz
 wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.fai
 wget -N https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.gzi
+
 
 ## download only chr22 of human data
 if [ ! -f "ultra-long-ont_hs37d5_phased.cram" ]; then

@@ -22,13 +22,13 @@ sleep 1
 profile () {
   echo $0 $1 $2 $3 $4
   hyperfine -i --export-json $3.json --runs 1  \
-    "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\"" \
-    "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\"" \
-    "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\"" \
-    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\"" \
-    "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\"" \
-    "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\"" \
-    "node profile_jb2web.js \"http://localhost:8006/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps.json\""
+    "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8000.json\"" \
+    "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8001.json\"" \
+    "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8002.json\"" \
+    "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8003.json\"" \
+    "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8004.json\"" \
+    "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8005.json\"" \
+    "node profile_jb2web.js \"http://localhost:8006/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8006.json\""
   echo -e "\n\n\n\n\n\n\n"
 }
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in results/*mem*|grep -v multi; do
-  echo -n `basename $i .json`;
-  node -e "process.stdout.write('\t'+JSON.parse(require('fs').readFileSync(\"$i\",'utf8')).mem.usedJSHeapSize+'\n')"; 
+ls -1 results/*mem*|grep -v multi|while read p; do
+  echo -n `basename $p .json`;
+  node -e "process.stdout.write('\t'+JSON.parse(require('fs').readFileSync(\"$p\",'utf8')).mem.usedJSHeapSize+'\n')"; 
 done

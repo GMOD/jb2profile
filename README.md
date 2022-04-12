@@ -30,7 +30,25 @@ The test e.g. volvox-20x-shortread-cram-10kb.json shows the coverage of the file
 
 ### Figures
 
+#### Runtime
+
 ![](img/bam_sr.png)
 ![](img/bam_lr.png)
 ![](img/cram_sr.png)
 ![](img/cram_lr.png)
+
+#### Memory
+
+![](img/bam_sr_memory.png)
+![](img/bam_lr_memory.png)
+![](img/cram_sr_memory.png)
+![](img/cram_lr_memory.png)
+
+#### Average FPS
+
+![](img/bam_sr_average_fps.png)
+![](img/bam_lr_average_fps.png)
+![](img/cram_sr_average_fps.png)
+![](img/cram_lr_average_fps.png)
+
+

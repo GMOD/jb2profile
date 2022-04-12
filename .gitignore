@@ -23,6 +23,6 @@ jb2_noserialize
 *.fastq
 *.bai
 *.crai
+*.csv
 *.pdf
-table.csv
 out.svg

@@ -21,6 +21,7 @@ ggplot(bam_lr, aes(x = coverage, y = memory)) +
   geom_line(aes(color = program)) +
   scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
+  facet_grid(~ window) + 
   ggtitle('BAM longread memory usage')
 
 ggsave('img/bam_lr_memory.png',width=13)

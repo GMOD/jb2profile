@@ -1,5 +1,5 @@
 import fs from 'fs'
-const str = fs.readFileSync('memory_usage.csv', 'utf8')
+const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
   8000: 'igvjs',

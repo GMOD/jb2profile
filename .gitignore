@@ -24,3 +24,5 @@ jb2_noserialize
 *.bai
 *.crai
 *.pdf
+table.csv
+out.svg

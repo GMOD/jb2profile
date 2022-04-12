@@ -28,7 +28,8 @@ profile () {
     "node profile_jb2web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8003.json\" \"$3_mem_8003.json\"" \
     "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8004.json\" \"$3_mem_8004.json\"" \
     "node profile_jb2web.js \"http://localhost:8005/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8005.json\" \"$3_mem_8005.json\"" \
-    "node profile_jb2web.js \"http://localhost:8006/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8006.json\" \"$3_mem_8006.json\""
+    "node profile_jb2web.js \"http://localhost:8006/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8006.json\" \"$3_mem_8006.json\"" \
+    "jb2export --loc $1 --fasta $4.fa $(node parseArg.js $2)"
   echo -e "\n\n\n\n\n\n\n"
 }
 
@@ -38,7 +39,6 @@ for i in 28x 56x 112x 224x 448x 896x 1792x; do
     profile "ctgA:19,000-20,000" "$i.shortread.$j"  "results/$i-1kb-shortread-$j" "volvox" 
     profile "ctgA:19,000-29,000" "$i.shortread.$j"  "results/$i-10kb-shortread-$j" "volvox"
     profile "ctgA:15,000-34,000" "$i.shortread.$j"  "results/$i-19kb-shortread-$j" "volvox"
-
   done;
 done;
 

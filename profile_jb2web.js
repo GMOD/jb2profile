@@ -31,10 +31,19 @@ import fs from 'fs'
   )
 
   const fps = await page.evaluate(() => JSON.stringify(window.fps))
-  const memory = await page.evaluate(() => JSON.stringify(performance.memory))
 
   fs.writeFileSync(process.argv[3], fps)
-  fs.writeFileSync(process.argv[4], memory)
+  const metrics = await page.metrics()
+  const mem = await page.evaluate(() =>
+    JSON.parse(
+      JSON.stringify(window.performance.memory, [
+        'totalJSHeapSize',
+        'usedJSHeapSize',
+        'jsHeapSizeLimit',
+      ]),
+    ),
+  )
+  fs.writeFileSync(process.argv[4], JSON.stringify({ metrics, mem }))
 
   await browser.close()
 })()

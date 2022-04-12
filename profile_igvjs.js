@@ -8,12 +8,23 @@ import puppeteer from 'puppeteer'
   const url = new URL(process.argv[2])
   const tracks = url.searchParams.get('tracks')
   const n = tracks.split(',').length
+  await page.evaluate(() => {
+    window.fps = []
+
+    let LAST_FRAME_TIME = 0
+    function measure(TIME) {
+      window.fps.push(1 / ((performance.now() - LAST_FRAME_TIME) / 1000))
+      LAST_FRAME_TIME = TIME
+      window.requestAnimationFrame(measure)
+    }
+    window.requestAnimationFrame(measure)
+  })
 
   await new Promise(resolve => {
     let i = 0
     page.on('console', async msg => {
       const msgArgs = msg.args()
-      const val = await msgArgs[0].jsonValue()
+      const val = await msgArgs[0]?.jsonValue()
       if (val === 'DONE') {
         i++
       }
@@ -22,6 +33,17 @@ import puppeteer from 'puppeteer'
       }
     })
   })
+
+  const fps = await page.evaluate(() => {
+    let r = 0
+    for (let i = 0; i < window.fps.length; i++) {
+      r += window.fps[i]
+    }
+    return r / window.fps.length
+  })
+
+  console.log(fps)
+  fs.writeFileSync(process.argv[3], `${fps}`)
 
   await browser.close()
 })()

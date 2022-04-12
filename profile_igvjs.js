@@ -35,9 +35,7 @@ import fs from 'fs'
     })
   })
 
-  const fps = await page.evaluate(() => {
-    return JSON.stringify(window.fps)
-  })
+  const fps = await page.evaluate(() => JSON.stringify(window.fps))
 
   fs.writeFileSync(process.argv[3], fps)
 

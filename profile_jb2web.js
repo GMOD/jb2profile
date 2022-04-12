@@ -26,13 +26,11 @@ import fs from 'fs'
         nblocks &&
       document.querySelectorAll('[data-testid="wiggle-rendering-test"]')
         .length == nblocks,
-    { timeout: 120000 },
+    { timeout: 600000 },
     nblocks,
   )
 
-  const fps = await page.evaluate(() => {
-    return JSON.stringify(window.fps)
-  })
+  const fps = await page.evaluate(() => JSON.stringify(window.fps))
 
   fs.writeFileSync(process.argv[3], fps)
 

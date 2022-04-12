@@ -1,4 +1,6 @@
 import puppeteer from 'puppeteer'
+import fs from 'fs'
+import path from 'path'
 ;(async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
@@ -38,7 +40,7 @@ import puppeteer from 'puppeteer'
   })
 
   console.log(fps)
-  fs.writeFileSync(process.argv[3], `${fps}`)
+  fs.writeFileSync(path.join('results', process.argv[3]), `${fps}`)
 
   await browser.close()
 })()

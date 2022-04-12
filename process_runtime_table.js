@@ -23,15 +23,19 @@ function formatLine(line) {
     .replace(/\x.shortread.cram/, '\tshortread\tcram')
     .replace(/\x.longread.bam/, '\tlongread\tbam')
     .replace(/\x.longread.cram/, '\tlongread\tcram')
+    .replace(/results.*/, '')
     .replace(/"/g, '')
     .replace(key, rep[key])
 
-  return [newcommand, mean, exit_code].join('\t')
+  return newcommand.includes('jb2export')
+    ? undefined
+    : [newcommand.trim(), mean, exit_code].join('\t')
 }
 
 const x = JSON.parse(fs.readFileSync(process.argv[2]))
 console.log(
   x.results
     .map(r => formatLine([r.command, r.mean, r.exit_codes[0]]))
+    .filter(f => !!f)
     .join('\n'),
 )

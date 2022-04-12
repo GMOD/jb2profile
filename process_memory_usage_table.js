@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from 'fs'
 const str = fs.readFileSync('memory_usage.csv', 'utf8')
 
 const map = {

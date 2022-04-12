@@ -1,4 +1,4 @@
-const fs = require('fs')
+import fs from 'fs'
 const str = fs.readFileSync('fps_table.csv', 'utf8')
 
 const map = {
@@ -12,9 +12,14 @@ const map = {
 }
 
 console.log(
-  ['coverage', 'window', 'read_type', 'file_type', 'program', 'average_fps'].join(
-    '\t',
-  ),
+  [
+    'coverage',
+    'window',
+    'read_type',
+    'file_type',
+    'program',
+    'average_fps',
+  ].join('\t'),
 )
 console.log(
   str

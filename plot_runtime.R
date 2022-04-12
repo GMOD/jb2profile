@@ -1,7 +1,7 @@
 library(ggplot2)
 
 
-df = read.csv('table.csv',sep='\t')
+df = read.csv('runtime_table_processed.csv',sep='\t')
 df$window <- factor(df$window, levels = c("1kb", "10kb", "19kb"))
 
 print(head(df))
@@ -12,6 +12,8 @@ bam_lr = bam[bam$read_type=='longread',]
 cram = df[df$file_type=='cram',]
 cram_sr = cram[cram$read_type=='shortread',]
 cram_lr = cram[cram$read_type=='longread',]
+
+print(head(bam))
 
 
 

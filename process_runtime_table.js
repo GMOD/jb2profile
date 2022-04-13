@@ -24,6 +24,7 @@ function formatLine(line) {
     .replace(/\x.longread.bam/, '\tlongread\tbam')
     .replace(/\x.longread.cram/, '\tlongread\tcram')
     .replace(/results.*/, '')
+    .replace(/time -v /, '')
     .replace(/"/g, '')
     .replace(key, rep[key])
 

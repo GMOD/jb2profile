@@ -19,10 +19,11 @@ console.log(
 console.log(
   str
     .split('\n')
+    .filter(f => !!f)
     .map(line => {
       const [command, mem] = line.split('\t')
       const arr = command.split('_')
-      const port = arr[arr.length - 1]
+      const port = arr[arr.length - 1].trim()
       const cmd = arr.slice(0, arr.length - 2).join('_')
       const [coverage, window, read_type, file_type] = cmd.split('-')
       const key = Object.keys(map).find(key => port === key)

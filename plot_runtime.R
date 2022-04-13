@@ -5,7 +5,7 @@ df = read.csv('runtime_table_processed.csv',sep='\t')
 df$window <- factor(df$window, levels = c("1kb", "10kb", "19kb"))
 
 print(head(df))
-
+df = df[df$time < 600,]
 bam = df[df$file_type=='bam',]
 bam_sr = bam[bam$read_type=='shortread',]
 bam_lr = bam[bam$read_type=='longread',]

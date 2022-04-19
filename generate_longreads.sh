@@ -1,9 +1,16 @@
 #!/bin/bash
 
-for i in 20x 420x 820x 1220x 1620x 2020x 2420x 2820x; do
-  badread simulate --reference volvox.fa --quantity $i --length 40000,100 > $i.fastq;
-  ./easy_align_long.sh volvox.fa $i.fastq $i.longread.cram;
-  samtools view -T volvox.fa -@3 $i.longread.cram -o $i.longread.bam
-  samtools index -@3 $i.longread.bam
+./easy_align_long.sh chr22.mask.fa.gz 5000x.fq 5000x.longread.cram;
+echo "done align"
+
+
+
+for i in 02 10 20 30 40 50 60 70 80 90; do
+  k=0.$i
+  a=$(echo  "5000*$k/1"|bc );
+  echo Subsampling $k $ax;
+  samtools view -T chr22.mask.fa.gz 5000x.longread.cram -s 50.$i -o "$a"x.longread.cram
 done;
- 
+
+
+

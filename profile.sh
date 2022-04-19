@@ -33,33 +33,27 @@ profile () {
   echo -e "\n\n\n\n\n\n\n"
 }
 
-for i in 28x 56x 112x 224x 448x 896x 1792x; do
-  for j in bam cram; do
-    echo $i $j
-    profile "ctgA:19,000-20,000" "$i.shortread.$j"  "results/$i-1kb-shortread-$j" "volvox" 
-    profile "ctgA:19,000-29,000" "$i.shortread.$j"  "results/$i-10kb-shortread-$j" "volvox"
-    profile "ctgA:15,000-34,000" "$i.shortread.$j"  "results/$i-19kb-shortread-$j" "volvox"
+
+for k in longread shortread; do
+  for i in 100x 1000x 2000x 3000x 4000x 5000x; do
+    for j in bam cram; do
+      echo $i $j
+      profile "ctgA:19,000-20,000" "$i.$k.$j"  "results/$i-1kb-$k-$j" "hg19"
+      profile "ctgA:19,000-29,000" "$i.$k.$j"  "results/$i-10kb-$k-$j" "hg19"
+      profile "ctgA:15,000-34,000" "$i.$k.$j"  "results/$i-19kb-$k-$j" "hg19"
+    done;
   done;
 done;
 
-for i in 40x 80x 160x 320x 640x; do
-  for j in bam cram; do
-    echo $i $j
-    profile "ctgA:19,000-20,000" "$i.longread.$j"  "results/$i-1kb-longread-$j" "volvox"
-    profile "ctgA:19,000-29,000" "$i.longread.$j"  "results/$i-10kb-longread-$j" "volvox"
-    profile "ctgA:15,000-34,000" "$i.longread.$j"  "results/$i-19kb-longread-$j" "volvox"
-  done;
-done;
-
-profile "ctgA:19,000-20,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-1kb" "volvox" 
-profile "ctgA:19,000-29,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-10kb" "volvox"
-profile "ctgA:15,000-34,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-20kb" "volvox"
+# profile "ctgA:19,000-20,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-1kb" "hg19" 
+# profile "ctgA:19,000-29,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-10kb" "hg19"
+# profile "ctgA:15,000-34,000" "28x.shortread.bam,28x.shortread.cram,40x.longread.bam,40x.longread.cram"  "results/multi-lowcov-20kb" "hg19"
 
 
 
-profile "ctgA:19,000-20,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb" "volvox"
-profile "ctgA:19,000-29,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-10kb" "volvox"
-profile "ctgA:15,000-34,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-19kb" "volvox"
+# profile "ctgA:19,000-20,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-1kb" "hg19"
+# profile "ctgA:19,000-29,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-10kb" "hg19"
+# profile "ctgA:15,000-34,000" "448x.shortread.bam,448x.shortread.cram,160x.longread.bam,160x.longread.cram"  "results/multi-highcov-19kb" "hg19"
 
 
 

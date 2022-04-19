@@ -2,6 +2,26 @@
 
 Some profiling on jbrowse 2
 
+## Setup
+
+Basic outline to setup from scratch
+
+```
+## downloads instances
+./build.sh
+
+## generates data
+./generate_reads.sh
+
+
+## loads data
+./load.sh
+
+## does profiling
+./profile.sh
+
+```
+
 ## Results
 
 ### How to read results
@@ -9,14 +29,17 @@ Some profiling on jbrowse 2
 - igvjs - a create-react-app with igv package from npm installed
 - jbrowse-web-1.6.5 - stock
 - jbrowse-web-1.6.7 - stock
-- jb2 v1.6.7+optim - modest optimizations from https://github.com/GMOD/jbrowse-components/pull/2809
-- jb2 v1.6.7+noserial - removes serialization across webworker which removes ability to click on features, and is just here to demonstrate the overhead of serialization
+- jbrowse-web-1.6.9 - stock
+- jbrowse-web-1.7.4 - stock
+- jb2 noserial - removes serialization across webworker which removes ability to click on features, and is just here to demonstrate the overhead of serialization
 - jb2 embedded lgv - a create-react-app with @jbrowse/react-linear-genome-view
 
 ## Notes
 
-- thse tests are all chrome based (using puppeteer library for automation), running same on firefox or safari may be slower (especially on jbrowse-web)
-- these benchmarks are not comprehensive, and just a taste of some small examples on simulated data on volvox
+- these tests are all chrome based (using puppeteer library for automation),
+  running same on firefox or safari may be slower (especially on jbrowse-web)
+- these benchmarks are not comprehensive, and just a taste of some small
+  examples on simulated data on volvox
 
 ### Platform
 

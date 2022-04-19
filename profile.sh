@@ -28,7 +28,7 @@ profile () {
 
 
 for k in longread shortread; do
-  for i in 100x 1000x 2000x 3000x 4000x 5000x; do
+  for i in 10x 100x 1000x 2000x 3000x 4000x 5000x; do
     for j in bam cram; do
       echo $i $j
       profile "chr22_mask:129,000-130,000" "$i.$k.$j"  "results/$i-1kb-$k-$j" "hg19mod"

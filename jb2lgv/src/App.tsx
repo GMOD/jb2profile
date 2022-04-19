@@ -32,19 +32,19 @@ function getBamAdapter(trackId: string, sequenceAdapter: any) {
 }
 
 function getAssembly(assembly: string) {
-  if (assembly === 'hg19') {
+  if (assembly === 'hg19mod') {
     return {
-      name: 'hg19',
+      name: 'hg19mod',
       sequence: {
         type: 'ReferenceSequenceTrack',
         trackId: 'hg19_refseq',
         adapter: {
           type: 'IndexedFastaAdapter',
           fastaLocation: {
-            uri: 'chr22.mask.fa',
+            uri: 'hg19mod.fa',
           },
           faiLocation: {
-            uri: 'chr22.mask.fa.fai',
+            uri: 'hg19mod.fa.fai',
           },
         },
       },

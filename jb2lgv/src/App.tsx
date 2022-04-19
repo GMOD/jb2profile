@@ -32,39 +32,19 @@ function getBamAdapter(trackId: string, sequenceAdapter: any) {
 }
 
 function getAssembly(assembly: string) {
-  if (assembly === 'volvox') {
-    return {
-      name: 'volvox',
-      sequence: {
-        type: 'ReferenceSequenceTrack',
-        trackId: 'volvox_refseq',
-        adapter: {
-          type: 'IndexedFastaAdapter',
-          fastaLocation: {
-            uri: 'volvox.fa',
-          },
-          faiLocation: {
-            uri: 'volvox.fa.fai',
-          },
-        },
-      },
-    }
-  } else if (assembly === 'hg19') {
+  if (assembly === 'hg19') {
     return {
       name: 'hg19',
-      aliases: ['GRCh37'],
       sequence: {
         type: 'ReferenceSequenceTrack',
-        trackId: 'Pd8Wh30ei9R',
+        trackId: 'hg19_refseq',
         adapter: {
           type: 'IndexedFastaAdapter',
           fastaLocation: {
-            uri: 'https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz',
-            locationType: 'UriLocation',
+            uri: 'chr22.mask.fa',
           },
           faiLocation: {
-            uri: 'https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.fai',
-            locationType: 'UriLocation',
+            uri: 'chr22.mask.fa.fai',
           },
         },
       },
@@ -121,22 +101,7 @@ function View() {
             },
           }
     const state = createViewState({
-      assembly: {
-        name: 'volvox',
-        sequence: {
-          type: 'ReferenceSequenceTrack',
-          trackId: 'volvox-ReferenceSequenceTrack',
-          adapter: {
-            type: 'IndexedFastaAdapter',
-            fastaLocation: {
-              uri: 'volvox.fa',
-            },
-            faiLocation: {
-              uri: 'volvox.fa.fai',
-            },
-          },
-        },
-      },
+      assembly: assemblyConf,
       tracks: trackIds.map((trackId) => ({
         type: 'AlignmentsTrack',
         trackId,
@@ -150,7 +115,7 @@ function View() {
       defaultSession,
     })
     setViewState(state)
-  }, [tracks, loc])
+  }, [tracks, assembly, loc])
 
   if (!viewState) {
     return null

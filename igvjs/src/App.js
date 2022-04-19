@@ -34,11 +34,11 @@ function App() {
           format: trackId.endsWith('.cram') ? 'cram' : 'bam',
         })),
       reference:
-        assembly === 'volvox'
+        assembly === 'hg19'
           ? {
-              id: 'volvox',
-              fastaURL: 'volvox.fa',
-              indexURL: 'volvox.fa.fai',
+              id: 'hg19',
+              fastaURL: 'chr22.mask.fa',
+              indexURL: 'chr22.mask.fa.fai',
             }
           : undefined,
     }

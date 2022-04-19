@@ -1,14 +1,14 @@
 #!/bin/bash
 
 for l in jb2_165 jb2_167 jb2_169 jb2_174 jb2_noserialize; do
-  jbrowse add-assembly --load copy chr22.mask.fa.gz --out $l --force
+  jbrowse add-assembly --load copy chr22.mask.fa.gz --out $l --force --name hg19
 
 
   for k in longread shortread; do
     for i in 100x 1000x 2000x 3000x 4000x 5000x; do
       for j in bam cram; do
         echo $i $j
-        jbrowse add-track $i.$k.$j --load symlink --out $l --trackId $i.$k.%$j --force -a volvox
+        jbrowse add-track $i.$k.$j --load symlink --out $l --trackId $i.$k.$j --force -a hg19
       done;
     done;
   done;
@@ -28,6 +28,6 @@ for j in {jb2lgv,igvjs}; do
 done;
 
 
-cp chr22.mask.fa.gz* igvjs/build
-cp chr22.mask.fa.gz* jb2lgv/build
+cp chr22.mask.fa* igvjs/build
+cp chr22.mask.fa* jb2lgv/build
 

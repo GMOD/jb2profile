@@ -26,5 +26,5 @@ jb2_noserialize
 *.csv
 *.pdf
 out.svg
-chr22.fa.gz*
+chr22.*
 

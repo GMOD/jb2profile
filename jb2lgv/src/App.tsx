@@ -109,7 +109,7 @@ function View() {
         adapter: trackId.endsWith('.bam')
           ? getBamAdapter(trackId, assemblyConf.sequence.adapter)
           : getCramAdapter(trackId, assemblyConf.sequence.adapter),
-        assemblyNames: ['volvox'],
+        assemblyNames: ['hg19mod'],
       })),
       location: loc,
       defaultSession,

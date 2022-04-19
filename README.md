@@ -8,22 +8,10 @@ Install pbsim2, add to path
 
 ## Setup
 
-Basic outline to setup from scratch
+To setup from scratch, see source code for the breakdown of the scripts
 
 ```
-## downloads instances
-./build.sh
-
-## generates data
-./generate_reads.sh
-
-
-## loads data
-./load.sh
-
-## does profiling
-./profile.sh
-
+./everything.sh
 ```
 
 ## Results

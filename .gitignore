@@ -31,3 +31,5 @@ chr22.*
 
 *.maf
 *.ref
+*.fa
+*.fa.fai

@@ -33,7 +33,7 @@ for k in longread shortread; do
       echo $i $j
       profile "chr22_mask:129,000-130,000" "$i.$k.$j"  "results/$i-1kb-$k-$j" "hg19mod"
       profile "chr22_mask:129,000-139,000" "$i.$k.$j"  "results/$i-10kb-$k-$j" "hg19mod"
-      profile "chr22_mask:125,000-154,000" "$i.$k.$j"  "results/$i-19kb-$k-$j" "hg19mod"
+      profile "chr22_mask:125,000-144,000" "$i.$k.$j"  "results/$i-19kb-$k-$j" "hg19mod"
     done;
   done;
 done;

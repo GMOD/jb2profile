@@ -1,2 +1,2 @@
 #!/bin/bash
-badread simulate --reference chr22.mask.fa.gz --quantity 5000x --length 50000,100 > 5000x.fastq;
+pbsim chr22.mask.fa --depth 5000 --hmm_model data/R103.model --length-mean 50000 --prefix 5000x

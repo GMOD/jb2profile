@@ -2,6 +2,10 @@
 
 Some profiling on jbrowse 2
 
+## Pre-requisites
+
+Install pbsim2, add to path
+
 ## Setup
 
 Basic outline to setup from scratch

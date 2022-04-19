@@ -1,8 +1,5 @@
 #!/bin/bash
 set -e
-[ ! -d "jb2_165" ] && jbrowse create --tag v1.6.5 jb2_165
-[ ! -d "jb2_167" ] && jbrowse create --tag v1.6.7 jb2_167
-[ ! -d "jb2_169" ] && jbrowse create --tag v1.6.9 jb2_169
 [ ! -d "jb2_174" ] && jbrowse create --tag v1.7.4 jb2_174
 [ ! -d "jb2_noserialize" ] && rm -rf jb2_noserialize && jbrowse create --branch async_feature_details jb2_noserialize && rm -rf jb2_noserialize/config.json
 

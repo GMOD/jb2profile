@@ -34,11 +34,11 @@ function App() {
           format: trackId.endsWith('.cram') ? 'cram' : 'bam',
         })),
       reference:
-        assembly === 'hg19'
+        assembly === 'hg19mod'
           ? {
-              id: 'hg19',
-              fastaURL: 'chr22.mask.fa',
-              indexURL: 'chr22.mask.fa.fai',
+              id: 'hg19mod',
+              fastaURL: 'hg19mod.fa',
+              indexURL: 'hg19mod.fa.fai',
             }
           : undefined,
     }

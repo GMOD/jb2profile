@@ -1,14 +1,14 @@
 #!/bin/bash
 
-for l in jb2_165 jb2_167 jb2_169 jb2_174 jb2_noserialize; do
-  jbrowse add-assembly --load copy chr22.mask.fa.gz --out $l --force --name hg19
+for l in jb2_174 jb2_noserialize; do
+  jbrowse add-assembly --load copy hg19mod.fa --out $l --force --name hg19mod
 
 
   for k in longread shortread; do
-    for i in 100x 1000x 2000x 3000x 4000x 5000x; do
+    for i in 10x 100x 1000x 2000x 3000x 4000x 5000x; do
       for j in bam cram; do
         echo $i $j
-        jbrowse add-track $i.$k.$j --load symlink --out $l --trackId $i.$k.$j --force -a hg19
+        jbrowse add-track $i.$k.$j --load symlink --out $l --trackId $i.$k.$j --force -a hg19mod
       done;
     done;
   done;
@@ -17,7 +17,7 @@ done;
 
 for j in {jb2lgv,igvjs}; do
   for k in longread shortread; do
-    for i in 100x 1000x 2000x 3000x 4000x 5000x; do
+    for i in 10x 100x 1000x 2000x 3000x 4000x 5000x; do
       echo $i $j
       ln -s -f ../../$i.$k.cram $j/build/
       ln -s -f ../../$i.$k.cram.crai $j/build/
@@ -28,6 +28,6 @@ for j in {jb2lgv,igvjs}; do
 done;
 
 
-cp chr22.mask.fa* igvjs/build
-cp chr22.mask.fa* jb2lgv/build
+cp hg19mod.fa* igvjs/build
+cp hg19mod.fa* jb2lgv/build
 

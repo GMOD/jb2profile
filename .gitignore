@@ -28,3 +28,5 @@ jb2_noserialize
 out.svg
 chr22.*
 
+*.maf
+*.ref

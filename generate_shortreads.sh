@@ -4,13 +4,9 @@
 echo "done align"
 
 
-for i in 02 10 20 30 40 50 60 70 80 90; do
+for i in 02 20 40 60 80; do
   k=0.$i
   a=$(echo  "5000*$k/1"|bc );
   echo Subsampling $k $ax;
   samtools view -T chr22.mask.fa.gz 5000x.shortread.cram -s 50.$i -o "$a"x.shortread.cram
 done;
-
- 
-
-

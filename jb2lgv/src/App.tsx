@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import 'fontsource-roboto'
+import '@fontsource/roboto'
 import {
   createViewState,
   JBrowseLinearGenomeView,
@@ -85,7 +85,7 @@ function View() {
             view: {
               id: 'linearGenomeView',
               type: 'LinearGenomeView',
-              tracks: trackIds.map((trackId) => ({
+              tracks: trackIds.map(trackId => ({
                 id: '' + Math.random(),
                 type: 'AlignmentsTrack',
                 configuration: trackId,
@@ -102,7 +102,7 @@ function View() {
           }
     const state = createViewState({
       assembly: assemblyConf,
-      tracks: trackIds.map((trackId) => ({
+      tracks: trackIds.map(trackId => ({
         type: 'AlignmentsTrack',
         trackId,
         name: trackId,

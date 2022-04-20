@@ -52,6 +52,9 @@ being tested and region size being viewed
 ![](img/cram_sr.png)
 ![](img/cram_lr.png)
 
+Note: the cram longread has failures in igv.js due to fetchSizeLimit being
+triggered
+
 #### Memory (probably not accurately be reporting webworker memory)
 
 ![](img/bam_sr_memory.png)

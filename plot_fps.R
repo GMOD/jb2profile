@@ -1,8 +1,10 @@
 library(ggplot2)
-
+library(ggbeeswarm)
 
 df = read.csv('fps_table_processed.csv',sep='\t')
-df$window <- factor(df$window, levels = c("1kb", "10kb", "19kb"))
+df=df[df$window=="19kb",]
+df=df[df$coverage==800,]
+df$time_between_frames = 1/df$average_fps
 
 print(head(df))
 
@@ -18,38 +20,38 @@ cram_lr = cram[cram$read_type=='longread',]
 
 
 
-ggplot(bam_lr, aes(x = coverage, y = average_fps)) + 
-  geom_line(aes(color = program)) +
+ggplot(bam_lr, aes(x = program, y = time_between_frames)) + 
+  geom_quasirandom(aes(color = program)) +
   scale_y_continuous(labels = scales::comma) +
-  facet_grid(~ window) + 
-  ggtitle('BAM longread average FPS')
+  ggtitle('BAM shortread average FPS (800x)')
 
 ggsave('img/bam_lr_average_fps.png',width=13)
 
-ggplot(bam_sr, aes(x = coverage, y = average_fps)) + 
-  geom_line(aes(color = program)) +
+ggplot(bam_sr, aes(x = program, y = time_between_frames)) + 
+  geom_quasirandom(aes(color = program)) +
   scale_y_continuous(labels = scales::comma) +
-  facet_grid(~ window) + 
-  ggtitle('BAM shortread average FPS')
+  ggtitle('BAM shortread average FPS (800x)')
 
 ggsave('img/bam_sr_average_fps.png',width=13)
 
 
 
-
-ggplot(cram_sr, aes(x = coverage, y = average_fps)) + 
-  geom_line(aes(color = program)) +
+ggplot(cram_sr, aes(x = program, y = time_between_frames)) + 
+  geom_quasirandom(aes(color = program)) +
   scale_y_continuous(labels = scales::comma) +
-  facet_grid(~ window) +
-  ggtitle('CRAM shortread average FPS')
+  ggtitle('CRAM shortread average FPS (800x)')
 
 ggsave('img/cram_sr_average_fps.png',width=13)
 
 
-ggplot(cram_lr, aes(x = coverage, y = average_fps)) + 
-  geom_line(aes(color = program)) +
+
+
+ggplot(cram_lr, aes(x = program, y = time_between_frames)) + 
+  geom_quasirandom(aes(color = program)) +
   scale_y_continuous(labels = scales::comma) +
-  facet_grid(~ window) +
-  ggtitle('CRAM longread average FPS')
+  ggtitle('CRAM longread average FPS (800x)')
 
 ggsave('img/cram_lr_average_fps.png',width=13)
+
+
+

@@ -5,10 +5,11 @@ for l in jb2_174 jb2_noserialize; do
 
 
   for k in longread shortread; do
-    for i in 10x 100x 1000x 2000x 3000x 4000x 5000x; do
+    for i in 0.02 0.20 0.40 0.60 0.80 1; do
+      a=$(echo  "1000*$i/1"|bc )x;
       for j in bam cram; do
-        echo $i $j
-        jbrowse add-track $i.$k.$j --load symlink --out $l --trackId $i.$k.$j --force -a hg19mod
+        echo $i $j $a
+        jbrowse add-track $a.$k.$j --load symlink --out $l --trackId $a.$k.$j --force -a hg19mod
       done;
     done;
   done;
@@ -17,12 +18,12 @@ done;
 
 for j in {jb2lgv,igvjs}; do
   for k in longread shortread; do
-    for i in 10x 100x 1000x 2000x 3000x 4000x 5000x; do
-      echo $i $j
-      ln -s -f ../../$i.$k.cram $j/build/
-      ln -s -f ../../$i.$k.cram.crai $j/build/
-      ln -s -f ../../$i.$k.bam $j/build/
-      ln -s -f ../../$i.$k.bam.bai $j/build/
+    for i in 0.02 0.20 0.40 0.60 0.80 1; do
+      a=$(echo  "1000*$i/1"|bc )x;
+      ln -s -f ../../$a.$k.cram $j/build/
+      ln -s -f ../../$a.$k.cram.crai $j/build/
+      ln -s -f ../../$a.$k.bam $j/build/
+      ln -s -f ../../$a.$k.bam.bai $j/build/
     done;
   done;
 done;

@@ -56,7 +56,6 @@ Note: the cram longread has failures in igv.js due to fetchSizeLimit being
 triggered
 
 #### Memory (probably not accurately be reporting webworker memory)
-
 ![](img/bam_sr_memory.png)
 ![](img/bam_lr_memory.png)
 ![](img/cram_sr_memory.png)
@@ -73,70 +72,15 @@ user-interface would be locked up
 ![](img/cram_sr_average_fps.png)
 ![](img/cram_lr_average_fps.png)
 
-#### Multi
+#### Rendering multiple tracks at once
 
-results/multi-highcov-10kb.json
-| Command | Mean | Relative |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---- | :------- |
-| igvjs | 30.8 | 1.53 |
-| jb2 v1.6.5 | 41.1 | 2.03 |
-| jb2 v1.6.7 | 39.4 | 1.95 |
-| jb2 v1.6.9 | 34.6 | 1.71 |
-| jb2 main | 32.5 | 1.61 |
-| jb2 no serialize | 20.2 | 1.00 🍏 |
-| jb2 embedded lgv | 47.1 | 2.33 |
+This image shows two figures for rendering 5 tracks at once, in BAM and CRAM
+format, and at low (20x) and md (200x) coverage. If no bar exists, then it
+timed out (>10 minutes indicating memory out of bounds or extreme slowness).
+This example is especially useful for webworkers which can parallelize
+rendering
 
-results/multi-highcov-19kb.json
-| Command | Mean | Relative |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---- | :------- |
-| igvjs | 47.6 | 1.77 |
-| jb2 v1.6.5 | 59.9 | 2.23 |
-| jb2 v1.6.7 | 55.2 | 2.06 |
-| jb2 v1.6.9 | 47.4 | 1.77 |
-| jb2 main | 45.3 | 1.69 |
-| jb2 no serialize | 26.8 | 1.00 🍏 |
-| jb2 embedded lgv | 67.4 | 2.51 |
+A key takeaway of these graphs is that the noserialize branch is the winner
 
-results/multi-highcov-1kb.json
-| Command | Mean | Relative |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :---- | :------- |
-| igvjs | 10.6 | 1.60 |
-| jb2 v1.6.5 | 12.6 | 1.90 |
-| jb2 v1.6.7 | 12.2 | 1.83 |
-| jb2 v1.6.9 | 8.28 | 1.24 |
-| jb2 main | 7.93 | 1.19 |
-| jb2 no serialize | 6.65 | 1.00 🍏 |
-| jb2 embedded lgv | 14.2 | 2.14 |
-
-results/multi-lowcov-10kb.json
-| Command | Mean | Relative |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------- | :---- | :------- |
-| igvjs | 8.34 | 1.53 |
-| jb2 v1.6.5 | 7.73 | 1.42 |
-| jb2 v1.6.7 | 7.60 | 1.39 |
-| jb2 v1.6.9 | 6.36 | 1.17 |
-| jb2 main | 5.84 | 1.07 |
-| jb2 no serialize | 5.46 | 1.00 🍏 |
-| jb2 embedded lgv | 9.73 | 1.78 |
-
-results/multi-lowcov-1kb.json
-| Command | Mean | Relative |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------- | :---- | :------- |
-| igvjs | 4.02 | 1.00 🍏 |
-| jb2 v1.6.5 | 5.51 | 1.37 |
-| jb2 v1.6.7 | 5.79 | 1.44 |
-| jb2 v1.6.9 | 4.51 | 1.12 |
-| jb2 main | 4.34 | 1.08 |
-| jb2 no serialize | 4.18 | 1.04 |
-| jb2 embedded lgv | 5.75 | 1.43 |
-
-results/multi-lowcov-20kb.json
-| Command | Mean | Relative |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------- | :---- | :------- |
-| igvjs | 11.1 | 1.69 |
-| jb2 v1.6.5 | 8.95 | 1.37 |
-| jb2 v1.6.7 | 8.67 | 1.32 |
-| jb2 v1.6.9 | 7.35 | 1.12 |
-| jb2 main | 6.98 | 1.07 |
-| jb2 no serialize | 6.54 | 1.00 🍏 |
-| jb2 embedded lgv | 11.9 | 1.82 |
+![](img/bam_lr_multi.png)
+![](img/cram_lr_multi.png)

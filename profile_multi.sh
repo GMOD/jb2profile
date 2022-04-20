@@ -27,13 +27,10 @@ profile () {
 }
 
 
-for k in longread shortread; do
-  for i in 0.02 0.20 0.40 0.60 0.80 1; do
-    a=$(echo  "1000*$i/1"|bc )x;
-    for j in bam cram; do
-      echo $i $j $a
-      profile "chr22_mask:125,000-144,000" "$a.$k.$j"  "results/$a-19kb-$k-$j" "hg19mod"
-    done;
-  done;
-done;
+profile "chr22_mask:125,000-144,000" "multi1.sm.longread.cram,multi2.sm.longread.cram,multi3.sm.longread.cram,multi4.sm.longread.cram,multi5.sm.longread.cram"  "results/multi-lowcov-19kb-longread-cram" "hg19mod" 
+profile "chr22_mask:125,000-144,000" "multi1.md.longread.cram,multi2.md.longread.cram,multi3.md.longread.cram,multi4.md.longread.cram,multi5.md.longread.cram"  "results/multi-highcov-19kb-longread-cram" "hg19mod" 
 
+
+
+profile "chr22_mask:125,000-144,000" "multi1.sm.longread.bam,multi2.sm.longread.bam,multi3.sm.longread.bam,multi4.sm.longread.bam,multi5.sm.longread.bam"  "results/multi-lowcov-19kb-longread-bam" "hg19mod" 
+profile "chr22_mask:125,000-144,000" "multi1.md.longread.bam,multi2.md.longread.bam,multi3.md.longread.bam,multi4.md.longread.bam,multi5.md.longread.bam"  "results/multi-highcov-19kb-longread-bam" "hg19mod" 

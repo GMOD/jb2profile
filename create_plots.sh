@@ -1,8 +1,14 @@
 #!/bin/bash
 
-## runtime
+## single-tracks at once runtime
 ./create_runtime_table.sh > runtime_table_processed.csv
 Rscript plot_runtime.R
+
+## multi-tracks at once runtime
+./create_runtime_multi_table.sh > runtime_multi_table_processed.csv
+Rscript plot_multi_runtime.R
+
+
 
 
 ## fps

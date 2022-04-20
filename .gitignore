@@ -33,3 +33,4 @@ chr22.*
 *.ref
 *.fa
 *.fa.fai
+express_cross_origin_isolated

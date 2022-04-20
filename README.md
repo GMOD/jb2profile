@@ -18,7 +18,7 @@ To setup from scratch, see source code for the breakdown of the scripts
 
 ### How to read results
 
-- igvjs - a create-react-app with igv package from npm installed
+- igvjs - a create-react-app with igv package from npm installed. the igv.js is instrumented to output "DONE" to the console when finished, and to have an increased fetchSizeLimit (which is otherwise git in CRAM longread tests)
 - jbrowse-web-1.7.4 - stock
 - jb2 noserial - removes serialization across webworker which removes ability
   to click on features, and is just here to demonstrate the overhead of
@@ -62,7 +62,11 @@ triggered
 ![](img/cram_sr_memory.png)
 ![](img/cram_lr_memory.png)
 
-#### Average FPS
+#### Main thread hanging time
+
+Shows a plot of the seconds-per-frame (inverse of FPS) in order to highlight
+frames that took an especially long time, essentially indicating when the
+user-interface would be locked up
 
 ![](img/bam_sr_average_fps.png)
 ![](img/bam_lr_average_fps.png)

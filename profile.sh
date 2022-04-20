@@ -9,10 +9,10 @@ trap "exit" INT TERM
 trap "kill 0" EXIT
 
 ## start servers on different ports
-npx http-server igvjs/build -s -p 8000 &
-npx http-server jb2_174 -s -p 8001 &
-npx http-server jb2_noserialize -s -p 8002 &
-npx http-server jb2lgv/build -s -p 8003 &
+node express_cross_origin_isolated/index.js igvjs/build 8000 &
+node express_cross_origin_isolated/index.js jb2_174 8001 &
+node express_cross_origin_isolated/index.js jb2_noserialize 8002 &
+node express_cross_origin_isolated/index.js jb2lgv/build 8003 &
 
 sleep 1
 
@@ -32,8 +32,6 @@ for k in longread shortread; do
     a=$(echo  "1000*$i/1"|bc )x;
     for j in bam cram; do
       echo $i $j $a
-      profile "chr22_mask:129,000-130,000" "$a.$k.$j"  "results/$a-1kb-$k-$j" "hg19mod"
-      profile "chr22_mask:129,000-139,000" "$a.$k.$j"  "results/$a-10kb-$k-$j" "hg19mod"
       profile "chr22_mask:125,000-144,000" "$a.$k.$j"  "results/$a-19kb-$k-$j" "hg19mod"
     done;
   done;

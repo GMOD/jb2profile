@@ -20,7 +20,6 @@ print(head(bam))
 
 ggplot(bam_lr, aes(x = coverage, y = time)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   facet_grid(~ window) + 
   ggtitle('BAM longread runtimes')
 
@@ -28,7 +27,6 @@ ggsave('img/bam_lr.png',width=13)
 
 ggplot(bam_sr, aes(x = coverage, y = time)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   facet_grid(~ window) + 
   ggtitle('BAM shortread runtimes')
 
@@ -39,7 +37,6 @@ ggsave('img/bam_sr.png',width=13)
 
 ggplot(cram_sr, aes(x = coverage, y = time)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   facet_grid(~ window) +
   ggtitle('CRAM shortread runtimes')
 
@@ -48,7 +45,6 @@ ggsave('img/cram_sr.png',width=13)
 
 ggplot(cram_lr, aes(x = coverage, y = time)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   facet_grid(~ window) +
   ggtitle('CRAM longread runtimes')
 

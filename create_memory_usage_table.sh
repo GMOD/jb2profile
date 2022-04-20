@@ -2,5 +2,5 @@
 
 ls -1 results/*mem*|grep -v multi|while read p; do
   echo -n `basename $p .json` $'\t';
-  cat $p | grep 'Maximum resident'|sed -e 's/.*Maximum resident set size (kbytes): //';
+  node -e "console.log(JSON.parse(require('fs').readFileSync(\"$p\")).JSHeapUsedSize)"
 done

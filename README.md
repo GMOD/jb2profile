@@ -19,11 +19,10 @@ To setup from scratch, see source code for the breakdown of the scripts
 ### How to read results
 
 - igvjs - a create-react-app with igv package from npm installed
-- jbrowse-web-1.6.5 - stock
-- jbrowse-web-1.6.7 - stock
-- jbrowse-web-1.6.9 - stock
 - jbrowse-web-1.7.4 - stock
-- jb2 noserial - removes serialization across webworker which removes ability to click on features, and is just here to demonstrate the overhead of serialization
+- jb2 noserial - removes serialization across webworker which removes ability
+  to click on features, and is just here to demonstrate the overhead of
+  serialization
 - jb2 embedded lgv - a create-react-app with @jbrowse/react-linear-genome-view
 
 ## Notes
@@ -31,7 +30,7 @@ To setup from scratch, see source code for the breakdown of the scripts
 - these tests are all chrome based (using puppeteer library for automation),
   running same on firefox or safari may be slower (especially on jbrowse-web)
 - these benchmarks are not comprehensive, and just a taste of some small
-  examples on simulated data on volvox
+  examples on simulated data on hg19
 
 ### Platform
 
@@ -41,7 +40,8 @@ Tests will also be run on a Amazon EC2 instance xlarge 4vcpu 16gb memory ubuntu 
 
 ### How to interpret test names
 
-The test e.g. volvox-20x-shortread-cram-10kb.json shows the coverage of the file being tested and region size being viewed
+The test e.g. hg19-20x-shortread-cram-10kb.json shows the coverage of the file
+being tested and region size being viewed
 
 ### Figures
 

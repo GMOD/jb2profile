@@ -20,7 +20,6 @@ cram_lr = cram[cram$read_type=='longread',]
 
 ggplot(bam_lr, aes(x = coverage, y = average_fps)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) + 
   ggtitle('BAM longread average FPS')
@@ -29,7 +28,6 @@ ggsave('img/bam_lr_average_fps.png',width=13)
 
 ggplot(bam_sr, aes(x = coverage, y = average_fps)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) + 
   ggtitle('BAM shortread average FPS')
@@ -41,7 +39,6 @@ ggsave('img/bam_sr_average_fps.png',width=13)
 
 ggplot(cram_sr, aes(x = coverage, y = average_fps)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) +
   ggtitle('CRAM shortread average FPS')
@@ -51,7 +48,6 @@ ggsave('img/cram_sr_average_fps.png',width=13)
 
 ggplot(cram_lr, aes(x = coverage, y = average_fps)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) +
   ggtitle('CRAM longread average FPS')

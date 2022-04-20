@@ -36,4 +36,5 @@ import fs from 'fs'
   fs.writeFileSync(process.argv[4], JSON.stringify(await page.metrics()))
 
   await browser.close()
+  process.exit(0)
 })()

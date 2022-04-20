@@ -22,9 +22,12 @@ import fs from 'fs'
     window.requestAnimationFrame(measure)
   })
 
-  await new Promise(resolve => {
+  await new Promise((resolve, reject) => {
     let i = 0
     page.on('console', async msg => {
+      setTimeout(() => {
+        reject()
+      }, 600000)
       const msgArgs = msg.args()
       const val = await msgArgs[0]?.jsonValue()
       if (val === 'DONE') {
@@ -39,6 +42,11 @@ import fs from 'fs'
   const fps = await page.evaluate(() => JSON.stringify(window.fps))
 
   fs.writeFileSync(process.argv[3], fps)
+  fs.writeFileSync(
+    process.argv[4],
+    JSON.stringify(await page.metrics(), null, 2),
+  )
 
   await browser.close()
+  process.exit(0)
 })()

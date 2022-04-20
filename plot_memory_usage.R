@@ -19,7 +19,6 @@ cram_lr = cram[cram$read_type=='longread',]
 
 ggplot(bam_lr, aes(x = coverage, y = memory)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) + 
   ggtitle('BAM longread memory usage')
@@ -28,7 +27,6 @@ ggsave('img/bam_lr_memory.png',width=13)
 
 ggplot(bam_sr, aes(x = coverage, y = memory)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) + 
   ggtitle('BAM shortread memory usage')
@@ -40,7 +38,6 @@ ggsave('img/bam_sr_memory.png',width=13)
 
 ggplot(cram_sr, aes(x = coverage, y = memory)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) +
   ggtitle('CRAM shortread memory usage')
@@ -50,7 +47,6 @@ ggsave('img/cram_sr_memory.png',width=13)
 
 ggplot(cram_lr, aes(x = coverage, y = memory)) + 
   geom_line(aes(color = program)) +
-  scale_x_continuous(trans='log2') +
   scale_y_continuous(labels = scales::comma) +
   facet_grid(~ window) +
   ggtitle('CRAM longread memory usage')

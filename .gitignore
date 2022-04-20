@@ -12,6 +12,7 @@ igv.js
 jb2_165
 jb2_167
 jb2_169
+jb2_174
 jb2optim1
 jb2optim2
 results
@@ -26,3 +27,9 @@ jb2_noserialize
 *.csv
 *.pdf
 out.svg
+chr22.*
+
+*.maf
+*.ref
+*.fa
+*.fa.fai

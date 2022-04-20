@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import 'fontsource-roboto'
+import '@fontsource/roboto'
 import {
   createViewState,
   JBrowseLinearGenomeView,
@@ -32,39 +32,19 @@ function getBamAdapter(trackId: string, sequenceAdapter: any) {
 }
 
 function getAssembly(assembly: string) {
-  if (assembly === 'volvox') {
+  if (assembly === 'hg19mod') {
     return {
-      name: 'volvox',
+      name: 'hg19mod',
       sequence: {
         type: 'ReferenceSequenceTrack',
-        trackId: 'volvox_refseq',
+        trackId: 'hg19_refseq',
         adapter: {
           type: 'IndexedFastaAdapter',
           fastaLocation: {
-            uri: 'volvox.fa',
+            uri: 'hg19mod.fa',
           },
           faiLocation: {
-            uri: 'volvox.fa.fai',
-          },
-        },
-      },
-    }
-  } else if (assembly === 'hg19') {
-    return {
-      name: 'hg19',
-      aliases: ['GRCh37'],
-      sequence: {
-        type: 'ReferenceSequenceTrack',
-        trackId: 'Pd8Wh30ei9R',
-        adapter: {
-          type: 'IndexedFastaAdapter',
-          fastaLocation: {
-            uri: 'https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz',
-            locationType: 'UriLocation',
-          },
-          faiLocation: {
-            uri: 'https://jbrowse.org/genomes/hg19/fasta/hg19.fa.gz.fai',
-            locationType: 'UriLocation',
+            uri: 'hg19mod.fa.fai',
           },
         },
       },
@@ -105,7 +85,7 @@ function View() {
             view: {
               id: 'linearGenomeView',
               type: 'LinearGenomeView',
-              tracks: trackIds.map((trackId) => ({
+              tracks: trackIds.map(trackId => ({
                 id: '' + Math.random(),
                 type: 'AlignmentsTrack',
                 configuration: trackId,
@@ -121,36 +101,21 @@ function View() {
             },
           }
     const state = createViewState({
-      assembly: {
-        name: 'volvox',
-        sequence: {
-          type: 'ReferenceSequenceTrack',
-          trackId: 'volvox-ReferenceSequenceTrack',
-          adapter: {
-            type: 'IndexedFastaAdapter',
-            fastaLocation: {
-              uri: 'volvox.fa',
-            },
-            faiLocation: {
-              uri: 'volvox.fa.fai',
-            },
-          },
-        },
-      },
-      tracks: trackIds.map((trackId) => ({
+      assembly: assemblyConf,
+      tracks: trackIds.map(trackId => ({
         type: 'AlignmentsTrack',
         trackId,
         name: trackId,
         adapter: trackId.endsWith('.bam')
           ? getBamAdapter(trackId, assemblyConf.sequence.adapter)
           : getCramAdapter(trackId, assemblyConf.sequence.adapter),
-        assemblyNames: ['volvox'],
+        assemblyNames: ['hg19mod'],
       })),
       location: loc,
       defaultSession,
     })
     setViewState(state)
-  }, [tracks, loc])
+  }, [tracks, assembly, loc])
 
   if (!viewState) {
     return null

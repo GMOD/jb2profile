@@ -33,6 +33,8 @@ import fs from 'fs'
   const fps = await page.evaluate(() => JSON.stringify(window.fps))
 
   fs.writeFileSync(process.argv[3], fps)
+  fs.writeFileSync(process.argv[4], JSON.stringify(await page.metrics()))
 
   await browser.close()
+  process.exit(0)
 })()

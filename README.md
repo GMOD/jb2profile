@@ -55,12 +55,6 @@ being tested and region size being viewed
 Note: the cram longread has failures in igv.js due to fetchSizeLimit being
 triggered
 
-#### Memory (probably not accurately be reporting webworker memory)
-![](img/bam_sr_memory.png)
-![](img/bam_lr_memory.png)
-![](img/cram_sr_memory.png)
-![](img/cram_lr_memory.png)
-
 #### Main thread hanging time
 
 Shows a plot of the seconds-per-frame (inverse of FPS) in order to highlight

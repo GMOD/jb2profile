@@ -1,8 +1,5 @@
 #!/bin/bash
 
-rm -rf results
-mkdir results
-
 ## kill background scripts after finished
 ## https://spin.atomicobject.com/2017/08/24/start-stop-bash-background-process/
 trap "exit" INT TERM

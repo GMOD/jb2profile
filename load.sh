@@ -15,12 +15,16 @@ for l in jb2_174 jb2_noserialize; do
   done;
 
 
-  for k in longread; do
-    for i in 1 2 3 4 5; do
-      for j in bam cram; do
-        echo $i $j $a
-        jbrowse add-track multi$i.sm.$k.$j --load symlink --out $l --trackId multi$i.sm.$k.$j --force -a hg19mod
-        jbrowse add-track multi$i.md.$k.$j --load symlink --out $l --trackId multi$i.md.$k.$j --force -a hg19mod
+  for s in longread shortread; do
+    for i in {1..5}; do
+      for j in 02 05 10 15; do
+        for f in bam cram; do
+          k=0.$j;
+          a=$(echo  "1000*$k/1"|bc );
+          track=multi$i."$a"x.$s.$f
+          echo $i $j $a $track
+          jbrowse add-track $track --load symlink --out $l --trackId $track --force -a hg19mod
+        done;
       done;
     done;
   done;

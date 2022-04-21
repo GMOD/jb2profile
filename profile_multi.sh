@@ -24,10 +24,16 @@ profile () {
 }
 
 
-profile "chr22_mask:125,000-144,000" "multi1.sm.longread.cram,multi2.sm.longread.cram,multi3.sm.longread.cram,multi4.sm.longread.cram,multi5.sm.longread.cram"  "results/multi-lowcov-19kb-longread-cram" "hg19mod" 
-profile "chr22_mask:125,000-144,000" "multi1.md.longread.cram,multi2.md.longread.cram,multi3.md.longread.cram,multi4.md.longread.cram,multi5.md.longread.cram"  "results/multi-highcov-19kb-longread-cram" "hg19mod" 
-
-
-
-profile "chr22_mask:125,000-144,000" "multi1.sm.longread.bam,multi2.sm.longread.bam,multi3.sm.longread.bam,multi4.sm.longread.bam,multi5.sm.longread.bam"  "results/multi-lowcov-19kb-longread-bam" "hg19mod" 
-profile "chr22_mask:125,000-144,000" "multi1.md.longread.bam,multi2.md.longread.bam,multi3.md.longread.bam,multi4.md.longread.bam,multi5.md.longread.bam"  "results/multi-highcov-19kb-longread-bam" "hg19mod" 
+for f in bam cram; do
+  for l in longread shortread; do
+    for j in 02 05 10 15; do
+      k=0.$j;
+      cov=$(echo  "1000*$k/1"|bc );
+      cmds=multi1."$cov"x.$l.$f;
+      for i in {2..5}; do
+        cmds+=",multi$i"."$cov"x.longread.$f;
+        profile "chr22_mask:125,000-144,000" $cmds "results/multi-$cov-$i-19kb-$l-$f" "hg19mod" 
+      done;
+    done;
+  done;
+done;

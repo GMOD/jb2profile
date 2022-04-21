@@ -68,13 +68,13 @@ user-interface would be locked up
 
 #### Rendering multiple tracks at once
 
-This image shows two figures for rendering 5 tracks at once, in BAM and CRAM
-format, and at low (20x) and md (200x) coverage. If no bar exists, then it
-timed out (>10 minutes indicating memory out of bounds or extreme slowness).
-This example is especially useful for webworkers which can parallelize
-rendering
+This image shows two figures for rendering different numbers of tracks at once,
+in BAM and CRAM format, and at various coverage levels. If line is truncated, then
+it timed out (>10 minutes indicating memory out of bounds or extreme slowness).
+This example shows the power of webworkers which can parallelize rendering
 
-A key takeaway of these graphs is that the noserialize branch is the winner
 
 ![](img/bam_lr_multi.png)
+![](img/bam_sr_multi.png)
 ![](img/cram_lr_multi.png)
+![](img/cram_sr_multi.png)

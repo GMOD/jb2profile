@@ -2,7 +2,8 @@ library(ggplot2)
 
 
 df = read.csv('runtime_multi_table_processed.csv',sep='\t')
-
+df$coverage = paste0(df$coverage,'x coverage')
+df$coverage <- factor(df$coverage, levels = c("20x coverage", "50x coverage", "100x coverage","150x coverage"))
 print(head(df))
 df = df[df$time < 600,]
 bam = df[df$file_type=='bam',]
@@ -16,34 +17,31 @@ print(head(bam_lr))
 
 
 
-ggplot(bam_lr, aes(x = program, y = time)) + 
-  geom_bar(stat="identity") +
+ggplot(bam_lr, aes(x = num_tracks, y = time,group=program,color=program)) + 
+  geom_line() +
   facet_grid(~ coverage) +
-  ggtitle('BAM 5 tracks - longread runtimes')
+  ggtitle('BAM longread runtime, rendering multiple tracks')
 
 ggsave('img/bam_lr_multi.png',width=13)
 
-# ggplot(bam_sr, aes(x = program, y = time)) + 
-#   geom_bar(stat="identity") +
-#   facet_grid(~ coverage) +
-#   ggtitle('BAM 5 tracks - shortread runtimes')
 
-# ggsave('img/bam_sr_multi.png',width=13)
-
-
-
-
-# ggplot(cram_sr, aes(x = program, y = time)) + 
-#   geom_bar(stat="identity") +
-#   facet_grid(~ coverage) +
-#   ggtitle('CRAM 5 tracks - shortread runtimes')
-
-# ggsave('img/cram_sr_multi.png',width=13)
-
-
-ggplot(cram_lr, aes(x = program, y = time)) + 
-  geom_bar(stat="identity") +
+ggplot(bam_sr, aes(x = num_tracks, y = time,group=program,color=program)) + 
+  geom_line() +
   facet_grid(~ coverage) +
-  ggtitle('CRAM 5 tracks - longread runtimes')
+  ggtitle('BAM shortread runtime, rendering multiple tracks')
+
+ggsave('img/bam_sr_multi.png',width=13)
+
+ggplot(cram_lr, aes(x = num_tracks, y = time,group=program,color=program)) + 
+  geom_line() +
+  facet_grid(~ coverage) +
+  ggtitle('BAM longread runtime, rendering multiple tracks')
 
 ggsave('img/cram_lr_multi.png',width=13)
+
+ggplot(cram_sr, aes(x = num_tracks, y = time,group=program,color=program)) + 
+  geom_line() +
+  facet_grid(~ coverage) +
+  ggtitle('CRAM shortread runtimes, rendering multiple tracks')
+
+ggsave('img/cram_sr_multi.png',width=13)

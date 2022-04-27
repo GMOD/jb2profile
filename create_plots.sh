@@ -22,4 +22,10 @@ Rscript plot_memory_usage.R
 Rscript plot_multi_runtime.R
 
 ## figure for paper multi figure
-convert -append img/*multi* multi.png
+convert -append img/*multi* img/multi.png
+
+## figure for single
+montage -mode concatenate -tile 2x  img/bam_sr.png img/bam_lr.png img/cram_sr.png img/cram_lr.png img/single.png
+
+## figure for fps
+convert -append img/*average* img/fps.png

@@ -52,10 +52,7 @@ being tested and region size being viewed
 
 #### Runtime
 
-![](img/bam_sr.png)
-![](img/bam_lr.png)
-![](img/cram_sr.png)
-![](img/cram_lr.png)
+![](img/single.png)
 
 Note: the cram longread has failures in igv.js due to fetchSizeLimit being
 triggered
@@ -66,10 +63,7 @@ Shows a plot of the seconds-per-frame (inverse of FPS) in order to highlight
 frames that took an especially long time, essentially indicating when the
 user-interface would be locked up
 
-![](img/bam_sr_average_fps.png)
-![](img/bam_lr_average_fps.png)
-![](img/cram_sr_average_fps.png)
-![](img/cram_lr_average_fps.png)
+![](img/fps.png)
 
 #### Rendering multiple tracks at once
 
@@ -78,7 +72,4 @@ in BAM and CRAM format, and at various coverage levels. If line is truncated, th
 it timed out (>10 minutes indicating memory out of bounds or extreme slowness).
 This example shows the power of webworkers which can parallelize rendering
 
-![](img/bam_lr_multi.png)
-![](img/bam_sr_multi.png)
-![](img/cram_lr_multi.png)
-![](img/cram_sr_multi.png)
+![](img/multi.png)

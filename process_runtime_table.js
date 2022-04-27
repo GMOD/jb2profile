@@ -2,9 +2,7 @@ import fs from 'fs'
 
 const rep = {
   'http://localhost:8000/': 'igvjs\t',
-  'http://localhost:8001/': 'jb2 v1.7.4\t',
-  'http://localhost:8002/': 'jb2 no serialize\t',
-  'http://localhost:8003/': 'jb2 embedded lgv\t',
+  'http://localhost:8001/': 'jb2 v1.7.5\t',
 }
 function formatLine(line) {
   const [command, mean, exit_code] = line

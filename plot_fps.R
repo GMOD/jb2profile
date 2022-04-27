@@ -1,10 +1,12 @@
 library(ggplot2)
+library(xtable)
 
 df = read.csv('fps_table_processed.csv',sep='\t')
-df=df[df$window=="19kb",]
 df$time_between_frames = 1/df$average_fps
+df$coverage = paste0(df$coverage,'x coverage')
+df$coverage <- factor(df$coverage, levels = c("20x coverage", "200x coverage", "400x coverage","600x coverage", "800x coverage", "1000x coverage"))
 
-print(head(df))
+# print(head(df))
 
 bam = df[df$file_type=='bam',]
 bam_sr = bam[bam$read_type=='shortread',]
@@ -20,36 +22,41 @@ cram_lr = cram[cram$read_type=='longread',]
 
 ggplot(bam_lr, aes(x = program, y = time_between_frames)) + 
   geom_jitter(aes(color = program)) +
+  labs(y= "time between frames (s)")+
   facet_grid(~ coverage) +
   ggtitle('BAM longread main thread stall')
 
-ggsave('img/bam_lr_average_fps.png',width=20)
+ggsave('img/bam_lr_average_fps.png',width=13,height=3)
 
 ggplot(bam_sr, aes(x = program, y = time_between_frames)) + 
   geom_jitter(aes(color = program)) +
+  labs(y= "time between frames (s)")+
   facet_grid(~ coverage) +
   ggtitle('BAM shortread main thread stall')
 
-ggsave('img/bam_sr_average_fps.png',width=20)
+ggsave('img/bam_sr_average_fps.png',width=13,height=3)
 
 
 
 ggplot(cram_sr, aes(x = program, y = time_between_frames)) + 
   geom_jitter(aes(color = program)) +
+  labs(y= "time between frames (s)")+
   facet_grid(~ coverage) +
   ggtitle('CRAM shortread main thread stall')
 
-ggsave('img/cram_sr_average_fps.png',width=20)
+ggsave('img/cram_sr_average_fps.png',width=13,height=3)
 
 
 
 
 ggplot(cram_lr, aes(x = program, y = time_between_frames)) + 
   geom_jitter(aes(color = program)) +
+  labs(y= "time between frames (s)")+
   facet_grid(~ coverage) +
   ggtitle('CRAM longread main thread stall')
 
-ggsave('img/cram_lr_average_fps.png',width=20)
+ggsave('img/cram_lr_average_fps.png',width=13,height=3)
 
 
+# xtable(cram_lr[cram_lr$time_between_frames>2,])
 

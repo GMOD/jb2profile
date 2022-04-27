@@ -2,13 +2,11 @@ import fs from 'fs'
 
 const rep = {
   'http://localhost:8000/': 'igvjs',
-  'http://localhost:8001/': 'jb2 v1.7.4',
-  'http://localhost:8002/': 'jb2 no serialize',
-  'http://localhost:8003/': 'jb2 embedded lgv',
+  'http://localhost:8001/': 'jb2 v1.7.5',
 }
-  const [,coverage,numTracks,win,read_type,file_type]=process.argv[2].replace('.json','').split('-')
-
-
+const [, coverage, numTracks, win, read_type, file_type] = process.argv[2]
+  .replace('.json', '')
+  .split('-')
 
 function formatLine(line) {
   const [command, mean, exit_code] = line
@@ -37,11 +35,18 @@ function formatLine(line) {
     .replace(/"/g, '')
     .replace(key, rep[key])
 
-
-
   return newcommand.includes('jb2export')
     ? undefined
-    : [rep[key],win,coverage,numTracks,read_type,file_type, mean, exit_code].join('\t')
+    : [
+        rep[key],
+        win,
+        coverage,
+        numTracks,
+        read_type,
+        file_type,
+        mean,
+        exit_code,
+      ].join('\t')
 }
 
 const x = JSON.parse(fs.readFileSync(process.argv[2]))

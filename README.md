@@ -14,15 +14,22 @@ To setup from scratch, see source code for the breakdown of the scripts
 ./everything.sh
 ```
 
+## Background
+
+We had a concerted effort to improve performance in JBrowse 2, particularly
+alignments track performance, in early 2022. This lasted from versions ~1.6.4
+-> 1.7.5. This README only shows the latest version, but older documents show
+that versions 1.6.5 would timeout and fail under loads while the latest version
+shows significantly better performance.
+
 ## Results
 
 ### How to read results
 
-- igvjs - a create-react-app with igv package from npm installed. the igv.js is instrumented to output "DONE" to the console when finished, and to have an increased fetchSizeLimit (which is otherwise git in CRAM longread tests)
-- jbrowse-web-1.7.4 - stock
-- jb2 noserial - removes serialization across webworker which removes ability
-  to click on features, and is just here to demonstrate the overhead of
-  serialization
+- igvjs - a create-react-app with igv package from npm installed. the igv.js is
+  instrumented to output "DONE" to the console when finished, and to have an
+  increased fetchSizeLimit (which is otherwise git in CRAM longread tests)
+- jbrowse-web-1.7.5 - stock instance of jbrowse 1.7.5
 - jb2 embedded lgv - a create-react-app with @jbrowse/react-linear-genome-view
 
 ## Notes
@@ -35,8 +42,6 @@ To setup from scratch, see source code for the breakdown of the scripts
 ### Platform
 
 Ran tests on a Dell Precision i9 laptop, ~2019, Ubuntu 22.04
-
-Tests will also be run on a Amazon EC2 instance xlarge 4vcpu 16gb memory ubuntu 20.04
 
 ### How to interpret test names
 
@@ -72,7 +77,6 @@ This image shows two figures for rendering different numbers of tracks at once,
 in BAM and CRAM format, and at various coverage levels. If line is truncated, then
 it timed out (>10 minutes indicating memory out of bounds or extreme slowness).
 This example shows the power of webworkers which can parallelize rendering
-
 
 ![](img/bam_lr_multi.png)
 ![](img/bam_sr_multi.png)

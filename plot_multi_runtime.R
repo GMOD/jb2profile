@@ -19,29 +19,33 @@ print(head(bam_lr))
 
 ggplot(bam_lr, aes(x = num_tracks, y = time,group=program,color=program)) + 
   geom_line() +
+  labs(y= "time (s)")+
   facet_grid(~ coverage) +
   ggtitle('BAM longread runtime, rendering multiple tracks')
 
-ggsave('img/bam_lr_multi.png',width=13)
+ggsave('img/bam_lr_multi.png',width=13,height=3)
 
 
 ggplot(bam_sr, aes(x = num_tracks, y = time,group=program,color=program)) + 
   geom_line() +
+  labs(y= "time (s)")+
   facet_grid(~ coverage) +
   ggtitle('BAM shortread runtime, rendering multiple tracks')
 
-ggsave('img/bam_sr_multi.png',width=13)
+ggsave('img/bam_sr_multi.png',width=13,height=3)
 
 ggplot(cram_lr, aes(x = num_tracks, y = time,group=program,color=program)) + 
   geom_line() +
+  labs(y= "time (s)")+
   facet_grid(~ coverage) +
-  ggtitle('BAM longread runtime, rendering multiple tracks')
+  ggtitle('CRAM longread runtime, rendering multiple tracks')
 
-ggsave('img/cram_lr_multi.png',width=13)
+ggsave('img/cram_lr_multi.png',width=13,height=3)
 
 ggplot(cram_sr, aes(x = num_tracks, y = time,group=program,color=program)) + 
   geom_line() +
+  labs(y= "time (s)")+
   facet_grid(~ coverage) +
   ggtitle('CRAM shortread runtimes, rendering multiple tracks')
 
-ggsave('img/cram_sr_multi.png',width=13)
+ggsave('img/cram_sr_multi.png',width=13,height=3)

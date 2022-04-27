@@ -21,4 +21,5 @@ Rscript plot_memory_usage.R
 ./create_runtime_multi_table.sh > runtime_multi_table_processed.csv
 Rscript plot_multi_runtime.R
 
-
+## figure for paper multi figure
+convert -append img/*multi* multi.png

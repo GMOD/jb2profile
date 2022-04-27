@@ -13,3 +13,6 @@
 ## does profiling
 ./profile.sh
 
+## does multi
+./profile_multi.sh
+

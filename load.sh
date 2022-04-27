@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for l in jb2_174 jb2_noserialize; do
+for l in jb2_175; do
   jbrowse add-assembly --load copy hg19mod.fa --out $l --force --name hg19mod
 
 

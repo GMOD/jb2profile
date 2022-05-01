@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ./jbrowse/bin/prepare-refseqs.pl --fasta hg19mod.fa --out jbrowse/data
+
 for l in jb2_175; do
   jbrowse add-assembly --load copy hg19mod.fa --out $l --force --name hg19mod
 
@@ -13,9 +14,8 @@ for l in jb2_175; do
         track=$a.$k.$j
         jbrowse add-track $track --load symlink --out $l --trackId $track --force -a hg19mod
 
-        echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
-        echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
-    done;
+        echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000,\"fetchSizeLimit\": 1000000000000, \"maxHeight\": 1200 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
+        echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000,\"fetchSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
     done;
   done;
 
@@ -30,8 +30,9 @@ for l in jb2_175; do
           echo $i $j $a $track
           jbrowse add-track $track --load symlink --out $l --trackId $track --force -a hg19mod
 
-          echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
-          echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
+          ## load jb1 track
+          echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000,\"fetchSizeLimit\": 1000000000000, \"maxHeight\": 1200 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
+          echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000,\"fetchSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
         done;
       done;
     done;
@@ -48,7 +49,7 @@ for j in {jb2lgv,igvjs}; do
   done;
 done;
 
-## jbrowse 1
+## jb1
 for i in *.cram* *.bam*; do
   ln -s -f ../../$i jbrowse/data/
 done;

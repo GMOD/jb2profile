@@ -26,7 +26,7 @@ import fs from 'fs'
         nblocks &&
       document.querySelectorAll('[data-testid="wiggle-rendering-test"]')
         .length == nblocks,
-    { timeout: 600000 },
+    { timeout: 300000 },
     nblocks,
   )
 

@@ -1,14 +1,14 @@
 import puppeteer from 'puppeteer'
 import fs from 'fs'
 ;(async () => {
-  const browser = await puppeteer.launch({ dumpio: true })
+  const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.goto(process.argv[2])
 
   const params = new URL(process.argv[2]).searchParams
   const tracks = params.get('tracks')
   const n = tracks.split(',').length
-  const nblocks = 3 * n
+  const nblocks = 4 * n
   await page.evaluate(() => {
     window.fps = []
 
@@ -21,8 +21,8 @@ import fs from 'fs'
     window.requestAnimationFrame(measure)
   })
   await page.waitForFunction(
-    nblocks => document.querySelectorAll('.canvas-track').length === nblocks,
-    { timeout: 600000 },
+    nblocks => document.querySelectorAll('.canvas-track').length >= nblocks,
+    { timeout: 300000 },
     nblocks,
   )
 

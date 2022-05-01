@@ -10,7 +10,16 @@ npm install -g yarn
 # npm install -g @jbrowse/img
 # npm install -g @jbrowse/cli
 
-yarn
+
+if [ ! -d "jbrowse" ]; then
+  wget https://github.com/GMOD/jbrowse/releases/download/1.16.11-release/JBrowse-1.16.11.zip
+  unzip JBrowse-1.16.11.zip
+  mv JBrowse-1.16.11 jbrowse
+  cd jbrowse
+  ./setup.sh
+  cd -
+fi
+
 if [ ! -d "igv.js" ]; then
   git clone https://github.com/cmdcolin/igv.js
   cd igv.js

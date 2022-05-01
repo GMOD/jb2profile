@@ -14,7 +14,7 @@ for l in jb2_175; do
         jbrowse add-track $track --load symlink --out $l --trackId $track --force -a hg19mod
 
         echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
-        echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
+        echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
     done;
     done;
   done;
@@ -31,7 +31,7 @@ for l in jb2_175; do
           jbrowse add-track $track --load symlink --out $l --trackId $track --force -a hg19mod
 
           echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
-          echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
+          echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
         done;
       done;
     done;

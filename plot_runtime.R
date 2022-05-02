@@ -12,35 +12,30 @@ cram_sr = cram[cram$read_type=='shortread',]
 cram_lr = cram[cram$read_type=='longread',]
 
 
+plot <- function(df, filename, title) {
+  ggplot(df, aes(x = coverage, y = time)) + 
+    geom_line(aes(color = program)) +
+    geom_point(aes(color = program)) + 
+    geom_errorbar(aes(ymin=time-sd, ymax=time+sd), width=10) +
+    labs(y= "time (s)")+
+    ggtitle(title)
 
-ggplot(bam_lr, aes(x = coverage, y = time)) + 
-  geom_line(aes(color = program)) +
-  labs(y= "time (s)")+
-  ggtitle('BAM longread runtimes')
+  ggsave(filename, height = 3)
+}
 
-ggsave('img/bam_lr.png',height=3)
-
-ggplot(bam_sr, aes(x = coverage, y = time)) + 
-  geom_line(aes(color = program)) +
-  labs(y= "time (s)")+
-  ggtitle('BAM shortread runtimes')
-
-ggsave('img/bam_sr.png',height=3)
-
-
-
-
-ggplot(cram_sr, aes(x = coverage, y = time)) + 
-  geom_line(aes(color = program)) +
-  labs(y= "time (s)")+
-  ggtitle('CRAM shortread runtimes')
-
-ggsave('img/cram_sr.png',height=3)
+plot(cram_lr, 'img/cram_lr.png', 'CRAM longread runtimes')
+plot(cram_sr, 'img/cram_sr.png', 'CRAM shortread runtimes')
+plot(bam_lr, 'img/bam_lr.png', 'CRAM longread runtimes')
+plot(bam_sr, 'img/bam_sr.png', 'CRAM shortread runtimes')
 
 
-ggplot(cram_lr, aes(x = coverage, y = time)) + 
-  geom_line(aes(color = program)) +
-  labs(y= "time (s)")+
-  ggtitle('CRAM longread runtimes')
+## if we like facet_grid...
+# ggplot(df, aes(x = coverage, y = time)) + 
+#     geom_line(aes(color = program)) +
+#     geom_point(aes(color = program)) + 
+#     geom_errorbar(aes(ymin=time-sd, ymax=time+sd), width=10) +
+#     facet_grid(vars(read_type),vars(file_type),scales="free") +
+#     labs(y= "time (s)")+
+#     ggtitle('Runtimes')
 
-ggsave('img/cram_lr.png',height=3)
+# ggsave('runtimes.png', width = 13)

@@ -30,7 +30,7 @@ for k in longread shortread; do
     a=$(echo  "1000*$i/1"|bc )x;
     for j in bam cram; do
       echo $i $j $a
-      profile "chr22_mask:125,000-126,000" "$a.$k.$j"  "results/$a-19kb-$k-$j" "hg19mod"
+      profile "chr22_mask:124,000-129,000" "$a.$k.$j"  "results/$a-$k-$j" "hg19mod"
     done;
   done;
 done;

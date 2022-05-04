@@ -20,7 +20,7 @@ Rscript plot_multi_runtime.R
 convert -append img/*multi* img/img1.png
 
 ## figure for single, with separate panels
-montage -mode concatenate -tile 2x  img/bam_sr.png img/bam_lr.png img/cram_sr.png img/cram_lr.png img/img4.png
+montage -mode concatenate -tile 2x  img/bam_sr.png img/bam_lr.png img/cram_sr.png img/cram_lr.png img/img2.png
 
 ## figure for fps
 convert -append img/*average* img/img3.png

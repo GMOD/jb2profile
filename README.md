@@ -29,15 +29,17 @@ shows significantly better performance.
 - igvjs - a create-react-app with igv package from npm installed. the igv.js is
   instrumented to output "DONE" to the console when finished, and to have an
   increased fetchSizeLimit (which is otherwise git in CRAM longread tests)
-- jbrowse-web-1.7.5 - stock instance of jbrowse 1.7.5
-- jb2 embedded lgv - a create-react-app with @jbrowse/react-linear-genome-view
+- jb2-web - stock instance of jbrowse-web v1.7.5
+- jb1 - stock instance of jbrowse 1 v1.16.11
+- jb2 embedded - a create-react-app with @jbrowse/react-linear-genome-view
 
 ## Notes
 
 - these tests are all chrome based (using puppeteer library for automation),
   running same on firefox or safari may be slower (especially on jbrowse-web)
-- these benchmarks are not comprehensive, and just a taste of some small
-  examples on simulated data on hg19
+- this measures cold start e.g. loading the entire page
+- these benchmarks are not comprehensive, and user other user experience
+  measures can vary after the track is loaded for example
 
 ### Platform
 

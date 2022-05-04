@@ -3,9 +3,9 @@ const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
   8000: 'igvjs',
-  8001: 'jb2 v1.7.4',
-  8002: 'jb2 no serialize',
-  8003: 'jb2 embedded lgv',
+  8001: 'jb2 web',
+  8002: 'jb2 embedded',
+  8003: 'jb1',
 }
 
 console.log(

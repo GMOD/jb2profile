@@ -8,7 +8,7 @@ import fs from 'fs'
   const params = new URL(process.argv[2]).searchParams
   const tracks = params.get('tracks')
   const n = tracks.split(',').length
-  const nblocks = 2 * n
+  const nblocks = 4 * n
   await page.evaluate(() => {
     window.fps = []
 
@@ -21,23 +21,12 @@ import fs from 'fs'
     window.requestAnimationFrame(measure)
   })
   await page.waitForFunction(
-    nblocks =>
-      document.querySelectorAll('[data-testid="pileup-normal"]').length ===
-        nblocks &&
-      document.querySelectorAll('[data-testid="wiggle-rendering-test"]')
-        .length == nblocks,
+    nblocks => document.querySelectorAll('.canvas-track').length >= nblocks,
     { timeout: 300000 },
     nblocks,
   )
 
   const fps = await page.evaluate(() => JSON.stringify(window.fps))
-
-  // const k1 = await page.evaluate(() => self.crossOriginIsolated)
-  // console.log({ k1 })
-  // const memory = await page.evaluate(() =>
-  //   performance.measureUserAgentSpecificMemory(),
-  // )
-  // console.log({ memory })
 
   fs.writeFileSync(process.argv[3], fps)
   fs.writeFileSync(process.argv[4], JSON.stringify(await page.metrics()))

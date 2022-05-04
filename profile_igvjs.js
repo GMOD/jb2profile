@@ -27,7 +27,7 @@ import fs from 'fs'
     page.on('console', async msg => {
       setTimeout(() => {
         reject()
-      }, 600000)
+      }, 300000)
       const msgArgs = msg.args()
       const val = await msgArgs[0]?.jsonValue()
       if (val === 'DONE') {

@@ -24,3 +24,4 @@ montage -mode concatenate -tile 2x  img/bam_sr.png img/bam_lr.png img/cram_sr.pn
 
 ## figure for fps
 convert -append img/*average* img/img3.png
+convert -append img/*cumsums* img/img4.png

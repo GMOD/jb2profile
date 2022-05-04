@@ -16,7 +16,7 @@ sleep 1
 
 profile () {
   echo $0 $1 $2 $3 $4
-  hyperfine -i --export-json $3.json --runs 8  \
+  hyperfine -i --export-json $3.json --runs 6  \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8000.json\" \"$3_mem_8000.json\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8001.json\" \"$3_mem_8001.json\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8002.json\" \"$3_mem_8002.json\"" \

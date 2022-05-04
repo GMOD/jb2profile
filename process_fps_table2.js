@@ -1,4 +1,6 @@
 import fs from 'fs'
+import { sum } from './util.js'
+
 const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
@@ -15,7 +17,8 @@ console.log(
     'read_type',
     'file_type',
     'program',
-    'average_fps',
+    'expected_value',
+    'variance',
   ].join('\t'),
 )
 console.log(
@@ -29,19 +32,19 @@ console.log(
       const cmd = arr.slice(0, arr.length - 2).join('_')
       const [coverage, read_type, file_type] = cmd.split('-')
       const key = Object.keys(map).find(key => port === key)
-      return total_frames
-        .split(',')
-        .map(frame =>
-          [
-            coverage.slice(0, coverage.length - 1),
-            '5kb',
-            read_type,
-            file_type,
-            map[key],
-            frame,
-          ].join('\t'),
-        )
-        .join('\n')
+      const elts = total_frames.split(',').map(f => 1 / +f)
+      const T = sum(elts)
+      const E = sum(elts, l => (l * l) / (2 * T))
+      const V = sum(elts, l => (l * l * l) / (3 * T)) - E * E
+      return [
+        coverage.slice(0, coverage.length - 1),
+        '5kb',
+        read_type,
+        file_type,
+        map[key],
+        E.toPrecision(4),
+        V.toPrecision(4),
+      ].join('\t')
     })
     .join('\n'),
 )

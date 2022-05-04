@@ -3,7 +3,7 @@ import fs from 'fs'
 const rep = {
   'http://localhost:8000/': 'igvjs',
   'http://localhost:8001/': 'jb2 web',
-  'http://localhost:8002/': 'jb2 embedded',
+  'http://localhost:8002/': 'jb2 emb',
   'http://localhost:8003/': 'jb1',
 }
 const [, coverage, numTracks, win, read_type, file_type] = process.argv[2]

@@ -56,9 +56,6 @@ being tested and region size being viewed
 
 ![](img/img2.png)
 
-Note: the cram longread has failures in igv.js due to fetchSizeLimit being
-triggered
-
 #### Main thread hanging time
 
 Shows a plot of the seconds-per-frame (inverse of FPS) in order to highlight
@@ -66,6 +63,14 @@ frames that took an especially long time, essentially indicating when the
 user-interface would be locked up
 
 ![](img/img3.png)
+
+Another way to look at this is frame # vs time
+
+![](img/img4.png)
+
+Another way to look at this is the expected value
+
+![](img/img5.png)
 
 #### Rendering multiple tracks at once
 

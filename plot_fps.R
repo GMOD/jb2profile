@@ -58,12 +58,10 @@ ggsave('img/cram_lr_average_fps.png',width=13,height=3)
 
 
 
-## if we like facet_grid...
-ggplot(df, aes(x = program, y = time_between_frames)) + 
-  geom_jitter(aes(color = program),size=0.8) +
-  labs(y= "time between frames (s)") +
-  facet_grid(vars(read_type,file_type),vars(coverage),scale="free") +
-  ggtitle('Main thread stall')
-
-
-ggsave('img/img3.png', width = 13)
+## if we like facet_grid, this can generate a single image but looks a little messier
+# ggplot(df, aes(x = program, y = time_between_frames)) + 
+#   geom_jitter(aes(color = program),size=0.8) +
+#   labs(y= "time between frames (s)") +
+#   facet_grid(vars(read_type,file_type),vars(coverage),scale="free") +
+#   ggtitle('Main thread stall')
+# ggsave('img/img3.png', width = 13)

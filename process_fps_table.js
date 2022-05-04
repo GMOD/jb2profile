@@ -27,14 +27,14 @@ console.log(
       const arr = command.split('_')
       const port = arr[arr.length - 1]
       const cmd = arr.slice(0, arr.length - 2).join('_')
-      const [coverage, window, read_type, file_type] = cmd.split('-')
+      const [coverage, win, read_type, file_type] = cmd.split('-')
       const key = Object.keys(map).find(key => port === key)
       return total_frames
         .split(',')
         .map(frame =>
           [
             coverage.slice(0, coverage.length - 1),
-            window,
+            win,
             read_type,
             file_type,
             map[key],

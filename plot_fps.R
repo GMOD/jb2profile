@@ -1,5 +1,4 @@
 library(ggplot2)
-library(xtable)
 
 df = read.csv('fps_table_processed.csv',sep='\t')
 df$time_between_frames = 1/df$average_fps
@@ -58,5 +57,13 @@ ggplot(cram_lr, aes(x = program, y = time_between_frames)) +
 ggsave('img/cram_lr_average_fps.png',width=13,height=3)
 
 
-# xtable(cram_lr[cram_lr$time_between_frames>2,])
 
+## if we like facet_grid...
+ggplot(df, aes(x = program, y = time_between_frames)) + 
+  geom_jitter(aes(color = program),size=0.8) +
+  labs(y= "time between frames (s)") +
+  facet_grid(vars(read_type,file_type),vars(coverage),scale="free") +
+  ggtitle('Main thread stall')
+
+
+ggsave('img/img3.png', width = 13)

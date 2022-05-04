@@ -2,7 +2,6 @@ library(ggplot2)
 
 
 df = read.csv('runtime_table_processed.csv',sep='\t')
-print(head(df))
 
 df = df[df$time < 300,]
 bam = df[df$file_type=='bam',]
@@ -11,7 +10,6 @@ bam_lr = bam[bam$read_type=='longread',]
 cram = df[df$file_type=='cram',]
 cram_sr = cram[cram$read_type=='shortread',]
 cram_lr = cram[cram$read_type=='longread',]
-print(head(df))
 
 
 plot <- function(df, filename, title) {
@@ -38,6 +36,6 @@ ggplot(df, aes(x = coverage, y = time)) +
     geom_errorbar(aes(ymin=time-sd, ymax=time+sd), width=10) +
     facet_grid(vars(read_type),vars(file_type),scales="free") +
     labs(y= "time (s)")+
-    ggtitle('Runtimes')
+    ggtitle('Runtimes - rendering a single track')
 
 ggsave('img/img2.png', width = 13)

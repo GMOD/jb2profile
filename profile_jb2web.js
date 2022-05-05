@@ -32,15 +32,11 @@ import fs from 'fs'
 
   const fps = await page.evaluate(() => JSON.stringify(window.fps))
 
-  // const k1 = await page.evaluate(() => self.crossOriginIsolated)
-  // console.log({ k1 })
-  // const memory = await page.evaluate(() =>
-  //   performance.measureUserAgentSpecificMemory(),
-  // )
-  // console.log({ memory })
-
-  fs.writeFileSync(process.argv[3], fps)
-  fs.writeFileSync(process.argv[4], JSON.stringify(await page.metrics()))
+  fs.appendFileSync(process.argv[3], fps + '\n')
+  fs.appendFileSync(
+    process.argv[4],
+    JSON.stringify(await page.metrics()) + '\n',
+  )
 
   await browser.close()
   process.exit(0)

@@ -16,7 +16,12 @@ sleep 1
 
 profile () {
   echo $0 $1 $2 $3 $4
-  hyperfine -i --export-json $3.json --runs 6  \
+  ## remove these first because they are appended to by the multiple runs
+  rm -f "$3_fps_8000.json"
+  rm -f "$3_fps_8001.json"
+  rm -f "$3_fps_8002.json"
+  rm -f "$3_fps_8003.json"
+  hyperfine -i --export-json $3.json --runs 10  \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8000.json\" \"$3_mem_8000.json\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8001.json\" \"$3_mem_8001.json\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8002.json\" \"$3_mem_8002.json\"" \
@@ -30,7 +35,7 @@ for k in longread shortread; do
     a=$(echo  "1000*$i/1"|bc )x;
     for j in bam cram; do
       echo $i $j $a
-      profile "chr22_mask:124,000-129,000" "$a.$k.$j"  "results/$a-$k-$j" "hg19mod"
+      profile "chr22_mask:124,000-134,000" "$a.$k.$j"  "results/$a-$k-$j" "hg19mod"
     done;
   done;
 done;

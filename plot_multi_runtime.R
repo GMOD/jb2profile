@@ -13,41 +13,20 @@ cram_sr = cram[cram$read_type=='shortread',]
 cram_lr = cram[cram$read_type=='longread',]
 
 
+plot<-function(df, title,filename) {
+  ggplot(df, aes(x = num_tracks, y = time, group=program, color=program)) + 
+    geom_line() +
+    labs(y= "time (s)")+
+    facet_wrap(~ coverage, scales = "free_y", ncol=4) +
+    ggtitle(title)
 
+  ggsave(filename, width=13, height=3)
+}
 
-ggplot(bam_lr, aes(x = num_tracks, y = time,group=program,color=program)) + 
-  geom_line() +
-  labs(y= "time (s)")+
-  facet_grid(~ coverage) +
-  ggtitle('BAM longread runtime, rendering multiple tracks')
-
-ggsave('img/bam_lr_multi.png',width=13,height=3)
-
-
-ggplot(bam_sr, aes(x = num_tracks, y = time,group=program,color=program)) + 
-  geom_line() +
-  labs(y= "time (s)")+
-  facet_grid(~ coverage) +
-  ggtitle('BAM shortread runtime, rendering multiple tracks')
-
-ggsave('img/bam_sr_multi.png',width=13,height=3)
-
-ggplot(cram_lr, aes(x = num_tracks, y = time,group=program,color=program)) + 
-  geom_line() +
-  labs(y= "time (s)")+
-  facet_grid(~ coverage) +
-  ggtitle('CRAM longread runtime, rendering multiple tracks')
-
-ggsave('img/cram_lr_multi.png',width=13,height=3)
-
-ggplot(cram_sr, aes(x = num_tracks, y = time,group=program,color=program)) + 
-  geom_line() +
-  labs(y= "time (s)")+
-  facet_grid(~ coverage) +
-  ggtitle('CRAM shortread runtimes, rendering multiple tracks')
-
-ggsave('img/cram_sr_multi.png',width=13,height=3)
-
+plot(bam_lr, 'BAM longread runtime - rendering multiple tracks', 'img/bam_lr_multi.png')
+plot(bam_sr, 'BAM shortread runtime - rendering multiple tracks', 'img/bam_sr_multi.png')
+plot(cram_lr, 'CRAM longread runtime - rendering multiple tracks', 'img/cram_lr_multi.png')
+plot(cram_sr, 'CRAM shortread runtime - rendering multiple tracks', 'img/cram_sr_multi.png')
 
 ## if we like facet_grid, this can generate a single image but looks a little messier
 # ggplot(df, aes(x = num_tracks, y = time)) + 

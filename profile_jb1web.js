@@ -1,9 +1,13 @@
 import puppeteer from 'puppeteer'
 import fs from 'fs'
 ;(async () => {
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({
+    args: ['--window-size=2100,980'],
+  })
+
   const page = await browser.newPage()
-  await page.goto(process.argv[2])
+  await page._client.send('Emulation.clearDeviceMetricsOverride')
+  await page.goto(process.argv[2] + '&tracklist=0')
 
   const params = new URL(process.argv[2]).searchParams
   const tracks = params.get('tracks')
@@ -28,8 +32,11 @@ import fs from 'fs'
 
   const fps = await page.evaluate(() => JSON.stringify(window.fps))
 
-  fs.writeFileSync(process.argv[3], fps)
-  fs.writeFileSync(process.argv[4], JSON.stringify(await page.metrics()))
+  fs.appendFileSync(process.argv[3], fps + '\n')
+  fs.appendFileSync(
+    process.argv[4],
+    JSON.stringify(await page.metrics()) + '\n',
+  )
 
   await browser.close()
   process.exit(0)

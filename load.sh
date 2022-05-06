@@ -2,7 +2,7 @@
 
 ./jbrowse/bin/prepare-refseqs.pl --fasta hg19mod.fa --out jbrowse/data
 
-for l in jb2_175; do
+for l in jb2_175 jb2mod; do
   jbrowse add-assembly --load copy hg19mod.fa --out $l --force --name hg19mod
 
 
@@ -16,6 +16,7 @@ for l in jb2_175; do
 
         echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track aln\", \"type\" : \"Alignments2\", \"chunkSizeLimit\": 1000000000000,\"fetchSizeLimit\": 1000000000000, \"maxHeight\": 1200 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
         echo "{ \"urlTemplate\" : \"$track\", \"label\" : \"$track snp\", \"type\" : \"SNPCoverage\", \"chunkSizeLimit\": 1000000000000,\"fetchSizeLimit\": 1000000000000 } " | ./jbrowse/bin/add-track-json.pl ./jbrowse/data/trackList.json
+      done;
     done;
   done;
 
@@ -56,4 +57,3 @@ done;
 
 cp hg19mod.fa* igvjs/build
 cp hg19mod.fa* jb2lgv/build
-

@@ -72,6 +72,14 @@ Another way to look at this is the expected value
 
 ![](img/img5.png)
 
+More bare version of above:
+
+![](img/img6.png)
+
+Another more bare version of above:
+
+![](img/img7.png)
+
 #### Rendering multiple tracks at once
 
 This image shows two figures for rendering different numbers of tracks at once,

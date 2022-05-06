@@ -58,12 +58,40 @@ plot_cumsums <- function(df, filename, title) {
   ggsave(filename, height = 3,width=13)
 }
 
-plot_ev <- function(df, filename, title) {
-  ggplot(df, aes(x = coverage, y = expected_value)) + 
-    geom_line(aes(color = program)) +
-    geom_point(aes(color=program),position=position_dodge(width=20)) +
-    geom_errorbar(aes(ymin=lower, ymax=upper,color=program), width=10,position=position_dodge(width=20)) +
-    labs(y= "time (s)") +
+
+plot_lm <- function(df, filename, title) {
+
+  ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
+    geom_point() +
+    stat_smooth(method = "lm", aes(color=program,fill=program)) +
+    geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
+    labs(y= "Response time (s)") +
+    ggtitle(title)
+
+  ggsave(filename, height = 3)
+}
+
+
+plot_bare <- function(df, filename, title) {
+
+  ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
+    geom_point() +
+    stat_smooth(method = "lm", aes(color=program,fill=program),lty=3) +
+    geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
+    labs(y= "Response time (s)") +
+    ggtitle(title)
+
+  ggsave(filename, height = 3)
+}
+
+
+plot_superbare <- function(df, filename, title) {
+
+  ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
+    geom_point(position_dodge(width=20)) +
+    stat_smooth(method = "lm", aes(color=program,fill=program),lty=3,se=F) +
+    geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
+    labs(y= "Response time (s)") +
     ggtitle(title)
 
   ggsave(filename, height = 3)
@@ -75,22 +103,30 @@ plot(bam_lr, 'img/bam_lr_average_fps.png', 'BAM longread - main thread stall')
 plot(bam_sr, 'img/bam_sr_average_fps.png', 'BAM shortread - main thread stall')
 
 
-plot_cumsums(cram_lr, 'img/cram_lr_cumsums.png', 'CRAM longread - time vs frame #')
-plot_cumsums(cram_sr, 'img/cram_sr_cumsums.png', 'CRAM shortread - time vs frame #')
-plot_cumsums(bam_lr, 'img/bam_lr_cumsums.png', 'BAM longread - time vs frame #')
-plot_cumsums(bam_sr, 'img/bam_sr_cumsums.png', 'BAM shortread - time vs frame #')
+plot_cumsums(cram_lr, 'img/cram_lr_cumsums.png', 'CRAM longread - frame # vs time')
+plot_cumsums(cram_sr, 'img/cram_sr_cumsums.png', 'CRAM shortread - frame # vs time')
+plot_cumsums(bam_lr, 'img/bam_lr_cumsums.png', 'BAM longread - frame # vs time')
+plot_cumsums(bam_sr, 'img/bam_sr_cumsums.png', 'BAM shortread - frame # vs time')
 
 
 
-plot_ev(cram_lr2, 'img/cram_lr_ev.png', 'CRAM longread - expected wait time')
-plot_ev(cram_sr2, 'img/cram_sr_ev.png', 'CRAM shortread - expected wait time')
-plot_ev(bam_lr2, 'img/bam_lr_ev.png', 'BAM longread - expected wait time')
-plot_ev(bam_sr2, 'img/bam_sr_ev.png', 'BAM shortread - expected wait time')
+plot_lm(cram_lr2, 'img/cram_lr_ev.png', 'CRAM longread - average response time')
+plot_lm(cram_sr2, 'img/cram_sr_ev.png', 'CRAM shortread - average response time')
+plot_lm(bam_lr2, 'img/bam_lr_ev.png', 'BAM longread - average response time')
+plot_lm(bam_sr2, 'img/bam_sr_ev.png', 'BAM shortread - average response time')
+
+
+
+plot_bare(cram_lr2, 'img/cram_lr_bare.png', 'CRAM longread - average response time')
+plot_bare(cram_sr2, 'img/cram_sr_bare.png', 'CRAM shortread - average response time')
+plot_bare(bam_lr2, 'img/bam_lr_bare.png', 'BAM longread - average response time')
+plot_bare(bam_sr2, 'img/bam_sr_bare.png', 'BAM shortread - average response time')
 
 
 
 
-
-
-
+plot_superbare(cram_lr2, 'img/cram_lr_superbare.png', 'CRAM longread - average response time')
+plot_superbare(cram_sr2, 'img/cram_sr_superbare.png', 'CRAM shortread - average response time')
+plot_superbare(bam_lr2, 'img/bam_lr_superbare.png', 'BAM longread - average response time')
+plot_superbare(bam_sr2, 'img/bam_sr_superbare.png', 'BAM shortread - average response time')
 

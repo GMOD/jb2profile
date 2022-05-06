@@ -28,13 +28,3 @@ plot(bam_sr, 'BAM shortread runtime - rendering multiple tracks', 'img/bam_sr_mu
 plot(cram_lr, 'CRAM longread runtime - rendering multiple tracks', 'img/cram_lr_multi.png')
 plot(cram_sr, 'CRAM shortread runtime - rendering multiple tracks', 'img/cram_sr_multi.png')
 
-## if we like facet_grid, this can generate a single image but looks a little messier
-# ggplot(df, aes(x = num_tracks, y = time)) + 
-#     geom_line(aes(color = program)) +
-#     geom_point(aes(color = program)) + 
-#     geom_errorbar(aes(ymin=time-sd, ymax=time+sd), width=10) +
-#     facet_grid(vars(read_type,file_type), vars(coverage), scales="free") +
-#     xlim(c(1,5)) +
-#     labs(y= "time (s)") +
-#     ggtitle('Runtimes - rendering multiple tracks')
-# ggsave('img/img1.png', width = 13,height=13)

@@ -90,10 +90,3 @@ plot_ev(bam_sr2, 'img/bam_sr_ev.png', 'BAM shortread - expected wait time')
 
 
 
-## if we like facet_grid, this can generate a single image but looks a little messier
-# ggplot(df, aes(x = program, y = time_between_frames)) + 
-#   geom_jitter(aes(color = program),size=0.8) +
-#   labs(y= "time between frames (s)") +
-#   facet_grid(vars(read_type,file_type),vars(coverage),scale="free") +
-#   ggtitle('Main thread stall')
-# ggsave('img/img3_average_fps.png', width = 13)

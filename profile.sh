@@ -30,10 +30,10 @@ profile () {
 }
 
 
-for k in longread shortread; do
-  for i in 0.02 0.20 0.40 0.60 0.80 1; do
+for k in longread; do
+  for i in 0.40; do
     a=$(echo  "1000*$i/1"|bc )x;
-    for j in bam cram; do
+    for j in bam; do
       echo $i $j $a
       profile "chr22_mask:124,000-134,000" "$a.$k.$j"  "results/$a-$k-$j" "hg19mod"
     done;

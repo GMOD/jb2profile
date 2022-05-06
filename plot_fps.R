@@ -5,9 +5,11 @@ df = read.csv('fps_table_processed.csv',sep='\t')
 df$time_between_frames = 1/df$average_fps
 df$coverage = paste0(df$coverage,'x coverage')
 df$coverage <- factor(df$coverage, levels = c("20x coverage", "200x coverage", "400x coverage","600x coverage", "800x coverage", "1000x coverage"))
-
 # df2 has expected wait time and variance
 df2 = read.csv('fps_table_processed2.csv',sep='\t')
+df2$upper=qgamma(0.95,df2$alpha,df2$beta)
+df2$lower=qgamma(0.05,df2$alpha,df2$beta)
+print(head(df2))
 
 
 
@@ -31,7 +33,7 @@ cram_lr2 = cram2[cram2$read_type=='longread',]
 
 
 plot <- function(df, filename, title) {
-  ggplot(bam_lr, aes(x = program, y = time_between_frames)) + 
+  ggplot(df, aes(x = program, y = time_between_frames)) + 
     geom_jitter(aes(color = program)) +
     labs(y= "time between frames (s)")+
     facet_grid(~ coverage) +
@@ -59,6 +61,8 @@ plot_cumsums <- function(df, filename, title) {
 plot_ev <- function(df, filename, title) {
   ggplot(df, aes(x = coverage, y = expected_value)) + 
     geom_line(aes(color = program)) +
+    geom_point(aes(color=program),position=position_dodge(width=20)) +
+    geom_errorbar(aes(ymin=lower, ymax=upper,color=program), width=10,position=position_dodge(width=20)) +
     labs(y= "time (s)") +
     ggtitle(title)
 

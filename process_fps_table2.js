@@ -19,6 +19,8 @@ console.log(
     'program',
     'expected_value',
     'variance',
+    'alpha',
+    'beta',
   ].join('\t'),
 )
 console.log(
@@ -36,14 +38,22 @@ console.log(
       const T = sum(elts)
       const E = sum(elts, l => (l * l) / (2 * T))
       const V = sum(elts, l => (l * l * l) / (3 * T)) - E * E
+      const A = (E * E) / V
+      const B = E / V
+      const f = n => n.toPrecision(4)
+      const cov = coverage.slice(0, coverage.length - 1)
+      const prog = map[key]
+      const win = '5kb'
       return [
-        coverage.slice(0, coverage.length - 1),
-        '5kb',
+        cov,
+        win,
         read_type,
         file_type,
-        map[key],
-        E.toPrecision(4),
-        V.toPrecision(4),
+        prog,
+        f(E),
+        f(V),
+        f(A),
+        f(B),
       ].join('\t')
     })
     .join('\n'),

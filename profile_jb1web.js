@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer'
 import fs from 'fs'
 ;(async () => {
+  // use a wide view because in order to force not only rendering skips/dels
+  // from mismatches, a bpperpx
   const browser = await puppeteer.launch({
-    args: ['--window-size=2100,980'],
+    args: ['--window-size=2500,980'],
   })
 
   const page = await browser.newPage()
@@ -12,7 +14,7 @@ import fs from 'fs'
   const params = new URL(process.argv[2]).searchParams
   const tracks = params.get('tracks')
   const n = tracks.split(',').length
-  const nblocks = 4 * n
+  const nblocks = 8 * n
   await page.evaluate(() => {
     window.fps = []
 
@@ -37,6 +39,7 @@ import fs from 'fs'
     process.argv[4],
     JSON.stringify(await page.metrics()) + '\n',
   )
+  await page.screenshot({ path: process.argv[3] + '.png' })
 
   await browser.close()
   process.exit(0)

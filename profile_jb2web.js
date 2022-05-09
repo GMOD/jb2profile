@@ -37,6 +37,7 @@ import fs from 'fs'
     process.argv[4],
     JSON.stringify(await page.metrics()) + '\n',
   )
+  await page.screenshot({ path: process.argv[3] + '.png' })
 
   await browser.close()
   process.exit(0)

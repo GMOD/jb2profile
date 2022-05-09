@@ -4,7 +4,7 @@
 echo "done align"
 
 
-for i in 02 03 04 05 20 40 60 80 81 82 83; do
+for i in 02 20 40 60 80; do
   k=0.$i
   a=$(echo  "1000*$k/1"|bc );
   echo Subsampling $k $ax;

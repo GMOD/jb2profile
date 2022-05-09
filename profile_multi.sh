@@ -17,7 +17,7 @@ sleep 1
 profile () {
   echo $0 $1 $2 $3 $4
   args=$(node split.js $2)
-  hyperfine -i --export-json $3.json --runs 6  \
+  hyperfine -i --export-json $3.json --runs 10  \
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8000.json\" \"$3_mem_8000.json\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8001.json\" \"$3_mem_8001.json\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8002.json\" \"$3_mem_8002.json\"" \
@@ -28,14 +28,18 @@ profile () {
 
 for f in bam cram; do
   for l in longread shortread; do
-    for j in 02 05 10 15; do
-      k=0.$j;
-      cov=$(echo  "1000*$k/1"|bc );
-      cmds=""
-      for i in {1..5}; do
-        cmds+="multi$i"."$cov"x.longread.$f;
-        profile "chr22_mask:124,000-129,000" $cmds "results/multi-$cov-$i-19kb-$l-$f" "hg19mod"
-        cmds+=",";
+    for j in 0.02 0.05 0.10 0.15; do
+      for m in 5 10; do
+        cov=$(echo  "1000*$j/1"|bc );
+        cmds=""
+        for i in {1..5}; do
+          echo $i $j $cov $m
+          s=124000
+          e=$(echo  "124000+$m*1000"|bc);
+          cmds+="multi$i"."$cov"x.longread.$f;
+          profile "chr22_mask:$s-$e" $cmds "results/multi-"$m"kb-$cov-$i-19kb-$l-$f" "hg19mod"
+          cmds+=",";
+        done;
       done;
     done;
   done;

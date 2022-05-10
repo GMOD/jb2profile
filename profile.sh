@@ -34,7 +34,7 @@ profile () {
 for k in longread shortread; do
   for i in 0.02 0.20 0.40 0.60 0.80 1; do
     cov=$(echo  "1000*$i/1"|bc )x;
-    for m in 1 5 10 19; do
+    for m in 1 10 19; do
       for j in bam cram; do
         echo $i $j $cov $m
         s=124000

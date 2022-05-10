@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export NODE_OPTIONS=--max-old-space-size=8192
+
 
 ## kill background scripts after finished
 ## https://spin.atomicobject.com/2017/08/24/start-stop-bash-background-process/
@@ -11,6 +13,7 @@ npx http-server igvjs/build -p 8000 -s  &
 npx http-server jb2_175 -p 8001 -s &
 npx http-server jb2lgv/build -p 8002 -s &
 npx http-server jbrowse -p 8003 -s &
+npx http-server jb2mod -p 8004 -s &
 
 sleep 1
 
@@ -25,7 +28,8 @@ profile () {
     "node profile_igvjs.js \"http://localhost:8000/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8000.json\" \"$3_mem_8000.json\"" \
     "node profile_jb2web.js \"http://localhost:8001/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8001.json\" \"$3_mem_8001.json\"" \
     "node profile_jb2web.js \"http://localhost:8002/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8002.json\" \"$3_mem_8002.json\"" \
-    "node profile_jb1web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2 snp,$2 aln\" \"$3_fps_8003.json\" \"$3_mem_8003.json\""
+    "node profile_jb1web.js \"http://localhost:8003/?loc=$1&assembly=$4&tracks=$2 snp,$2 aln\" \"$3_fps_8003.json\" \"$3_mem_8003.json\"" \
+    "node profile_jb2web.js \"http://localhost:8004/?loc=$1&assembly=$4&tracks=$2\" \"$3_fps_8004.json\" \"$3_mem_8004.json\""
   echo -e "\n\n\n\n\n\n\n"
 }
 

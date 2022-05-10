@@ -7,10 +7,10 @@ trap "kill 0" EXIT
 
 
 ## start servers on different ports
-node express_cross_origin_isolated/index.js igvjs/build 8000 &
-node express_cross_origin_isolated/index.js jb2_175 8001 &
-node express_cross_origin_isolated/index.js jb2lgv/build 8002 &
-node express_cross_origin_isolated/index.js jbrowse 8003 &
+npx http-server igvjs/build -p 8000 -s  &
+npx http-server jb2_175 -p 8001 -s &
+npx http-server jb2lgv/build -p 8002 -s &
+npx http-server jbrowse -p 8003 -s &
 
 sleep 1
 

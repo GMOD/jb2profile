@@ -43,7 +43,7 @@ shows significantly better performance.
 
 ### Platform
 
-Ran tests on a Dell Precision i9 laptop, ~2019, Ubuntu 22.04
+Ran tests on an Amazon EC2 xlarge (16gb memory) Ubuntu 22.04 instance
 
 ### How to interpret test names
 
@@ -53,6 +53,8 @@ being tested and region size being viewed
 ### Figures
 
 #### Runtime
+
+Rendering a single 10kb region of a track
 
 ![](img/img2.png)
 

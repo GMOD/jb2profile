@@ -32,7 +32,7 @@ console.log(
       const arr = command.split('_')
       const port = arr[arr.length - 1]
       const cmd = arr.slice(0, arr.length - 2).join('_')
-      const [coverage, read_type, file_type] = cmd.split('-')
+      const [coverage, window_size, read_type, file_type] = cmd.split('-')
       const key = Object.keys(map).find(key => port === key)
       const elts = total_frames.split(',').map(f => 1 / +f)
       const T = sum(elts)
@@ -43,10 +43,9 @@ console.log(
       const f = n => n.toPrecision(4)
       const cov = coverage.slice(0, coverage.length - 1)
       const prog = map[key]
-      const win = '5kb'
       return [
         cov,
-        win,
+        window_size,
         read_type,
         file_type,
         prog,

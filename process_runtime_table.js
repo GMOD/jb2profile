@@ -3,9 +3,9 @@ import { mean, stddev } from './util.js'
 
 const rep = {
   'http://localhost:8000/': 'igvjs',
-  'http://localhost:8001/': 'jb2 web',
   'http://localhost:8002/': 'jb2 emb',
   'http://localhost:8003/': 'jb1',
+  'http://localhost:8004/': 'jb2 web',
 }
 
 function formatLine([command, times]) {
@@ -16,7 +16,8 @@ function formatLine([command, times]) {
   const read_type = command.includes('shortread') ? 'shortread' : 'longread'
   const file_type = command.includes('bam') ? 'bam' : 'cram'
   const coverage = command.match(/(\d+)x/)[1]
-  return [rep[key], '5kb', coverage, read_type, file_type, m, s].join('\t')
+  const prog = rep[key]
+  return prog && [prog, '5kb', coverage, read_type, file_type, m, s].join('\t')
 }
 
 const x = JSON.parse(fs.readFileSync(process.argv[2]))

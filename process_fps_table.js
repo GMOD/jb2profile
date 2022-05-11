@@ -3,9 +3,9 @@ const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
   8000: 'igvjs',
-  8001: 'jb2 web',
   8002: 'jb2 emb',
   8003: 'jb1',
+  8004: 'jb2 web',
 }
 
 console.log(
@@ -27,20 +27,24 @@ console.log(
       const arr = command.split('_')
       const port = arr[arr.length - 1]
       const cmd = arr.slice(0, arr.length - 2).join('_')
-      const [coverage, read_type, file_type] = cmd.split('-')
+      const [coverage, window_size, read_type, file_type] = cmd.split('-')
       const key = Object.keys(map).find(key => port === key)
+      const prog = map[key]
       return total_frames
         .split(',')
-        .map(frame =>
-          [
-            coverage.slice(0, coverage.length - 1),
-            '5kb',
-            read_type,
-            file_type,
-            map[key],
-            frame,
-          ].join('\t'),
+        .map(
+          frame =>
+            prog &&
+            [
+              coverage.slice(0, coverage.length - 1),
+              window_size,
+              read_type,
+              file_type,
+              prog,
+              frame,
+            ].join('\t'),
         )
+        .filter(f => !!f)
         .join('\n')
     })
     .join('\n'),

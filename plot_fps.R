@@ -13,6 +13,7 @@ print(head(df2))
 
 
 
+
 bam = df[df$file_type=='bam',]
 bam_sr = bam[bam$read_type=='shortread',]
 bam_lr = bam[bam$read_type=='longread',]

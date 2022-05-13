@@ -1,3 +1,5 @@
+import fs from 'fs'
+
 export function mean(arr) {
   return sum(arr) / arr.length
 }
@@ -11,11 +13,5 @@ export function stddev(arr) {
 }
 
 export function checkFileExistsSync(filepath) {
-  let flag = true
-  try {
-    fs.accessSync(filepath, fs.constants.F_OK)
-  } catch (e) {
-    flag = false
-  }
-  return flag
+  return fs.existsSync(filepath)
 }

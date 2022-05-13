@@ -1,4 +1,5 @@
 import puppeteer from 'puppeteer'
+import fs from 'fs'
 import { checkFileExistsSync } from './util.js'
 ;(async () => {
   const timeoutToken = process.argv[3] + '.timeout'

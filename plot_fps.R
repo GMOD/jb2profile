@@ -98,12 +98,14 @@ plot_superbare <- function(df, filename, title) {
   ggsave(filename, height = 3)
 }
 
+print('scatter')
 plot(cram_lr, 'img/cram_lr_average_fps.png', 'CRAM longread - main thread stall')
 plot(cram_sr, 'img/cram_sr_average_fps.png', 'CRAM shortread - main thread stall')
 plot(bam_lr, 'img/bam_lr_average_fps.png', 'BAM longread - main thread stall')
 plot(bam_sr, 'img/bam_sr_average_fps.png', 'BAM shortread - main thread stall')
 
 
+print('cumsums')
 plot_cumsums(cram_lr, 'img/cram_lr_cumsums.png', 'CRAM longread - frame # vs time')
 plot_cumsums(cram_sr, 'img/cram_sr_cumsums.png', 'CRAM shortread - frame # vs time')
 plot_cumsums(bam_lr, 'img/bam_lr_cumsums.png', 'BAM longread - frame # vs time')
@@ -111,6 +113,7 @@ plot_cumsums(bam_sr, 'img/bam_sr_cumsums.png', 'BAM shortread - frame # vs time'
 
 
 
+print('ev')
 plot_lm(cram_lr2, 'img/cram_lr_ev.png', 'CRAM longread - average response time')
 plot_lm(cram_sr2, 'img/cram_sr_ev.png', 'CRAM shortread - average response time')
 plot_lm(bam_lr2, 'img/bam_lr_ev.png', 'BAM longread - average response time')
@@ -118,6 +121,7 @@ plot_lm(bam_sr2, 'img/bam_sr_ev.png', 'BAM shortread - average response time')
 
 
 
+print('bare')
 plot_bare(cram_lr2, 'img/cram_lr_bare.png', 'CRAM longread - average response time')
 plot_bare(cram_sr2, 'img/cram_sr_bare.png', 'CRAM shortread - average response time')
 plot_bare(bam_lr2, 'img/bam_lr_bare.png', 'BAM longread - average response time')
@@ -125,7 +129,7 @@ plot_bare(bam_sr2, 'img/bam_sr_bare.png', 'BAM shortread - average response time
 
 
 
-
+print('superbare')
 plot_superbare(cram_lr2, 'img/cram_lr_superbare.png', 'CRAM longread - average response time')
 plot_superbare(cram_sr2, 'img/cram_sr_superbare.png', 'CRAM shortread - average response time')
 plot_superbare(bam_lr2, 'img/bam_lr_superbare.png', 'BAM longread - average response time')

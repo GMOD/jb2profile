@@ -5,9 +5,9 @@ const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
   8000: 'igvjs',
-  8001: 'jb2 web',
   8002: 'jb2 emb',
   8003: 'jb1',
+  8004: 'jb2 web',
 }
 
 console.log(
@@ -43,17 +43,21 @@ console.log(
       const f = n => n.toPrecision(4)
       const cov = coverage.slice(0, coverage.length - 1)
       const prog = map[key]
-      return [
-        cov,
-        window_size,
-        read_type,
-        file_type,
-        prog,
-        f(E),
-        f(V),
-        f(A),
-        f(B),
-      ].join('\t')
+      return (
+        prog &&
+        [
+          cov,
+          window_size,
+          read_type,
+          file_type,
+          prog,
+          f(E),
+          f(V),
+          f(A),
+          f(B),
+        ].join('\t')
+      )
     })
+    .filter(f => !!f)
     .join('\n'),
 )

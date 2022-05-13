@@ -36,7 +36,7 @@ for m in 5 10; do
           echo $i $j $cov $m
           s=124000
           e=$(echo  "124000+$m*1000"|bc);
-          cmds+="multi$i"."$cov"x.longread.$f;
+          cmds+="multi$i"."$cov"x.$l.$f;
           profile "chr22_mask:$s-$e" $cmds "results/multi-"$m"kb-$cov-$i-$l-$f" "hg19mod"
           cmds+=",";
         done;

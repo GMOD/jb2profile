@@ -43,7 +43,9 @@ shows significantly better performance.
 
 ### Platform
 
-Ran tests on an Amazon EC2 xlarge (16gb memory) Ubuntu 22.04 instance
+Ran tests on an Dell Precision laptop 7540 (i9 processor, 32gb memory). Has
+also been tested on Amazon EC2 xlarge (16gb memory) Ubuntu 22.04 instance,
+where results are similar but somewhat slower to run.
 
 ### How to interpret test names
 
@@ -70,15 +72,7 @@ Another way to look at this is frame # vs time
 
 ![](img/img4.png)
 
-Another way to look at this is the expected value
-
-![](img/img5.png)
-
-More bare version of above:
-
-![](img/img6.png)
-
-Another more bare version of above:
+Looking at the expected value of the response time of the app:
 
 ![](img/img7.png)
 

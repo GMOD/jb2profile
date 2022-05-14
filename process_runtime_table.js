@@ -20,9 +20,9 @@ function formatLine([command, times]) {
   return prog && [prog, '5kb', coverage, read_type, file_type, m, s].join('\t')
 }
 
-const x = JSON.parse(fs.readFileSync(process.argv[2]))
 console.log(
-  x.results
+  JSON.parse(fs.readFileSync(process.argv[2]))
+    .results.filter(r => !r.exit_codes.find(a => a !== 0))
     .map(r => formatLine([r.command, r.times]))
     .filter(f => !!f)
     .join('\n'),

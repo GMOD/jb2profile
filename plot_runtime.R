@@ -3,7 +3,7 @@ library(ggplot2)
 
 df = read.csv('runtime_table_processed.csv',sep='\t')
 
-df = df[df$time < 300,]
+df = df[df$time < 200,]
 bam = df[df$file_type=='bam',]
 bam_sr = bam[bam$read_type=='shortread',]
 bam_lr = bam[bam$read_type=='longread',]

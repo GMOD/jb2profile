@@ -2,10 +2,10 @@ import fs from 'fs'
 import { mean, stddev } from './util.js'
 
 const rep = {
-  'http://localhost:8000/': 'igvjs',
-  'http://localhost:8002/': 'jb2 emb',
-  'http://localhost:8003/': 'jb1',
-  'http://localhost:8004/': 'jb2 web',
+  8000: 'igvjs',
+  8001: 'jb2 web',
+  8002: 'jb2 emb',
+  8003: 'jb1',
 }
 
 function formatLine([command, times]) {

@@ -11,13 +11,16 @@ bam_lr = bam[bam$read_type=='longread',]
 cram = df[df$file_type=='cram',]
 cram_sr = cram[cram$read_type=='shortread',]
 cram_lr = cram[cram$read_type=='longread',]
+print(head(df))
 
 
-plot<-function(df, title,filename) {
-  ggplot(df, aes(x = num_tracks, y = time, group=program, color=program)) + 
-    geom_line() +
+plot<-function(df, title, filename) {
+  ggplot(df, aes(x = num_tracks, y = time)) + 
+    geom_line(aes(color = program)) +
+    geom_point(aes(color = program)) + 
+    geom_errorbar(aes(ymin=time-sd, ymax=time+sd), width=0.1) +
     labs(y= "time (s)")+
-    facet_wrap(~ coverage, scales = "free_y", ncol=4) +
+    facet_grid(~ coverage) +
     ggtitle(title)
 
   ggsave(filename, width=13, height=3)

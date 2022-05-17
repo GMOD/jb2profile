@@ -87,4 +87,4 @@ in BAM and CRAM format, and at various coverage levels. If line is truncated, th
 it timed out (>10 minutes indicating memory out of bounds or extreme slowness).
 This example shows the power of webworkers which can parallelize rendering
 
-![](img/img1.png)
+![](img/multi.png)

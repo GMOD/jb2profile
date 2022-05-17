@@ -1,4 +1,5 @@
 library(ggplot2)
+library(patchwork)
 
 # df has raw values
 df = read.csv('fps_table_processed.csv',sep='\t')
@@ -33,7 +34,7 @@ cram_lr2 = cram2[cram2$read_type=='longread',]
 
 
 
-plot <- function(df, filename, title) {
+plot <- function(df, title) {
   ggplot(df, aes(x = program, y = time_between_frames)) + 
     geom_jitter(aes(color = program)) +
     labs(y= "time between frames (s)")+
@@ -41,10 +42,9 @@ plot <- function(df, filename, title) {
     theme(legend.position = "none") +
     ggtitle(title)
 
-  ggsave(filename, height = 3,width=15)
 }
 
-plot_cumsums <- function(df, filename, title) {
+plot_cumsums <- function(df, title) {
 
   df$csum <- ave(df$time_between_frames, df$program, df$coverage, FUN=cumsum)
   df$count <- ave(df$time_between_frames, df$program, df$coverage, FUN=seq_along)
@@ -56,11 +56,10 @@ plot_cumsums <- function(df, filename, title) {
     facet_grid(~ coverage, scale="free") +
     ggtitle(title)
 
-  ggsave(filename, height = 3,width=13)
 }
 
 
-plot_lm <- function(df, filename, title) {
+plot_lm <- function(df, title) {
 
   ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
     geom_point() +
@@ -69,11 +68,10 @@ plot_lm <- function(df, filename, title) {
     labs(y= "Response time (s)") +
     ggtitle(title)
 
-  ggsave(filename, height = 3)
 }
 
 
-plot_bare <- function(df, filename, title) {
+plot_bare <- function(df, title) {
 
   ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
     geom_point() +
@@ -82,56 +80,55 @@ plot_bare <- function(df, filename, title) {
     labs(y= "Response time (s)") +
     ggtitle(title)
 
-  ggsave(filename, height = 3)
 }
 
-
-plot_superbare <- function(df, filename, title) {
+plot_superbare <- function(df, title) {
 
   ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
-    geom_point(position_dodge(width=20)) +
+    geom_point() +
     stat_smooth(method = "lm", aes(color=program,fill=program),lty=3,se=F) +
     geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
     labs(y= "Response time (s)") +
     ggtitle(title)
 
-  ggsave(filename, height = 3)
 }
 
-print('scatter')
-plot(cram_lr, 'img/cram_lr_average_fps.png', 'CRAM longread - main thread stall')
-plot(cram_sr, 'img/cram_sr_average_fps.png', 'CRAM shortread - main thread stall')
-plot(bam_lr, 'img/bam_lr_average_fps.png', 'BAM longread - main thread stall')
-plot(bam_sr, 'img/bam_sr_average_fps.png', 'BAM shortread - main thread stall')
+
+ggsave('img/fps_scatter.png', 
+(plot(cram_lr, 'CRAM longread - main thread stall')+
+plot(cram_sr, 'CRAM shortread - main thread stall')+
+plot(bam_lr, 'BAM longread - main thread stall')+
+plot(bam_sr, 'BAM shortread - main thread stall')),width=13)
 
 
-print('cumsums')
-plot_cumsums(cram_lr, 'img/cram_lr_cumsums.png', 'CRAM longread - frame # vs time')
-plot_cumsums(cram_sr, 'img/cram_sr_cumsums.png', 'CRAM shortread - frame # vs time')
-plot_cumsums(bam_lr, 'img/bam_lr_cumsums.png', 'BAM longread - frame # vs time')
-plot_cumsums(bam_sr, 'img/bam_sr_cumsums.png', 'BAM shortread - frame # vs time')
-
-
-
-print('ev')
-plot_lm(cram_lr2, 'img/cram_lr_ev.png', 'CRAM longread - average response time')
-plot_lm(cram_sr2, 'img/cram_sr_ev.png', 'CRAM shortread - average response time')
-plot_lm(bam_lr2, 'img/bam_lr_ev.png', 'BAM longread - average response time')
-plot_lm(bam_sr2, 'img/bam_sr_ev.png', 'BAM shortread - average response time')
+ggsave('img/fps_cumsums.png', 
+(plot_cumsums(cram_lr, 'CRAM longread - frame # vs time')+
+plot_cumsums(cram_sr, 'CRAM shortread - frame # vs time'))/
+(plot_cumsums(bam_lr, 'BAM longread - frame # vs time')+
+plot_cumsums(bam_sr, 'BAM shortread - frame # vs time')), width=26,height=13)
 
 
 
-print('bare')
-plot_bare(cram_lr2, 'img/cram_lr_bare.png', 'CRAM longread - average response time')
-plot_bare(cram_sr2, 'img/cram_sr_bare.png', 'CRAM shortread - average response time')
-plot_bare(bam_lr2, 'img/bam_lr_bare.png', 'BAM longread - average response time')
-plot_bare(bam_sr2, 'img/bam_sr_bare.png', 'BAM shortread - average response time')
+
+ggsave('img/fps_ev.png', 
+(plot_lm(cram_lr2, 'CRAM longread - average response time')+
+plot_lm(cram_sr2, 'CRAM shortread - average response time'))/
+(plot_lm(bam_lr2, 'BAM longread - average response time')+
+plot_lm(bam_sr2, 'BAM shortread - average response time')),width=26,height=13)
 
 
 
-print('superbare')
-plot_superbare(cram_lr2, 'img/cram_lr_superbare.png', 'CRAM longread - average response time')
-plot_superbare(cram_sr2, 'img/cram_sr_superbare.png', 'CRAM shortread - average response time')
-plot_superbare(bam_lr2, 'img/bam_lr_superbare.png', 'BAM longread - average response time')
-plot_superbare(bam_sr2, 'img/bam_sr_superbare.png', 'BAM shortread - average response time')
+ggsave('img/fps_bare.png', 
+(plot_bare(cram_lr2, 'CRAM longread - average response time')+
+plot_bare(cram_sr2, 'CRAM shortread - average response time'))/
+(plot_bare(bam_lr2, 'BAM longread - average response time')+
+plot_bare(bam_sr2, 'BAM shortread - average response time')),width=26,height=13)
+
+
+
+ggsave('img/fps_superbare.png', 
+(plot_superbare(cram_lr2, 'CRAM longread - average response time')+
+plot_superbare(cram_sr2, 'CRAM shortread - average response time'))/
+(plot_superbare(bam_lr2, 'BAM longread - average response time')+
+plot_superbare(bam_sr2, 'BAM shortread - average response time')),width=26,height=13)
 

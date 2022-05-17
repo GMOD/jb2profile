@@ -70,15 +70,15 @@ Shows a plot of the seconds-per-frame (inverse of FPS) in order to highlight
 frames that took an especially long time, essentially indicating when the
 user-interface would be locked up
 
-![](img/img3.png)
+![](img/fps_scatter.png)
 
 Another way to look at this is frame # vs time
 
-![](img/img4.png)
+![](img/fps_cumsum.png)
 
 Looking at the expected value of the response time of the app:
 
-![](img/img7.png)
+![](img/fps_superbare.png)
 
 #### Rendering multiple tracks at once
 

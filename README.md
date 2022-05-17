@@ -4,7 +4,8 @@ Some profiling on jbrowse 2
 
 ## Pre-requisites
 
-Install pbsim2, add to path
+Install pbsim2, add to path. For generating figures, need R, ggplot2, and
+patchwork
 
 ## Setup
 
@@ -38,8 +39,8 @@ shows significantly better performance.
 - these tests are all chrome based (using puppeteer library for automation),
   running same on firefox or safari may be slower (especially on jbrowse-web)
 - this measures cold start e.g. loading the entire page
-- these benchmarks are not comprehensive, and user other user experience
-  measures can vary after the track is loaded for example
+- these benchmarks are not comprehensive, and other user experience measures
+  can vary aside from these
 
 ### Platform
 

@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "command": "node profile_igvjs.js \"http://localhost:8000/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.50x.shortread.bam,multi2.50x.shortread.bam,multi3.50x.shortread.bam,multi4.50x.shortread.bam,multi5.50x.shortread.bam\" \"results/multi-5kb-50-5-shortread-bam_fps_8000.json\" \"results/multi-5kb-50-5-shortread-bam_mem_8000.json\"",
+      "mean": 5.01768561454,
+      "stddev": 0.16239481688717147,
+      "median": 4.99378767604,
+      "user": 0.34821744,
+      "system": 0.10213042000000001,
+      "min": 4.856389397540001,
+      "max": 5.37304612854,
+      "times": [
+        5.37304612854,
+        5.089612430540001,
+        5.153374648540001,
+        4.858592078540001,
+        4.856389397540001,
+        5.0721510185400005,
+        5.01143961454,
+        4.90645893054,
+        4.976135737540001,
+        4.879656160540001
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb2web.js \"http://localhost:8002/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.50x.shortread.bam,multi2.50x.shortread.bam,multi3.50x.shortread.bam,multi4.50x.shortread.bam,multi5.50x.shortread.bam\" \"results/multi-5kb-50-5-shortread-bam_fps_8002.json\" \"results/multi-5kb-50-5-shortread-bam_mem_8002.json\"",
+      "mean": 6.599066121040002,
+      "stddev": 0.15153288108822982,
+      "median": 6.596485767540001,
+      "user": 0.36150494,
+      "system": 0.10174371999999998,
+      "min": 6.335502526540001,
+      "max": 6.883028306540001,
+      "times": [
+        6.49152178854,
+        6.487205100540001,
+        6.335502526540001,
+        6.612501708540001,
+        6.883028306540001,
+        6.69511272454,
+        6.580469826540001,
+        6.630709755540001,
+        6.540340893540001,
+        6.73426857954
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb1web.js \"http://localhost:8003/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.50x.shortread.bam aln,multi1.50x.shortread.bam snp,multi2.50x.shortread.bam aln,multi2.50x.shortread.bam snp,multi3.50x.shortread.bam aln,multi3.50x.shortread.bam snp,multi4.50x.shortread.bam aln,multi4.50x.shortread.bam snp,multi5.50x.shortread.bam aln,multi5.50x.shortread.bam snp\" \"results/multi-5kb-50-5-shortread-bam_fps_8003.json\" \"results/multi-5kb-50-5-shortread-bam_mem_8003.json\"",
+      "mean": 6.00335822994,
+      "stddev": 0.27623422590245494,
+      "median": 6.006682959540001,
+      "user": 0.44951104,
+      "system": 0.13897752000000002,
+      "min": 5.362439276540001,
+      "max": 6.34457793754,
+      "times": [
+        5.91362565054,
+        5.9571562815400005,
+        6.05537333954,
+        6.34457793754,
+        5.362439276540001,
+        6.24115569154,
+        5.957992579540001,
+        6.211608704540001,
+        6.14403849654,
+        5.84561434154
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb2web.js \"http://localhost:8001/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.50x.shortread.bam,multi2.50x.shortread.bam,multi3.50x.shortread.bam,multi4.50x.shortread.bam,multi5.50x.shortread.bam\" \"results/multi-5kb-50-5-shortread-bam_fps_8001.json\" \"results/multi-5kb-50-5-shortread-bam_mem_8001.json\"",
+      "mean": 4.094888369240001,
+      "stddev": 0.04373469873153254,
+      "median": 4.11368881704,
+      "user": 0.48010524,
+      "system": 0.17431382,
+      "min": 4.021352189540001,
+      "max": 4.135679667540001,
+      "times": [
+        4.04866420154,
+        4.135679667540001,
+        4.08911066854,
+        4.0361714415400005,
+        4.021352189540001,
+        4.13526682054,
+        4.1235019605400005,
+        4.111479746540001,
+        4.131759108540001,
+        4.11589788754
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

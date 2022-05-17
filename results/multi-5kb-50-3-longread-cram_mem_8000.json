@@ -1,0 +1,150 @@
+{
+  "Timestamp": 58802.724823,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 265,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 115,
+  "LayoutDuration": 0.031426,
+  "RecalcStyleDuration": 0.022943,
+  "ScriptDuration": 0.149206,
+  "TaskDuration": 17.764634,
+  "JSHeapUsedSize": 450262988,
+  "JSHeapTotalSize": 494809088
+}
+{
+  "Timestamp": 58824.650995,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 273,
+  "Nodes": 315,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 114,
+  "LayoutDuration": 0.031115,
+  "RecalcStyleDuration": 0.021901,
+  "ScriptDuration": 0.148368,
+  "TaskDuration": 16.280146,
+  "JSHeapUsedSize": 505803276,
+  "JSHeapTotalSize": 538165248
+}
+{
+  "Timestamp": 58847.080664,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 261,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 115,
+  "LayoutDuration": 0.031982,
+  "RecalcStyleDuration": 0.023105,
+  "ScriptDuration": 0.148579,
+  "TaskDuration": 17.08881,
+  "JSHeapUsedSize": 453772448,
+  "JSHeapTotalSize": 500523008
+}
+{
+  "Timestamp": 58870.211606,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 265,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 111,
+  "LayoutDuration": 0.030194,
+  "RecalcStyleDuration": 0.02212,
+  "ScriptDuration": 0.150117,
+  "TaskDuration": 17.485958,
+  "JSHeapUsedSize": 474808808,
+  "JSHeapTotalSize": 506970112
+}
+{
+  "Timestamp": 58892.679246,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 265,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 113,
+  "LayoutDuration": 0.031532,
+  "RecalcStyleDuration": 0.023405,
+  "ScriptDuration": 0.149169,
+  "TaskDuration": 16.872641,
+  "JSHeapUsedSize": 474832216,
+  "JSHeapTotalSize": 507613184
+}
+{
+  "Timestamp": 58914.926844,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 265,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 113,
+  "LayoutDuration": 0.031622,
+  "RecalcStyleDuration": 0.022432,
+  "ScriptDuration": 0.144842,
+  "TaskDuration": 16.988244,
+  "JSHeapUsedSize": 474573480,
+  "JSHeapTotalSize": 506564608
+}
+{
+  "Timestamp": 58938.0215,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 265,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 114,
+  "LayoutDuration": 0.031667,
+  "RecalcStyleDuration": 0.022361,
+  "ScriptDuration": 0.148701,
+  "TaskDuration": 17.669672,
+  "JSHeapUsedSize": 449868308,
+  "JSHeapTotalSize": 499642368
+}
+{
+  "Timestamp": 58960.933449,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 265,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 116,
+  "LayoutDuration": 0.03147,
+  "RecalcStyleDuration": 0.022185,
+  "ScriptDuration": 0.150479,
+  "TaskDuration": 17.290858,
+  "JSHeapUsedSize": 457958912,
+  "JSHeapTotalSize": 495017984
+}
+{
+  "Timestamp": 58982.446987,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 261,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 113,
+  "LayoutDuration": 0.030574,
+  "RecalcStyleDuration": 0.02219,
+  "ScriptDuration": 0.147894,
+  "TaskDuration": 16.016573,
+  "JSHeapUsedSize": 447071484,
+  "JSHeapTotalSize": 529784832
+}
+{
+  "Timestamp": 59003.956446,
+  "Documents": 1,
+  "Frames": 1,
+  "JSEventListeners": 269,
+  "Nodes": 310,
+  "LayoutCount": 63,
+  "RecalcStyleCount": 112,
+  "LayoutDuration": 0.031097,
+  "RecalcStyleDuration": 0.022512,
+  "ScriptDuration": 0.147908,
+  "TaskDuration": 16.364869,
+  "JSHeapUsedSize": 446435592,
+  "JSHeapTotalSize": 531881984
+}

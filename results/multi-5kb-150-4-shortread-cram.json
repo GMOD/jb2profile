@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "command": "node profile_igvjs.js \"http://localhost:8000/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.150x.shortread.cram,multi2.150x.shortread.cram,multi3.150x.shortread.cram,multi4.150x.shortread.cram\" \"results/multi-5kb-150-4-shortread-cram_fps_8000.json\" \"results/multi-5kb-150-4-shortread-cram_mem_8000.json\"",
+      "mean": 10.04191690884,
+      "stddev": 0.3233934333867928,
+      "median": 9.97328847664,
+      "user": 0.45749452,
+      "system": 0.16626424,
+      "min": 9.51194115064,
+      "max": 10.56726909264,
+      "times": [
+        10.24388671364,
+        9.51194115064,
+        9.91373272964,
+        10.37235994164,
+        10.30429780664,
+        9.88788536764,
+        9.813353554639999,
+        10.56726909264,
+        10.03284422364,
+        9.77159850764
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb2web.js \"http://localhost:8002/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.150x.shortread.cram,multi2.150x.shortread.cram,multi3.150x.shortread.cram,multi4.150x.shortread.cram\" \"results/multi-5kb-150-4-shortread-cram_fps_8002.json\" \"results/multi-5kb-150-4-shortread-cram_mem_8002.json\"",
+      "mean": 15.84476739884,
+      "stddev": 0.4518162202077891,
+      "median": 15.745427451640001,
+      "user": 0.55204642,
+      "system": 0.19033244,
+      "min": 15.37134428664,
+      "max": 16.52755453764,
+      "times": [
+        16.46767990464,
+        15.82731901264,
+        15.855753803639999,
+        16.35931523064,
+        15.37134428664,
+        15.66353589064,
+        16.52755453764,
+        15.38916394464,
+        15.43908726964,
+        15.54692010764
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb1web.js \"http://localhost:8003/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.150x.shortread.cram aln,multi1.150x.shortread.cram snp,multi2.150x.shortread.cram aln,multi2.150x.shortread.cram snp,multi3.150x.shortread.cram aln,multi3.150x.shortread.cram snp,multi4.150x.shortread.cram aln,multi4.150x.shortread.cram snp\" \"results/multi-5kb-150-4-shortread-cram_fps_8003.json\" \"results/multi-5kb-150-4-shortread-cram_mem_8003.json\"",
+      "mean": 10.40383478584,
+      "stddev": 0.47574034494541945,
+      "median": 10.25782196014,
+      "user": 0.51276062,
+      "system": 0.16364283999999998,
+      "min": 9.83253524664,
+      "max": 11.30733722364,
+      "times": [
+        10.73091732664,
+        9.951152669639999,
+        10.79172246364,
+        9.83253524664,
+        10.782201429639999,
+        10.14747689464,
+        10.26783911464,
+        9.97936068364,
+        10.24780480564,
+        11.30733722364
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb2web.js \"http://localhost:8001/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.150x.shortread.cram,multi2.150x.shortread.cram,multi3.150x.shortread.cram,multi4.150x.shortread.cram\" \"results/multi-5kb-150-4-shortread-cram_fps_8001.json\" \"results/multi-5kb-150-4-shortread-cram_mem_8001.json\"",
+      "mean": 6.44637656344,
+      "stddev": 0.07717981233662395,
+      "median": 6.447549501639999,
+      "user": 0.55898902,
+      "system": 0.2729666399999999,
+      "min": 6.31360478364,
+      "max": 6.56830784564,
+      "times": [
+        6.48698298064,
+        6.42359269564,
+        6.46770734564,
+        6.34759193964,
+        6.56830784564,
+        6.41453860364,
+        6.427391657639999,
+        6.31360478364,
+        6.50574740464,
+        6.5083003776399995
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "results": [
+    {
+      "command": "node profile_igvjs.js \"http://localhost:8000/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.20x.longread.cram\" \"results/multi-5kb-20-1-longread-cram_fps_8000.json\" \"results/multi-5kb-20-1-longread-cram_mem_8000.json\"",
+      "mean": 4.4895896097599985,
+      "stddev": 0.14925127024281368,
+      "median": 4.458046170459999,
+      "user": 0.46668091999999994,
+      "system": 0.17796383999999998,
+      "min": 4.30089407046,
+      "max": 4.75191019746,
+      "times": [
+        4.75191019746,
+        4.64633702346,
+        4.30089407046,
+        4.34779128446,
+        4.62328380646,
+        4.41126156246,
+        4.47892272246,
+        4.55223852146,
+        4.43716961846,
+        4.34608729046
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb2web.js \"http://localhost:8002/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.20x.longread.cram\" \"results/multi-5kb-20-1-longread-cram_fps_8002.json\" \"results/multi-5kb-20-1-longread-cram_mem_8002.json\"",
+      "mean": 4.538509617859999,
+      "stddev": 0.041066273563196844,
+      "median": 4.55081103246,
+      "user": 0.36775682,
+      "system": 0.08892523999999999,
+      "min": 4.46276427846,
+      "max": 4.57581941446,
+      "times": [
+        4.46276427846,
+        4.5317977564600005,
+        4.51534843146,
+        4.5756186124600005,
+        4.47940767046,
+        4.54351419046,
+        4.57521039146,
+        4.57581941446,
+        4.56750755846,
+        4.55810787446
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb1web.js \"http://localhost:8003/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.20x.longread.cram aln,multi1.20x.longread.cram snp\" \"results/multi-5kb-20-1-longread-cram_fps_8003.json\" \"results/multi-5kb-20-1-longread-cram_mem_8003.json\"",
+      "mean": 4.80090016006,
+      "stddev": 0.9073369753896816,
+      "median": 4.75412422546,
+      "user": 0.4482554199999999,
+      "system": 0.12470434,
+      "min": 3.8875272884600003,
+      "max": 5.74404032346,
+      "times": [
+        5.61292799946,
+        5.51964255146,
+        3.8875272884600003,
+        3.95065285546,
+        5.72809339346,
+        3.98860589946,
+        3.9144957104599998,
+        5.69161942046,
+        3.97139615846,
+        5.74404032346
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "command": "node profile_jb2web.js \"http://localhost:8001/?loc=chr22_mask:124000-129000&assembly=hg19mod&tracks=multi1.20x.longread.cram\" \"results/multi-5kb-20-1-longread-cram_fps_8001.json\" \"results/multi-5kb-20-1-longread-cram_mem_8001.json\"",
+      "mean": 4.690635740660001,
+      "stddev": 0.06482797383500159,
+      "median": 4.67641164346,
+      "user": 0.4002495199999999,
+      "system": 0.14951374,
+      "min": 4.60751646746,
+      "max": 4.7962892554600005,
+      "times": [
+        4.61810357146,
+        4.68036757646,
+        4.64975709646,
+        4.73284364946,
+        4.68820306246,
+        4.67245571046,
+        4.66944699746,
+        4.7962892554600005,
+        4.60751646746,
+        4.79137401946
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

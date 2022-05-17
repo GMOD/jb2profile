@@ -105,7 +105,7 @@ ggsave('img/fps_cumsums.png',
 (plot_cumsums(cram_lr, 'CRAM longread - frame # vs time')+
 plot_cumsums(cram_sr, 'CRAM shortread - frame # vs time'))/
 (plot_cumsums(bam_lr, 'BAM longread - frame # vs time')+
-plot_cumsums(bam_sr, 'BAM shortread - frame # vs time')), width=26,height=13)
+plot_cumsums(bam_sr, 'BAM shortread - frame # vs time')), width=13)
 
 
 
@@ -114,7 +114,7 @@ ggsave('img/fps_ev.png',
 (plot_lm(cram_lr2, 'CRAM longread - average response time')+
 plot_lm(cram_sr2, 'CRAM shortread - average response time'))/
 (plot_lm(bam_lr2, 'BAM longread - average response time')+
-plot_lm(bam_sr2, 'BAM shortread - average response time')),width=26,height=13)
+plot_lm(bam_sr2, 'BAM shortread - average response time')),width=13)
 
 
 
@@ -122,7 +122,7 @@ ggsave('img/fps_bare.png',
 (plot_bare(cram_lr2, 'CRAM longread - average response time')+
 plot_bare(cram_sr2, 'CRAM shortread - average response time'))/
 (plot_bare(bam_lr2, 'BAM longread - average response time')+
-plot_bare(bam_sr2, 'BAM shortread - average response time')),width=26,height=13)
+plot_bare(bam_sr2, 'BAM shortread - average response time')),width=13)
 
 
 
@@ -130,5 +130,5 @@ ggsave('img/fps_superbare.png',
 (plot_superbare(cram_lr2, 'CRAM longread - average response time')+
 plot_superbare(cram_sr2, 'CRAM shortread - average response time'))/
 (plot_superbare(bam_lr2, 'BAM longread - average response time')+
-plot_superbare(bam_sr2, 'BAM shortread - average response time')),width=26,height=13)
+plot_superbare(bam_sr2, 'BAM shortread - average response time')),width=13)
 

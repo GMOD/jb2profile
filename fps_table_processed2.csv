@@ -1,0 +1,70 @@
+coverage	window	read_type	file_type	program	expected_value	variance	alpha	beta
+1000	19kb	longread	bam	igvjs	5.304	18.29	1.538	0.2900
+1000	19kb	longread	bam	jb2 emb	9.752	81.76	1.163	0.1193
+1000	19kb	longread	cram	igvjs	18.74	397.8	0.8830	0.04711
+1000	19kb	longread	cram	jb2 emb	2.739	9.464	0.7927	0.2894
+1000	19kb	longread	cram	jb1	3.666	14.27	0.9419	0.2569
+1000	19kb	shortread	bam	igvjs	4.995	10.98	2.272	0.4549
+1000	19kb	shortread	bam	jb2 emb	4.457	13.32	1.492	0.3347
+1000	19kb	shortread	bam	jb1	1.679	4.899	0.5753	0.3427
+1000	19kb	shortread	cram	igvjs	9.577	90.84	1.010	0.1054
+1000	19kb	shortread	cram	jb2 emb	1.946	6.524	0.5802	0.2982
+1000	19kb	shortread	cram	jb1	1.563	1.988	1.228	0.7858
+200	19kb	longread	bam	igvjs	2.077	1.780	2.425	1.167
+200	19kb	longread	bam	jb2 emb	3.371	10.13	1.122	0.3327
+200	19kb	longread	bam	jb1	25.70	358.2	1.844	0.07174
+200	19kb	longread	cram	igvjs	3.717	13.72	1.007	0.2710
+200	19kb	longread	cram	jb2 emb	1.064	1.101	1.028	0.9663
+200	19kb	longread	cram	jb1	0.7515	0.4128	1.368	1.820
+200	19kb	shortread	bam	igvjs	3.486	5.078	2.393	0.6864
+200	19kb	shortread	bam	jb2 emb	1.190	0.7278	1.947	1.636
+200	19kb	shortread	bam	jb1	0.1951	0.02394	1.590	8.149
+200	19kb	shortread	cram	igvjs	1.902	3.586	1.009	0.5304
+200	19kb	shortread	cram	jb2 emb	0.6123	0.3628	1.033	1.688
+200	19kb	shortread	cram	jb1	0.5009	0.1853	1.354	2.703
+20	19kb	longread	bam	igvjs	1.629	1.786	1.487	0.9125
+20	19kb	longread	bam	jb2 emb	0.4882	0.2402	0.9924	2.033
+20	19kb	longread	bam	jb1	3.736	8.025	1.739	0.4655
+20	19kb	longread	cram	igvjs	1.968	2.870	1.350	0.6857
+20	19kb	longread	cram	jb2 emb	0.3098	0.09323	1.030	3.324
+20	19kb	longread	cram	jb1	0.3452	0.1064	1.120	3.245
+20	19kb	shortread	bam	igvjs	0.3184	0.09334	1.086	3.411
+20	19kb	shortread	bam	jb2 emb	0.2213	0.04553	1.076	4.860
+20	19kb	shortread	bam	jb1	0.09058	0.005560	1.476	16.29
+20	19kb	shortread	cram	igvjs	0.3114	0.1025	0.9463	3.038
+20	19kb	shortread	cram	jb2 emb	0.1501	0.02154	1.046	6.970
+20	19kb	shortread	cram	jb1	0.2163	0.03747	1.248	5.772
+400	19kb	longread	bam	igvjs	2.862	3.585	2.285	0.7983
+400	19kb	longread	bam	jb2 emb	4.782	19.75	1.158	0.2422
+400	19kb	longread	bam	jb1	25.94	836.9	0.8043	0.03100
+400	19kb	longread	cram	igvjs	7.809	62.24	0.9798	0.1255
+400	19kb	longread	cram	jb2 emb	1.628	3.127	0.8477	0.5206
+400	19kb	longread	cram	jb1	1.565	2.921	0.8384	0.5358
+400	19kb	shortread	bam	igvjs	3.839	7.202	2.047	0.5331
+400	19kb	shortread	bam	jb2 emb	1.748	1.778	1.719	0.9833
+400	19kb	shortread	bam	jb1	0.2907	0.05056	1.671	5.750
+400	19kb	shortread	cram	igvjs	3.653	13.63	0.9788	0.2679
+400	19kb	shortread	cram	jb2 emb	0.9254	1.138	0.7527	0.8134
+400	19kb	shortread	cram	jb1	0.8392	0.6050	1.164	1.387
+600	19kb	longread	bam	igvjs	3.521	6.092	2.035	0.5780
+600	19kb	longread	bam	jb2 emb	6.561	36.77	1.171	0.1784
+600	19kb	longread	cram	igvjs	11.12	132.5	0.9325	0.08388
+600	19kb	longread	cram	jb2 emb	1.728	3.181	0.9387	0.5432
+600	19kb	longread	cram	jb1	2.030	3.815	1.080	0.5322
+600	19kb	shortread	bam	igvjs	5.606	13.64	2.304	0.4110
+600	19kb	shortread	bam	jb2 emb	2.591	3.845	1.746	0.6739
+600	19kb	shortread	bam	jb1	0.3842	0.1016	1.453	3.783
+600	19kb	shortread	cram	igvjs	5.494	30.89	0.9771	0.1778
+600	19kb	shortread	cram	jb2 emb	1.220	2.219	0.6707	0.5498
+600	19kb	shortread	cram	jb1	1.051	1.000	1.105	1.051
+800	19kb	longread	bam	igvjs	4.417	10.92	1.787	0.4046
+800	19kb	longread	bam	jb2 emb	8.367	59.57	1.175	0.1405
+800	19kb	longread	cram	igvjs	14.91	246.7	0.9012	0.06044
+800	19kb	longread	cram	jb2 emb	2.253	6.008	0.8447	0.3750
+800	19kb	longread	cram	jb1	2.779	8.078	0.9563	0.3441
+800	19kb	shortread	bam	igvjs	3.877	6.483	2.319	0.5980
+800	19kb	shortread	bam	jb2 emb	3.579	8.855	1.447	0.4042
+800	19kb	shortread	bam	jb1	0.4887	0.1828	1.306	2.673
+800	19kb	shortread	cram	igvjs	7.488	57.13	0.9814	0.1311
+800	19kb	shortread	cram	jb2 emb	1.594	4.451	0.5705	0.3580
+800	19kb	shortread	cram	jb1	1.437	1.669	1.238	0.8614

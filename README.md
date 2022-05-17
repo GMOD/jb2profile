@@ -56,9 +56,13 @@ being tested and region size being viewed
 
 #### Runtime
 
-Rendering a single 10kb region of a track
+Rendering a single track at different zoom levels
 
-![](img/img2.png)
+![](img/single_track_5kb.png)
+
+![](img/single_track_10kb.png)
+
+![](img/single_track_19kb.png)
 
 #### Main thread hanging time
 

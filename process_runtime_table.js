@@ -13,11 +13,13 @@ function formatLine([command, times]) {
   const filt = times.map(time => +time).filter(time => time < 300)
   const m = filt.length < 5 ? 300 : mean(filt)
   const s = (filt.length < 5 ? 1 : stddev(filt)) / Math.sqrt(filt.length)
-  const read_type = command.includes('shortread') ? 'shortread' : 'longread'
-  const file_type = command.includes('bam') ? 'bam' : 'cram'
-  const coverage = command.match(/(\d+)x/)[1]
+  const [coverage, window_size, read_type, file_type] = process.argv[2]
+    .replace('results/', '')
+    .replace('.json', '')
+    .split('-')
   const prog = rep[key]
-  return prog && [prog, '5kb', coverage, read_type, file_type, m, s].join('\t')
+  const cov = coverage.replace('x', '')
+  return prog && [prog, window_size, cov, read_type, file_type, m, s].join('\t')
 }
 
 console.log(

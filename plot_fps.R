@@ -55,9 +55,9 @@ plot_scatterplot <- function(df, title) {
 
 
 plot_boxplot <- function(df, df2, title) {
-  ggplot(df, aes(x = program, y = time_between_frames)) +
-    geom_boxplot(data = df2, aes(x = program, y = expected_value, ymin = p05, ymax = p95, lower = p25, middle = p50, upper = p75), stat = "identity", alpha = 0.5) +
-    geom_jitter(aes(color = program), show.legend = T) +
+  ggplot() +
+    geom_jitter(data=df,aes(x=program,y=time_between_frames,color=program))+
+    geom_boxplot(data = df2, aes(x = program, middle=expected_value,ymin = p05, ymax = p95, lower = p25,  upper = p75), fatten = NULL, stat = "identity", alpha = 0.5) +
     labs(y = "time between frames (s)") +
     facet_grid(~coverage) +
     theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
@@ -101,7 +101,6 @@ plot_superbare <- function(df, title) {
   ggplot(df, aes(x = coverage, y = expected_value, color = program)) +
     geom_point() +
     stat_smooth(method = "lm", aes(color = program, fill = program), lty = 3, se = F) +
-    geom_errorbar(aes(ymin = p05, ymax = p95), width = 40, position = position_dodge(width = 20)) +
     labs(y = "Response time (s)") +
     ggtitle(title)
 }

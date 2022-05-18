@@ -6,12 +6,8 @@ df = read.csv('fps_table_processed.csv',sep='\t')
 df$time_between_frames = 1/df$average_fps
 df$coverage = paste0(df$coverage,'x coverage')
 df$coverage <- factor(df$coverage, levels = c("20x coverage", "200x coverage", "400x coverage","600x coverage", "800x coverage", "1000x coverage"))
-# df2 has expected wait time and variance
 df2 = read.csv('fps_table_processed2.csv',sep='\t')
-df2$p75=qgamma(0.75,df2$alpha,df2$beta)
-df2$p25=qgamma(0.25,df2$alpha,df2$beta)
-df2$lower=qgamma(0.05,df2$alpha,df2$beta)
-df2$upper=qgamma(0.95,df2$alpha,df2$beta)
+
 
 
 bam = df[df$file_type=='bam',]
@@ -49,7 +45,7 @@ plot_scatterplot <- function(df, title) {
 
 plot_boxplot <- function(df, df2, title) {
   ggplot(df, aes(x = program, y = time_between_frames)) + 
-    geom_boxplot(data=df2, aes(x=program, y=expected_value,ymin=lower,ymax=upper,lower = p25, middle = expected_value, upper = p75), stat = "identity",alpha=0.5) +
+    geom_boxplot(data=df2, aes(x=program, y=expected_value,ymin=p05,ymax=p95,lower = p25, middle = p50, upper = p75), stat = "identity",alpha=0.5) +
     geom_jitter(aes(color = program),show.legend=T) +
     labs(y= "time between frames (s)")+
     facet_grid(~ coverage) +
@@ -79,7 +75,7 @@ plot_lm <- function(df, title) {
   ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
     geom_point() +
     stat_smooth(method = "lm", aes(color=program,fill=program)) +
-    geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
+    geom_errorbar(aes(ymin=p05, ymax=p95), width=40,position=position_dodge(width=20)) +
     labs(y= "Response time (s)") +
     ggtitle(title)
 
@@ -87,22 +83,20 @@ plot_lm <- function(df, title) {
 
 
 plot_bare <- function(df, title) {
-
   ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
     geom_point() +
     stat_smooth(method = "lm", aes(color=program,fill=program),lty=3) +
-    geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
+    geom_errorbar(aes(ymin=p05, ymax=p95), width=40,position=position_dodge(width=20)) +
     labs(y= "Response time (s)") +
     ggtitle(title)
 
 }
 
 plot_superbare <- function(df, title) {
-
   ggplot(df, aes(x = coverage, y = expected_value, color=program)) + 
     geom_point() +
     stat_smooth(method = "lm", aes(color=program,fill=program),lty=3,se=F) +
-    geom_errorbar(aes(ymin=lower, ymax=upper), width=40,position=position_dodge(width=20)) +
+    geom_errorbar(aes(ymin=p05, ymax=p95), width=40,position=position_dodge(width=20)) +
     labs(y= "Response time (s)") +
     ggtitle(title)
 

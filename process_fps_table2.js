@@ -32,30 +32,42 @@ console.log(
     .filter(f => !!f)
     .map(line => {
       const [command, total_frames] = line.split('\t')
+      if (!total_frames) return
       const arr = command.split('_')
       const port = arr[arr.length - 1]
       const cmd = arr.slice(0, arr.length - 2).join('_')
       const [coverage, window_size, read_type, file_type] = cmd.split('-')
       const key = Object.keys(map).find(key => port === key)
-      const elts = total_frames.split(',').map(f => 1 / +f)
-      const sorted_elts = elts.sort((a, b) => a - b)
-      const N = elts.length
-      const T = sum(elts)
-      const S = k => sorted_elts.slice(0, k).reduce((a, b) => a + b, 0)
-      const L = X => sorted_elts.filter(f => f < X).length
-      const C = X => (1 / T) * (X * (N - L(X))) + S(L(X))
+      const A = [0, ...total_frames.split(',').map(f => 1 / +f)]
+      A.sort((a, b) => a - b)
+
+      const Stab = new Map(A.map((r, i) => [i, sum(A.slice(0, i))]))
+      const Ltab = new Map(A.map(r => [r, A.filter(f => f < r).length]))
+      const N = A.length
+      const T = sum(A)
+      const E = sum(A, l => (l * l) / (2 * T))
+      const V = sum(A, l => (l * l * l) / (3 * T)) - E * E
+      const S = k => Stab.get(k)
+      const L = X => Ltab.get(X)
+      const C = X => (1 / T) * (X * (N - L(X)) + S(L(X)))
       const F = Q => {
-        let max = -Infinity
+        let maxK = -Infinity
+        let val
         for (let k = 0; k < N; k++) {
-          const val = C(sorted_elts[k])
+          val = C(A[k])
           if (val < Q) {
-            max = val
+            maxK = k
           }
         }
-        return max
+
+        return maxK
       }
 
-      const C_inv = Q => (Q * T - S(F(Q))) / (N - F(Q))
+      const C_inv = Q => {
+        const kk = F(Q)
+        const jj = S(kk)
+        return (Q * T - jj) / (N - kk)
+      }
       const p95 = C_inv(0.95)
       const p05 = C_inv(0.05)
       const p25 = C_inv(0.25)
@@ -72,6 +84,8 @@ console.log(
           read_type,
           file_type,
           prog,
+          E,
+          V,
           p05,
           p25,
           p50,

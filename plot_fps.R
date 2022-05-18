@@ -8,11 +8,10 @@ df$coverage = paste0(df$coverage,'x coverage')
 df$coverage <- factor(df$coverage, levels = c("20x coverage", "200x coverage", "400x coverage","600x coverage", "800x coverage", "1000x coverage"))
 # df2 has expected wait time and variance
 df2 = read.csv('fps_table_processed2.csv',sep='\t')
-df2$upper=qgamma(0.95,df2$alpha,df2$beta)
+df2$p75=qgamma(0.75,df2$alpha,df2$beta)
+df2$p25=qgamma(0.25,df2$alpha,df2$beta)
 df2$lower=qgamma(0.05,df2$alpha,df2$beta)
-print(head(df2))
-
-
+df2$upper=qgamma(0.95,df2$alpha,df2$beta)
 
 
 bam = df[df$file_type=='bam',]
@@ -34,15 +33,31 @@ cram_lr2 = cram2[cram2$read_type=='longread',]
 
 
 
-plot <- function(df, title) {
+
+
+plot_scatterplot <- function(df, title) {
   ggplot(df, aes(x = program, y = time_between_frames)) + 
-    geom_jitter(aes(color = program)) +
+    geom_jitter(aes(color = program),show.legend=T) +
     labs(y= "time between frames (s)")+
     facet_grid(~ coverage) +
-    theme(legend.position = "none") +
+    theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
     ggtitle(title)
 
 }
+
+
+
+plot_boxplot <- function(df, df2, title) {
+  ggplot(df, aes(x = program, y = time_between_frames)) + 
+    geom_boxplot(data=df2, aes(x=program, y=expected_value,ymin=lower,ymax=upper,lower = p25, middle = expected_value, upper = p75), stat = "identity",alpha=0.5) +
+    geom_jitter(aes(color = program),show.legend=T) +
+    labs(y= "time between frames (s)")+
+    facet_grid(~ coverage) +
+    theme(axis.title.x=element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank()) +
+    ggtitle(title)
+
+}
+
 
 plot_cumsums <- function(df, title) {
 
@@ -95,11 +110,10 @@ plot_superbare <- function(df, title) {
 
 
 ggsave('img/fps_scatter.png', 
-(plot(cram_lr, 'CRAM longread - main thread stall')/
-plot(cram_sr, 'CRAM shortread - main thread stall')/
-plot(bam_lr, 'BAM longread - main thread stall')/
-plot(bam_sr, 'BAM shortread - main thread stall')),width=16,height=16)
-
+(plot_scatterplot(cram_lr, 'CRAM longread - main thread stall')/
+plot_scatterplot(cram_sr, 'CRAM shortread - main thread stall')/
+plot_scatterplot(bam_lr, 'BAM longread - main thread stall')/
+plot_scatterplot(bam_sr, 'BAM shortread - main thread stall')),width=16,height=10)
 
 ggsave('img/fps_cumsums.png', 
 (plot_cumsums(cram_lr, 'CRAM longread - frame # vs time')+
@@ -131,4 +145,30 @@ ggsave('img/fps_superbare.png',
 plot_superbare(cram_sr2, 'CRAM shortread - average response time'))/
 (plot_superbare(bam_lr2, 'BAM longread - average response time')+
 plot_superbare(bam_sr2, 'BAM shortread - average response time')),width=16)
+
+
+
+df3 = df2
+df3$coverage = paste0(df3$coverage,'x coverage')
+df3$coverage <- factor(df3$coverage, levels = c("20x coverage", "200x coverage", "400x coverage","600x coverage", "800x coverage", "1000x coverage"))
+
+bam3 = df3[df3$file_type=='bam',]
+bam_sr3 = bam3[bam3$read_type=='shortread',]
+bam_lr3 = bam3[bam3$read_type=='longread',]
+cram3 = df3[df3$file_type=='cram',]
+cram_sr3 = cram3[cram3$read_type=='shortread',]
+cram_lr3 = cram3[cram3$read_type=='longread',]
+
+
+
+ggsave('img/fps_scatter_boxplot.png', 
+(plot_boxplot(cram_lr, cram_lr3,'CRAM longread - main thread stall')/
+plot_boxplot(cram_sr, cram_sr3,'CRAM shortread - main thread stall')/
+plot_boxplot(bam_lr, bam_lr3,'BAM longread - main thread stall')/
+plot_boxplot(bam_sr, bam_sr3,'BAM shortread - main thread stall')),width=16,height=10)
+
+
+
+
+
 

@@ -3,8 +3,8 @@ import { mean, stddev } from './util.js'
 
 const rep = {
   8000: 'igvjs',
-  8001: 'jb2 web',
-  8002: 'jb2 emb',
+  8001: 'jb2 w/ workers',
+  8002: 'jb2 w/o workers',
   8003: 'jb1',
 }
 

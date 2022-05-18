@@ -73,6 +73,9 @@ user-interface would be locked up
 
 ![](img/fps_scatter.png)
 
+With added boxplot showing the percentiles (25-75%) plus extremeties (5%-95%) of the distribution
+
+![](img/fps_scatter.png)
 Another way to look at this is frame # vs time
 
 ![](img/fps_cumsum.png)

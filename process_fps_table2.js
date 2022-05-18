@@ -5,9 +5,9 @@ const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
   8000: 'igvjs',
-  8002: 'jb2 emb',
+  8001: 'jb2 w/ workers',
+  8002: 'jb2 w/o workers',
   8003: 'jb1',
-  8004: 'jb2 web',
 }
 
 console.log(

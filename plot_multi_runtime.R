@@ -25,8 +25,8 @@ plot<-function(df, title) {
 }
 
 ggsave('img/multi.png', 
- (plot(bam_lr, 'BAM longread runtime - rendering multiple tracks')+
-plot(bam_sr, 'BAM shortread runtime - rendering multiple tracks'))/
-(plot(cram_lr, 'CRAM longread runtime - rendering multiple tracks')+
-plot(cram_sr, 'CRAM shortread runtime - rendering multiple tracks')),width=20)
+ (plot(bam_lr, 'BAM longread runtime - rendering multiple tracks')/
+plot(bam_sr, 'BAM shortread runtime - rendering multiple tracks')/
+plot(cram_lr, 'CRAM longread runtime - rendering multiple tracks')/
+plot(cram_sr, 'CRAM shortread runtime - rendering multiple tracks')),width=13,height=11)
 

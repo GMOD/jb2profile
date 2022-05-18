@@ -10,6 +10,7 @@ Rscript plot_runtime.R
 ./create_fps_table.sh > fps_table.csv
 node process_fps_table.js fps_table.csv > fps_table_processed.csv
 node process_fps_table2.js fps_table.csv  > fps_table_processed2.csv
+node process_fps_table3.js fps_table.csv  > fps_table_processed3.csv
 Rscript plot_fps.R
 
 

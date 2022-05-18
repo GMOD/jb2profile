@@ -1,5 +1,6 @@
 library(ggplot2)
 library(patchwork)
+library(reshape2)
 
 # df has raw values
 df <- read.csv("fps_table_processed.csv", sep = "\t")
@@ -7,7 +8,8 @@ df$time_between_frames <- 1 / df$average_fps
 df$coverage <- paste0(df$coverage, "x coverage")
 df$coverage <- factor(df$coverage, levels = c("20x coverage", "200x coverage", "400x coverage", "600x coverage", "800x coverage", "1000x coverage"))
 df2 <- read.csv("fps_table_processed2.csv", sep = "\t")
-
+df4 <- read.csv("fps_table_processed3.csv", sep = "\t")
+df4 <- melt(df4,id.vars=c('coverage','program','file_type','read_type','window'))
 
 
 bam <- df[df$file_type == "bam", ]
@@ -26,6 +28,16 @@ cram2 <- df2[df2$file_type == "cram", ]
 cram_sr2 <- cram2[cram2$read_type == "shortread", ]
 cram_lr2 <- cram2[cram2$read_type == "longread", ]
 
+
+
+
+
+bam4 <- df4[df4$file_type == "bam", ]
+bam_sr4 <- bam4[bam4$read_type == "shortread", ]
+bam_lr4 <- bam4[bam4$read_type == "longread", ]
+cram4 <- df4[df4$file_type == "cram", ]
+cram_sr4 <- cram4[cram4$read_type == "shortread", ]
+cram_lr4 <- cram4[cram4$read_type == "longread", ]
 
 
 
@@ -95,6 +107,23 @@ plot_superbare <- function(df, title) {
 }
 
 
+
+plot_bar <- function(df, title) {
+  ggplot(df, aes(x=coverage,y=value,color=variable)) +
+    geom_line() +
+    facet_grid(~program) +
+    ggtitle(title)
+}
+
+
+
+
+
+
+
+
+
+
 ggsave("img/fps_scatter.png",
   (plot_scatterplot(cram_lr, "CRAM longread - main thread stall") /
     plot_scatterplot(cram_sr, "CRAM shortread - main thread stall") /
@@ -139,6 +168,14 @@ ggsave("img/fps_superbare.png",
     plot_superbare(cram_sr2, "CRAM shortread - average response time")) /
     (plot_superbare(bam_lr2, "BAM longread - average response time") +
       plot_superbare(bam_sr2, "BAM shortread - average response time")),
+  width = 16
+)
+
+ggsave("img/fps_bar.png",
+  (plot_bar(cram_lr4, "CRAM longread - time spent hanging") +
+    plot_bar(cram_sr4, "CRAM shortread - time spent hanging")) /
+    (plot_bar(bam_lr4, "BAM longread - time spent hanging") +
+      plot_bar(bam_sr4, "BAM shortread - time spent hanging")),
   width = 16
 )
 

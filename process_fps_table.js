@@ -3,8 +3,8 @@ const str = fs.readFileSync(process.argv[2], 'utf8')
 
 const map = {
   8000: 'igvjs',
-  8001: 'jb2 w/ workers',
-  8002: 'jb2 w/o workers',
+  8001: 'jb2 parallel',
+  8002: 'jb2 serial',
   8003: 'jb1',
 }
 

@@ -79,7 +79,7 @@ With added boxplot showing the percentiles (25-75%) plus extremeties (5%-95%) of
 
 Another way to look at this is frame # vs time
 
-![](img/fps_cumsum.png)
+![](img/fps_cumsums.png)
 
 Looking at the expected value of the response time of the app:
 

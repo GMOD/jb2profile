@@ -25,9 +25,9 @@ plot <- function(df, title) {
 }
 
 ggsave("img/multi.png",
-  (plot(bam_lr, "BAM longread runtime - rendering multiple tracks") /
-    plot(bam_sr, "BAM shortread runtime - rendering multiple tracks") /
-    plot(cram_lr, "CRAM longread runtime - rendering multiple tracks") /
-    plot(cram_sr, "CRAM shortread runtime - rendering multiple tracks")),
+  (plot(bam_lr, "BAM longread runtime - rendering multiple tracks - viewing 5kb region") /
+    plot(bam_sr, "BAM shortread runtime - rendering multiple tracks - viewing 5kb region") /
+    plot(cram_lr, "CRAM longread runtime - rendering multiple tracks - viewing 5kb region") /
+    plot(cram_sr, "CRAM shortread runtime - rendering multiple tracks - viewing 5kb region")),
   width = 13, height = 11
 )

@@ -91,7 +91,7 @@ plot_lm <- function(df, title) {
 plot_bare <- function(df, title) {
   ggplot(df, aes(x = coverage, y = expected_value, color = program)) +
     geom_point() +
-    stat_smooth(method = "lm", aes(color = program, fill = program), lty = 3) +
+    stat_smooth(method = "lm", aes(color = program, fill = program), lty = 3,se=F, formula=y~x-1) +
     geom_errorbar(aes(ymin = p05, ymax = p95), width = 40, position = position_dodge(width = 20)) +
     labs(y = "Response time (s)") +
     ggtitle(title)
@@ -100,8 +100,8 @@ plot_bare <- function(df, title) {
 plot_superbare <- function(df, title) {
   ggplot(df, aes(x = coverage, y = expected_value, color = program)) +
     geom_point() +
-    stat_smooth(method = "lm", aes(color = program, fill = program), lty = 3, se = F) +
-    labs(y = "Response time (s)") +
+    stat_smooth(method = "lm", aes(color = program, fill = program), lty = 3, se = F, formula=y~x-1) +
+    labs(y = "Mean response time (s)") +
     ggtitle(title)
 }
 
@@ -143,10 +143,10 @@ ggsave("img/fps_cumsums.png",
 
 
 ggsave("img/fps_ev.png",
-  (plot_lm(cram_lr2, "CRAM longread - average response time") +
-    plot_lm(cram_sr2, "CRAM shortread - average response time")) /
-    (plot_lm(bam_lr2, "BAM longread - average response time") +
-      plot_lm(bam_sr2, "BAM shortread - average response time")),
+  (plot_lm(cram_lr2, "CRAM longread - mean response time") +
+    plot_lm(cram_sr2, "CRAM shortread - mean response time")) /
+    (plot_lm(bam_lr2, "BAM longread - mean response time") +
+      plot_lm(bam_sr2, "BAM shortread - mean response time")),
   width = 16
 )
 
@@ -163,10 +163,10 @@ ggsave("img/fps_bare.png",
 
 
 ggsave("img/fps_superbare.png",
-  (plot_superbare(cram_lr2, "CRAM longread - average response time") +
-    plot_superbare(cram_sr2, "CRAM shortread - average response time")) /
-    (plot_superbare(bam_lr2, "BAM longread - average response time") +
-      plot_superbare(bam_sr2, "BAM shortread - average response time")),
+  (plot_superbare(cram_lr2, "CRAM longread - mean response time - viewing 10kb region") +
+    plot_superbare(cram_sr2, "CRAM shortread - mean response time - viewig 10kb region")) /
+    (plot_superbare(bam_lr2, "BAM longread - mean response time - viewing 10kb region") +
+      plot_superbare(bam_sr2, "BAM shortread - mean response time - viewing 10kb region")),
   width = 16
 )
 
@@ -194,9 +194,9 @@ cram_lr3 <- cram3[cram3$read_type == "longread", ]
 
 
 ggsave("img/fps_scatter_boxplot.png",
-  (plot_boxplot(cram_lr, cram_lr3, "CRAM longread - main thread stall") /
-    plot_boxplot(cram_sr, cram_sr3, "CRAM shortread - main thread stall") /
-    plot_boxplot(bam_lr, bam_lr3, "BAM longread - main thread stall") /
-    plot_boxplot(bam_sr, bam_sr3, "BAM shortread - main thread stall")),
+  (plot_boxplot(cram_lr, cram_lr3, "CRAM longread - main thread stall - viewing 10kb region") /
+    plot_boxplot(cram_sr, cram_sr3, "CRAM shortread - main thread stall - viewing 10kb region") /
+    plot_boxplot(bam_lr, bam_lr3, "BAM longread - main thread stall - viewing 10kb region") /
+    plot_boxplot(bam_sr, bam_sr3, "BAM shortread - main thread stall - viewing 10kb region")),
   width = 16, height = 10
 )

@@ -29,12 +29,10 @@ for (i in 1:length(dfs)) {
   cram_lr <- cram[cram$read_type == "longread", ]
 
   ggsave(paste0("img/single_track_", name, ".png"),
-    (plot(cram_sr, "CRAM shortread") + plot(cram_lr, "CRAM longread")) /
-      (plot(bam_sr, "BAM shortread") + plot(bam_lr, "BAM longread")) +
-      plot_annotation(
-        title = paste0("Time to render single track on ", name, " region"),
-        theme = theme(plot.title = element_text(size = 16))
-      ),
+    (plot(cram_sr, paste0("CRAM shortread runtime - rendering single track - viewing ",name, " region")) + 
+     plot(cram_lr, paste0("CRAM longread runtime - rendering single track - viewing ",name, " region"))) /
+      (plot(bam_sr, paste0("BAM shortread runtime - rendering single track - viewing ",name, " region")) + 
+       plot(bam_lr, paste0("BAM longread runtime - rendering single track - viewing ",name, " region"))),
     width = 13
   )
 }

@@ -14,6 +14,12 @@ cram_sr <- cram[cram$read_type == "shortread", ]
 cram_lr <- cram[cram$read_type == "longread", ]
 
 
+
+ggsave2<-function(file,plot,width,height) {
+  ggsave(paste0(file,".png"),  plot, width = 16, height = 10)
+  ggsave(paste0(file,".pdf"),  plot, width = 16, height = 10)
+}
+
 plot <- function(df, title) {
   ggplot(df, aes(x = num_tracks, y = time)) +
     geom_line(aes(color = program)) +
@@ -24,7 +30,7 @@ plot <- function(df, title) {
     ggtitle(title)
 }
 
-ggsave("img/multi.png",
+ggsave2("img/multi",
   (plot(bam_lr, "BAM longread runtime - rendering multiple tracks - viewing 5kb region") /
     plot(bam_sr, "BAM shortread runtime - rendering multiple tracks - viewing 5kb region") /
     plot(cram_lr, "CRAM longread runtime - rendering multiple tracks - viewing 5kb region") /

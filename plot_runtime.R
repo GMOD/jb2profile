@@ -17,6 +17,10 @@ plot <- function(df, title) {
     ggtitle(title)
 }
 
+ggsave2<-function(file,plot,width,height) {
+  ggsave(paste0(file,".png"),  plot, width = 16, height = 10)
+  ggsave(paste0(file,".pdf"),  plot, width = 16, height = 10)
+}
 
 for (i in 1:length(dfs)) {
   df <- dfs[[i]]
@@ -28,7 +32,7 @@ for (i in 1:length(dfs)) {
   cram_sr <- cram[cram$read_type == "shortread", ]
   cram_lr <- cram[cram$read_type == "longread", ]
 
-  ggsave(paste0("img/single_track_", name, ".png"),
+  ggsave2(paste0("img/single_track_", name),
     (plot(cram_sr, paste0("CRAM shortread runtime - rendering single track - viewing ",name, " region")) + 
      plot(cram_lr, paste0("CRAM longread runtime - rendering single track - viewing ",name, " region"))) /
       (plot(bam_sr, paste0("BAM shortread runtime - rendering single track - viewing ",name, " region")) + 

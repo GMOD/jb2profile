@@ -118,12 +118,16 @@ plot_bar <- function(df, title) {
 
 
 
+ggsave2<-function(file,plot,width,height) {
+  ggsave(paste0(file,".png"),  plot, width = 16, height = 10)
+  ggsave(paste0(file,".pdf"),  plot, width = 16, height = 10)
+}
 
 
 
 
 
-ggsave("img/fps_scatter.png",
+ggsave2("img/fps_scatter",
   (plot_scatterplot(cram_lr, "CRAM longread - main thread stall") /
     plot_scatterplot(cram_sr, "CRAM shortread - main thread stall") /
     plot_scatterplot(bam_lr, "BAM longread - main thread stall") /
@@ -131,7 +135,7 @@ ggsave("img/fps_scatter.png",
   width = 16, height = 10
 )
 
-ggsave("img/fps_cumsums.png",
+ggsave2("img/fps_cumsums",
   (plot_cumsums(cram_lr, "CRAM longread - frame # vs time") +
     plot_cumsums(cram_sr, "CRAM shortread - frame # vs time")) /
     (plot_cumsums(bam_lr, "BAM longread - frame # vs time") +
@@ -142,7 +146,7 @@ ggsave("img/fps_cumsums.png",
 
 
 
-ggsave("img/fps_ev.png",
+ggsave2("img/fps_ev",
   (plot_lm(cram_lr2, "CRAM longread - mean response time") +
     plot_lm(cram_sr2, "CRAM shortread - mean response time")) /
     (plot_lm(bam_lr2, "BAM longread - mean response time") +
@@ -152,7 +156,7 @@ ggsave("img/fps_ev.png",
 
 
 
-ggsave("img/fps_bare.png",
+ggsave2("img/fps_bare",
   (plot_bare(cram_lr2, "CRAM longread - average response time") +
     plot_bare(cram_sr2, "CRAM shortread - average response time")) /
     (plot_bare(bam_lr2, "BAM longread - average response time") +
@@ -162,7 +166,7 @@ ggsave("img/fps_bare.png",
 
 
 
-ggsave("img/fps_superbare.png",
+ggsave2("img/fps_superbare",
   (plot_superbare(cram_lr2, "CRAM longread - mean response time - viewing 10kb region") +
     plot_superbare(cram_sr2, "CRAM shortread - mean response time - viewing 10kb region")) /
     (plot_superbare(bam_lr2, "BAM longread - mean response time - viewing 10kb region") +
@@ -170,7 +174,7 @@ ggsave("img/fps_superbare.png",
   width = 16
 )
 
-ggsave("img/fps_bar.png",
+ggsave2("img/fps_bar",
   (plot_bar(cram_lr4, "CRAM longread - time spent hanging") +
     plot_bar(cram_sr4, "CRAM shortread - time spent hanging")) /
     (plot_bar(bam_lr4, "BAM longread - time spent hanging") +
@@ -193,10 +197,7 @@ cram_lr3 <- cram3[cram3$read_type == "longread", ]
 
 
 
-ggsave("img/fps_scatter_boxplot.png",
-  (plot_boxplot(cram_lr, cram_lr3, cram_lr5, "CRAM longread - main thread stall - viewing 10kb region") /
-    plot_boxplot(cram_sr, cram_sr3, cram_sr5, "CRAM shortread - main thread stall - viewing 10kb region") /
-    plot_boxplot(bam_lr, bam_lr3, bam_lr5, "BAM longread - main thread stall - viewing 10kb region") /
-    plot_boxplot(bam_sr, bam_sr3, bam_sr5, "BAM shortread - main thread stall - viewing 10kb region")),
-  width = 16, height = 10
-)
+ggsave2("img/fps_scatter_boxplot", (plot_boxplot(cram_lr, cram_lr3, "CRAM longread - main thread stall - viewing 10kb region") /
+    plot_boxplot(cram_sr, cram_sr3, "CRAM shortread - main thread stall - viewing 10kb region") /
+    plot_boxplot(bam_lr, bam_lr3, "BAM longread - main thread stall - viewing 10kb region") /
+    plot_boxplot(bam_sr, bam_sr3, "BAM shortread - main thread stall - viewing 10kb region")), width = 16, height = 10)

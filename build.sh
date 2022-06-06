@@ -13,6 +13,7 @@ if [ ! -d "samtools" ]; then
   ./configure --without-curses --disable-bz2 --disable-lzma --with-libcurl
   make -j8
   sudo make install
+  cd -
 fi;
 
 
@@ -22,6 +23,7 @@ if [ ! -d "pbsim2" ]; then
   ./configure
   make
   sudo make install
+  cd -
 fi;
 
 sudo npm install -g yarn
